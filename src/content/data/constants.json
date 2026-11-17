@@ -21,25 +21,82 @@
     "workHours": 40
   },
   "statBounds": {
-    "money": [0, 100],
-    "happiness": [0, 100],
-    "social": [0, 100],
-    "fame": [0, 100],
-    "contribution": [0, 100],
-    "intellect": [0, 100],
-    "skillAi": [0, 100],
-    "skillBusiness": [0, 100],
-    "skillSoft": [0, 100],
-    "energy": [0, 100],
-    "network": [0, 100],
-    "grades": [0, 100],
-    "ethics": [-50, 50],
-    "addiction": [0, 100],
-    "tech": [0, 100],
-    "ai": [0, 100],
-    "aiLever": [-0.1, 0.05],
-    "screenHours": [0, 12],
-    "workHours": [0, 80]
+    "money": [
+      0,
+      100
+    ],
+    "happiness": [
+      0,
+      100
+    ],
+    "social": [
+      0,
+      100
+    ],
+    "fame": [
+      0,
+      100
+    ],
+    "contribution": [
+      0,
+      100
+    ],
+    "intellect": [
+      0,
+      100
+    ],
+    "skillAi": [
+      0,
+      100
+    ],
+    "skillBusiness": [
+      0,
+      100
+    ],
+    "skillSoft": [
+      0,
+      100
+    ],
+    "energy": [
+      0,
+      100
+    ],
+    "network": [
+      0,
+      100
+    ],
+    "grades": [
+      0,
+      100
+    ],
+    "ethics": [
+      -50,
+      50
+    ],
+    "addiction": [
+      0,
+      100
+    ],
+    "tech": [
+      0,
+      100
+    ],
+    "ai": [
+      0,
+      100
+    ],
+    "aiLever": [
+      -0.1,
+      0.05
+    ],
+    "screenHours": [
+      0,
+      12
+    ],
+    "workHours": [
+      0,
+      80
+    ]
   },
   "footprint": {
     "baselineTPerYear": 8.8,
@@ -55,28 +112,61 @@
   "planet": {
     "todayC": 1.4,
     "currentPoliciesC": 2.7,
-    "tempScoreRange": [1.5, 4.4],
+    "tempScoreRange": [
+      1.5,
+      4.4
+    ],
     "oceanCurve": [
-      [1.4, 0.38],
-      [1.8, 0.44],
-      [2.7, 0.56],
-      [3.6, 0.68],
-      [4.4, 0.77]
+      [
+        1.4,
+        0.38
+      ],
+      [
+        1.8,
+        0.44
+      ],
+      [
+        2.7,
+        0.56
+      ],
+      [
+        3.6,
+        0.68
+      ],
+      [
+        4.4,
+        0.77
+      ]
     ],
     "insectsCurve": [
-      [1.5, 6],
-      [2, 18],
-      [3.2, 49]
+      [
+        1.5,
+        6
+      ],
+      [
+        2,
+        18
+      ],
+      [
+        3.2,
+        49
+      ]
     ],
     "heatBase": 0.4,
     "heatSlope": 1.33,
-    "heatScoreRange": [0.4, 4.3],
+    "heatScoreRange": [
+      0.4,
+      4.3
+    ],
     "materialsWeight": 0.3,
     "materialsPenaltyPerTonne": 5
   },
   "lifespan": {
     "base": 83.1,
-    "baseByGender": { "woman": 85.9, "man": 80.3 },
+    "baseByGender": {
+      "woman": 85.9,
+      "man": 80.3
+    },
     "socialSwing": 3,
     "grindPenaltyPerYear": 0.15,
     "addictionPenalty": 4,
@@ -98,17 +188,37 @@
   },
   "promotion": {
     "effects": {
-      "stats": { "money": 6, "fame": 3 },
+      "stats": {
+        "money": 6,
+        "fame": 3
+      },
       "text": "Promotion! New title, new business cards, same chair."
     }
   },
   "aiEventSlots": [
-    { "id": "ai_slot_27", "age": 27, "phase": "career", "fallbackSceneId": "e_ai_fb_headhunter" },
-    { "id": "ai_slot_34", "age": 34, "phase": "career", "fallbackSceneId": "e_ai_fb_moonshot" },
-    { "id": "ai_slot_51", "age": 51, "phase": "maturity", "fallbackSceneId": "e_ai_fb_friend" },
-    { "id": "ai_slot_68", "age": 68, "phase": "oldage", "fallbackSceneId": "e_ai_fb_viral_elder" }
+    {
+      "id": "ai_slot_27",
+      "age": 27,
+      "phase": "career",
+      "fallbackSceneId": "e_ai_fb_headhunter"
+    },
+    {
+      "id": "ai_slot_34",
+      "age": 34,
+      "phase": "career",
+      "fallbackSceneId": "e_ai_fb_moonshot"
+    },
+    {
+      "id": "ai_slot_68",
+      "age": 68,
+      "phase": "oldage",
+      "fallbackSceneId": "e_ai_fb_viral_elder"
+    }
   ],
-  "exchange": { "highMin": 72, "midMin": 50 },
+  "exchange": {
+    "highMin": 72,
+    "midMin": 50
+  },
   "flagMemories": {
     "intl_origin": "came to France from abroad to study at AIDAMS",
     "housing_campus": "lived in the windy campus residence in Year 1, next door to roommate Lou",
@@ -324,27 +434,105 @@
     "legacy_climate": "funded climate and health research",
     "legacy_ai_lab": "funded an AI lab",
     "legacy_time": "gave time in old age, tutoring kids",
-    "flew": "has taken flights during this life"
+    "flew": "has taken flights during this life",
+    "goat_retreat": "recovered from a burnout on a goat farm in Brittany, where a goat ate their work badge"
   },
-  "surpriseOfferTemplateIds": ["surprise_moonshot", "surprise_mission", "surprise_golden_cage", "surprise_wildcard"],
+  "surpriseOfferTemplateIds": [
+    "surprise_moonshot",
+    "surprise_mission",
+    "surprise_golden_cage",
+    "surprise_wildcard"
+  ],
   "badges": [
-    { "id": "kept_phone", "label": "Kept It", "description": "Never bought a new phone on a whim. Eighty percent of a device's footprint is in making it." },
-    { "id": "no_flights", "label": "Grounded", "description": "A whole life without boarding a plane." },
-    { "id": "pm_regular", "label": "Front Row", "description": "Never missed one of PM's 8AM classes." },
-    { "id": "whistleblower", "label": "Whistleblower", "description": "Saw something, said something, paid for it." },
-    { "id": "logged_off", "label": "Logged Off", "description": "Deleted the social apps for good." },
-    { "id": "ten_percent", "label": "Ten Percent", "description": "Gave a tenth of your income to climate and health causes." },
-    { "id": "frugal_ai", "label": "Frugal by Design", "description": "Shipped a small, measured, disclosed AI instead of the biggest one." },
-    { "id": "night_owl", "label": "3AM Philosopher", "description": "Stayed for the 3AM conversation that changed things." },
-    { "id": "founder", "label": "Founder", "description": "Started a company from a whiteboard and a domain name." },
-    { "id": "replaced", "label": "Replaced", "description": "Lost a job to AI in the shock." },
-    { "id": "reinvented", "label": "Reinvented", "description": "Started over in a new field after the AI shock." },
-    { "id": "slow_traveller", "label": "Slow Traveller", "description": "Explored your exchange by train and bus." },
-    { "id": "mentor", "label": "Passed It On", "description": "Went back to AIDAMS to teach and mentor." },
-    { "id": "myth_buster", "label": "Myth Buster", "description": "Deleted 40,000 cloud photos and learned it saves almost nothing." },
-    { "id": "champion", "label": "Champion", "description": "Won the inter-school tournament for your asso." },
-    { "id": "sprout", "label": "Sprout", "description": "Planted forests that will outgrow you. Life grows back." },
-    { "id": "hackathon_winner", "label": "Hackathon Winner", "description": "Won a hackathon with a demo that worked exactly once." },
-    { "id": "aced_interview", "label": "Interview Ace", "description": "Passed a brutal recruitment test on your first try." }
+    {
+      "id": "kept_phone",
+      "label": "Kept It",
+      "description": "Never bought a new phone on a whim. Eighty percent of a device's footprint is in making it."
+    },
+    {
+      "id": "no_flights",
+      "label": "Grounded",
+      "description": "A whole life without boarding a plane."
+    },
+    {
+      "id": "pm_regular",
+      "label": "Front Row",
+      "description": "Never missed one of PM's 8AM classes."
+    },
+    {
+      "id": "whistleblower",
+      "label": "Whistleblower",
+      "description": "Saw something, said something, paid for it."
+    },
+    {
+      "id": "logged_off",
+      "label": "Logged Off",
+      "description": "Deleted the social apps for good."
+    },
+    {
+      "id": "ten_percent",
+      "label": "Ten Percent",
+      "description": "Gave a tenth of your income to climate and health causes."
+    },
+    {
+      "id": "frugal_ai",
+      "label": "Frugal by Design",
+      "description": "Shipped a small, measured, disclosed AI instead of the biggest one."
+    },
+    {
+      "id": "night_owl",
+      "label": "3AM Philosopher",
+      "description": "Stayed for the 3AM conversation that changed things."
+    },
+    {
+      "id": "founder",
+      "label": "Founder",
+      "description": "Started a company from a whiteboard and a domain name."
+    },
+    {
+      "id": "replaced",
+      "label": "Replaced",
+      "description": "Lost a job to AI in the shock."
+    },
+    {
+      "id": "reinvented",
+      "label": "Reinvented",
+      "description": "Started over in a new field after the AI shock."
+    },
+    {
+      "id": "slow_traveller",
+      "label": "Slow Traveller",
+      "description": "Explored your exchange by train and bus."
+    },
+    {
+      "id": "mentor",
+      "label": "Passed It On",
+      "description": "Went back to AIDAMS to teach and mentor."
+    },
+    {
+      "id": "myth_buster",
+      "label": "Myth Buster",
+      "description": "Deleted 40,000 cloud photos and learned it saves almost nothing."
+    },
+    {
+      "id": "champion",
+      "label": "Champion",
+      "description": "Won the inter-school tournament for your asso."
+    },
+    {
+      "id": "sprout",
+      "label": "Sprout",
+      "description": "Planted forests that will outgrow you. Life grows back."
+    },
+    {
+      "id": "hackathon_winner",
+      "label": "Hackathon Winner",
+      "description": "Won a hackathon with a demo that worked exactly once."
+    },
+    {
+      "id": "aced_interview",
+      "label": "Interview Ace",
+      "description": "Passed a brutal recruitment test on your first try."
+    }
   ]
 }

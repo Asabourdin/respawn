@@ -38,7 +38,8 @@ export function Beat({ beat, displayAge, onDone }: Props) {
     else if (ups < 0) sfx.down()
     else sfx.confirm()
     if (fact) return // a fact waits for the player
-    const ms = 1700 + Math.min(1000, years * 110) + (beat.promotions > 0 ? 600 : 0)
+    // Quick beats stay quick: a mini's consequence is gone in about a second.
+    const ms = beat.sceneKind === 'mini' && !beat.promotions ? 1100 : 1700 + Math.min(1000, years * 110) + (beat.promotions > 0 ? 600 : 0)
     const id = window.setTimeout(() => doneRef.current(), ms)
     return () => window.clearTimeout(id)
   }, [beat.id])
@@ -58,13 +59,13 @@ export function Beat({ beat, displayAge, onDone }: Props) {
       aria-modal="true"
       aria-label="What happened"
     >
-      <div className="beat-pop pwin flex w-full max-w-[360px] flex-col gap-[12px] px-[18px] py-[18px]">
-        <p className="text-[15px] leading-tight text-slate">{pixelSafe(beat.sceneTitle)}</p>
-        <p className="flex items-start gap-[9px] text-[20px] leading-[1.2] font-bold text-forest">
+      <div className={'beat-pop pwin flex w-full flex-col gap-[12px] px-[18px] ' + (beat.sceneKind === 'mini' ? 'max-w-[340px] py-[14px]' : 'max-w-[400px] py-[18px] lg:max-w-[480px]')}>
+        {beat.sceneKind !== 'mini' && <p className="t-meta text-slate">{pixelSafe(beat.sceneTitle)}</p>}
+        <p className="flex items-start gap-[9px] t-choice font-bold text-forest">
           <span className="mt-[6px] h-[9px] w-[9px] shrink-0 bg-lime shadow-[0_0_0_3px_var(--color-forest)]" aria-hidden />
           {pixelSafe(beat.choiceLabel)}
         </p>
-        {outcome.text && <p className="text-[18px] leading-[1.35] text-forest">{pixelSafe(outcome.text)}</p>}
+        {outcome.text && <p className="t-body text-forest">{pixelSafe(outcome.text)}</p>}
         {outcome.chance && <DiceCheck result={outcome.chance} stat={beat.checkStat} />}
 
         {(moved.length > 0 || chips.length > 0) && (
@@ -84,7 +85,7 @@ export function Beat({ beat, displayAge, onDone }: Props) {
                 {chips.map((c) => (
                   <li
                     key={c.key}
-                    className={'px-[6px] py-[3px] font-tag text-[11px] leading-[13px] ' + (c.good ? 'bg-lime text-night' : 'bg-charcoal text-stone')}
+                    className={'px-[6px] py-[3px] font-tag text-[13px] leading-[15px] ' + (c.good ? 'bg-lime text-night' : 'bg-charcoal text-stone')}
                   >
                     {c.up ? '+' : '-'} {statLabel(c.key).toUpperCase()}
                   </li>
@@ -113,8 +114,8 @@ export function Beat({ beat, displayAge, onDone }: Props) {
 
         {fact && (
           <aside className="flex flex-col gap-[6px] bg-forest px-[12px] py-[10px] text-paper" aria-label="Did you know?">
-            <span className="text-[16px] font-bold text-lime">Did you know?</span>
-            <p className="text-[17px] leading-[1.3]">{pixelSafe(fact.text)}</p>
+            <span className="t-meta font-bold text-lime">Did you know?</span>
+            <p className="t-body">{pixelSafe(fact.text)}</p>
             <p className="font-mono text-[19px] leading-none text-stone">Source: {pixelSafe(fact.source)}</p>
           </aside>
         )}

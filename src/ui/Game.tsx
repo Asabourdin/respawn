@@ -10,6 +10,7 @@ import { PauseMenu } from './screens/PauseMenu'
 import { PlayView } from './screens/Play'
 import { TitleView } from './screens/Title'
 import { VISIBLE } from './format'
+import { bustFor, emblemFor } from './assets'
 
 function profileOf(id: string, pool: ProfileOpt[] | undefined): ProfileOpt {
   return pool?.find((o) => o.id === id) ?? { id, label: id, blurb: '' }
@@ -74,6 +75,19 @@ function PlayScreen() {
   const scene = step?.type === 'scene' ? step.scene : null
   const def = scene ? content.scenes.find((x) => x.id === scene.id) : undefined
   const stats = Object.fromEntries(VISIBLE.map((k) => [k, game.stats[k]])) as Record<VisibleStat, number>
+  const bust = scene ? bustFor(scene.speaker, scene.id) : undefined
+  const speakerId = scene?.speaker ?? (bust ? 'pm' : undefined)
+  const character = speakerId ? content.characters.find((c) => c.id === speakerId) : undefined
+  const speaker = speakerId ? { name: character?.name ?? speakerId, bust } : undefined
+  let emblems: Record<string, string> | undefined
+  if (scene && def?.dynamic?.type === 'jobOffers') {
+    emblems = {}
+    for (const c of scene.choices) {
+      const emp = content.employers.find((e) => e.id === c.id)
+      const icon = emp ? emblemFor(emp.id, emp.pathId) : undefined
+      if (icon) emblems[c.id] = icon
+    }
+  }
   const majorsDone = game.history.filter((h) => h.kind === 'major').length
   let pace = 0
   try {
@@ -103,6 +117,8 @@ function PlayScreen() {
         onMenu={() => setPaused(true)}
         sheet={sheetFor(game)}
         paused={paused}
+        speaker={speaker}
+        emblems={emblems}
       />
       {paused && (
         <PauseMenu

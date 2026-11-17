@@ -450,3 +450,35 @@ button {
 .anim-iframes {
   animation: iframes 1.1s steps(1) 1;
 }
+
+/* Type roles: phone sizes, bumped on desktop (Lucas: body ≥ 18 px phone, ≥ 20 px desktop). */
+.t-body {
+  font-size: 18px;
+  line-height: 1.45;
+}
+.t-choice {
+  font-size: 18px;
+  line-height: 1.25;
+}
+.t-meta {
+  font-size: 16px;
+  line-height: 1.3;
+}
+.t-title {
+  font-size: 21px;
+  line-height: 1.15;
+}
+@media (min-width: 1024px) {
+  .t-body {
+    font-size: 20px;
+  }
+  .t-choice {
+    font-size: 20px;
+  }
+  .t-meta {
+    font-size: 18px;
+  }
+  .t-title {
+    font-size: 26px;
+  }
+}

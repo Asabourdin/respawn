@@ -254,6 +254,6 @@ describe('content bundle', () => {
     expect(content.startupSectors).toHaveLength(6)
     expect(content.facts.length).toBeGreaterThanOrEqual(25)
     expect(content.profiles.names.length).toBeGreaterThanOrEqual(24)
-    expect(content.constants.aiEventSlots).toHaveLength(4)
+    expect(content.constants.aiEventSlots).toHaveLength(3)
   })
 })

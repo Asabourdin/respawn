@@ -52,13 +52,14 @@ export function bgPath(key: string) {
 // Sky palette swap
 // ---------------------------------------------------------------------------
 
-const SKY_SWAP: Col[][] = [
+/** Per pace level: band colours top→bottom; null = keep the original sky. Level 3 is dithered 50%. */
+const SKY_SWAP: (Col | null)[][] = [
   [],
   [],
-  ['sky', 'stone', 'stone', 'paper'],
-  ['stone', 'skin1', 'gold', 'gold'],
-  ['skin2', 'ember', 'ember', 'gold'],
-  ['wine', 'heat', 'ember', 'gold'],
+  [],
+  [null, null, 'skin1', 'gold'],
+  [null, 'skin1', 'gold', 'ember'],
+  ['skin1', 'gold', 'ember', 'heat'],
 ]
 
 function hex(c: string): [number, number, number] {
@@ -66,13 +67,12 @@ function hex(c: string): [number, number, number] {
   return [(n >> 16) & 255, (n >> 8) & 255, n & 255]
 }
 const SKY_RGB = hex(BRAND.sky)
-const MINT_RGB = hex(BRAND.mint)
 
 const swapped = new Map<string, HTMLCanvasElement>()
 
 /** The background with its sky recoloured for a pace level (cached per image × level). */
 export function skySwapped(img: HTMLImageElement, level: number): CanvasImageSource {
-  if (level < 2) return img
+  if (level < 3) return img
   const key = img.src + '#' + level
   const hit = swapped.get(key)
   if (hit) return hit
@@ -85,19 +85,17 @@ export function skySwapped(img: HTMLImageElement, level: number): CanvasImageSou
   try {
     const data = ctx.getImageData(0, 0, c.width, c.height)
     const d = data.data
-    const skyLimit = Math.floor(c.height * 0.62)
-    const bands = SKY_SWAP[level].map((k) => hex(BRAND[k as keyof typeof BRAND] ?? BRAND.sky))
+    const skyLimit = Math.floor(c.height * 0.6)
+    const bands = SKY_SWAP[level].map((k) => (k ? hex(BRAND[k as keyof typeof BRAND]) : null))
+    const half = level === 3
     for (let y = 0; y < skyLimit; y++) {
       const band = bands[Math.min(bands.length - 1, Math.floor((y / skyLimit) * bands.length))]
+      if (!band) continue
       for (let x = 0; x < c.width; x++) {
+        if (half && (x + y) % 2) continue
         const i = (y * c.width + x) * 4
-        const r = d[i]
-        const g = d[i + 1]
-        const b = d[i + 2]
-        const isSky = Math.abs(r - SKY_RGB[0]) + Math.abs(g - SKY_RGB[1]) + Math.abs(b - SKY_RGB[2]) < 40
-        const isHaze = level >= 4 && Math.abs(r - MINT_RGB[0]) + Math.abs(g - MINT_RGB[1]) + Math.abs(b - MINT_RGB[2]) < 30
-        if (isSky || isHaze) {
-          // ordered dither between this band and the next one down for a stepped seam
+        const isSky = Math.abs(d[i] - SKY_RGB[0]) + Math.abs(d[i + 1] - SKY_RGB[1]) + Math.abs(d[i + 2] - SKY_RGB[2]) < 40
+        if (isSky) {
           d[i] = band[0]
           d[i + 1] = band[1]
           d[i + 2] = band[2]
@@ -112,17 +110,15 @@ export function skySwapped(img: HTMLImageElement, level: number): CanvasImageSou
   return c
 }
 
-/** Draws a background at logical scale (canvas is W×H logical px), plus the rising water line. */
+/** Draws a background into a W×H logical canvas (centred, cropped), plus a subtle rising water line. */
 export function drawBg(f: Frame, img: HTMLImageElement) {
   const { ctx, w, h, t } = f
   const src = skySwapped(img, paceLevel(f.pace))
   const iw = img.naturalWidth
   const ih = img.naturalHeight
-  const x = Math.round((w - iw) / 2)
-  const y = Math.round((h - ih) * 0.55)
-  ctx.drawImage(src, x, y)
-  // sea-level cue: nothing at a 1.5 °C pace, a creeping flood at 4 °C
-  const sh = Math.round(Math.max(0, f.pace - 0.15) * 16)
+  ctx.drawImage(src, Math.round((w - iw) / 2), Math.round((h - ih) * 0.55))
+  // sea-level cue: nothing at an average pace, a creeping flood towards 4 °C
+  const sh = Math.min(12, Math.round(Math.max(0, f.pace - 0.55) * 28))
   if (sh > 0) {
     const top = h - sh
     rect(ctx, 0, top, w, sh, 'sea')

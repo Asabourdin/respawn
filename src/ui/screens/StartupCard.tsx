@@ -7,7 +7,7 @@ import { useKeys } from '../hooks'
 export function StartupCard({ card, onDone }: { card: StartupData; onDone: () => void }) {
   const loading = card.status === 'loading'
   useKeys((e) => {
-    if (loading) return
+    if (loading && e.key !== 'Escape') return
     if (e.key === ' ' || e.key === 'Enter' || e.key === 'Escape') {
       e.preventDefault()
       onDone()
@@ -19,10 +19,15 @@ export function StartupCard({ card, onDone }: { card: StartupData; onDone: () =>
     <div className="beat-dim absolute inset-0 z-40 flex items-center justify-center px-[15px]" role="dialog" aria-modal="true" aria-label="Your startup">
       <div className="beat-pop pwin-dark flex w-full max-w-[360px] flex-col gap-[12px] px-[18px] py-[18px]">
         {loading ? (
-          <div className="flex items-center gap-[15px] py-[18px]">
-            <PixelSpinner label="Naming your startup" />
-            <p className="text-[18px] text-stone">Registering the company...</p>
-          </div>
+          <>
+            <div className="flex items-center gap-[15px] py-[12px]">
+              <PixelSpinner label="Naming your startup" />
+              <p className="text-[18px] text-stone">Registering the company, pitching investors, inventing a rival...</p>
+            </div>
+            <button type="button" className="min-h-[44px] self-end text-[17px] text-stone underline decoration-[2px] underline-offset-[5px]" onClick={onDone}>
+              Skip
+            </button>
+          </>
         ) : (
           <>
             <p className="font-tag text-[12px] text-mint">YOUR STARTUP / {pixelSafe(card.sectorLabel).toUpperCase()}</p>

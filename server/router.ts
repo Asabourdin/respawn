@@ -27,8 +27,11 @@ export function allowedOrigins(env: EnvReader = getEnv): string[] {
 }
 
 /** Allowed when listed, or same-origin (e.g. a Vercel deployment calling its own /api). */
+/** Any port on localhost / 127.0.0.1 (local dev servers: teammates run on different ports). */
+const LOCAL_ORIGIN = /^http:\/\/(localhost|127\.0\.0\.1)(:\d{1,5})?$/
+
 export function originAllowed(origin: string, reqUrl: string, env: EnvReader = getEnv): boolean {
-  if (allowedOrigins(env).includes(origin)) return true
+  if (allowedOrigins(env).includes(origin) || LOCAL_ORIGIN.test(origin)) return true
   try {
     return new URL(reqUrl).origin === origin
   } catch {

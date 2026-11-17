@@ -20,8 +20,8 @@ export function pixelSafe(text: string | undefined | null): string {
 
 export const PHASE_LABEL: Record<Phase, string> = {
   arrival: 'Arrival',
-  aidams12: 'AIDAMS Year 1-2',
-  aidams34: 'AIDAMS Year 3-4',
+  aidams12: 'Years 1-2',
+  aidams34: 'Years 3-4',
   launch: 'Launch',
   career: 'Career',
   maturity: 'Maturity',

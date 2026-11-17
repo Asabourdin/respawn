@@ -6,7 +6,7 @@ import { PixelCanvas } from './PixelCanvas'
 
 export const YOU_POLES = ['money', 'happiness', 'social', 'fame', 'contribution', 'footprint'] as const
 export const YOU_LABELS: Record<(typeof YOU_POLES)[number], string> = {
-  money: 'Money',
+  money: 'Wealth',
   happiness: 'Happiness',
   social: 'Social',
   fame: 'Fame',

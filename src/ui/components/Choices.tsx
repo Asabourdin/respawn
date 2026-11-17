@@ -2,6 +2,7 @@ import { useRef, useState } from 'react'
 import { LOCK, SPARKLE } from '../art/sprites'
 import { pixelSafe } from '../format'
 import { sfx } from '../sfx'
+import { PixelImg } from './PixelImg'
 import { Sprite } from './Sprite'
 
 export interface ChoiceItem {
@@ -12,6 +13,8 @@ export interface ChoiceItem {
   lockedReason?: string
   /** Appeared late (AI surprise offer): small reveal + tag. */
   surprise?: boolean
+  /** 32 px emblem (employer offers). */
+  icon?: string
 }
 
 interface Props {
@@ -34,8 +37,9 @@ export function shortcutMap(choices: ChoiceItem[]): Map<string, string> {
 export function ChoiceList({ choices, onChoose, compact, disabled, pressedId }: Props) {
   const [shaking, setShaking] = useState<string | null>(null)
   const listRef = useRef<HTMLDivElement>(null)
-  let n = 0
-  const twoUp = compact && choices.length === 2 && choices.every((c) => c.label.length < 34 && !c.hint)
+  const numbers = new Map<string, number>()
+  choices.filter((c) => !c.locked).forEach((c, i) => numbers.set(c.id, i + 1))
+  const twoUp = compact && choices.length === 2 && choices.every((c) => c.label.length < 30 && !c.hint && !c.icon)
 
   const onKeyDown = (e: React.KeyboardEvent) => {
     if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp' && e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return
@@ -54,12 +58,12 @@ export function ChoiceList({ choices, onChoose, compact, disabled, pressedId }: 
     <div
       ref={listRef}
       onKeyDown={onKeyDown}
-      className={twoUp ? 'grid grid-cols-2 gap-[15px]' : 'flex flex-col ' + (compact ? 'gap-[12px]' : 'gap-[15px]')}
+      className={twoUp ? 'grid grid-cols-2 gap-[12px]' : 'flex flex-col gap-[12px]'}
       role="group"
       aria-label="Choices"
     >
       {choices.map((c) => {
-        const num = c.locked ? null : ++n
+        const num = numbers.get(c.id)
         const isShaking = shaking === c.id
         return (
           <button
@@ -81,24 +85,22 @@ export function ChoiceList({ choices, onChoose, compact, disabled, pressedId }: 
             }}
             className={
               'pkey flex w-full items-start gap-[12px] text-left ' +
-              (compact ? 'min-h-[48px] px-[12px] py-[9px] ' : 'min-h-[56px] px-[12px] py-[12px] ') +
+              (compact ? 'min-h-[50px] px-[12px] py-[9px] ' : 'min-h-[52px] px-[12px] py-[10px] ') +
               (isShaking ? 'anim-shake ' : '') +
               (c.surprise ? 'surprise-in ' : '')
             }
           >
             <span
-              className={
-                'grid h-[30px] w-[30px] shrink-0 place-items-center font-mono text-[26px] leading-none ' +
-                (c.locked ? 'bg-night' : 'bg-forest text-lime')
-              }
+              className={'grid h-[30px] w-[30px] shrink-0 place-items-center font-mono text-[26px] leading-none ' + (c.locked ? 'bg-night' : 'bg-forest text-lime')}
               aria-hidden
             >
               {c.locked ? <Sprite rows={LOCK} scale={3} /> : num}
             </span>
-            <span className="flex min-w-0 flex-1 flex-col gap-[3px] pt-[3px]">
-              <span className={'text-[18px] leading-[1.2] ' + (c.locked ? 'text-slate' : '')}>
+            {c.icon && <PixelImg path={c.icon} size={32} />}
+            <span className="flex min-w-0 flex-1 flex-col gap-[3px] pt-[2px]">
+              <span className={'t-choice ' + (c.locked ? 'text-stone' : '')}>
                 {c.surprise && (
-                  <span className="mr-[6px] inline-flex translate-y-[2px] items-center gap-[3px] bg-night px-[4px] py-[1px] font-tag text-[11px] leading-[14px] text-lime">
+                  <span className="mr-[6px] inline-flex translate-y-[2px] items-center gap-[3px] bg-night px-[5px] py-[2px] font-tag text-[13px] leading-[15px] text-lime">
                     <Sprite rows={SPARKLE} scale={2} /> NEW
                   </span>
                 )}
@@ -107,7 +109,7 @@ export function ChoiceList({ choices, onChoose, compact, disabled, pressedId }: 
               {c.locked ? (
                 <span className="font-mono text-[20px] leading-[1] text-stone">{pixelSafe(c.lockedReason) || 'Locked'}</span>
               ) : (
-                c.hint && <span className="choice-hint text-[16px] leading-[1.2]">{pixelSafe(c.hint)}</span>
+                c.hint && <span className="choice-hint t-meta">{pixelSafe(c.hint)}</span>
               )}
             </span>
           </button>

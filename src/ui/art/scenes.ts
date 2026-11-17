@@ -305,7 +305,7 @@ function airport(f: Frame) {
   px(ctx, tx + 1, g - 28, Math.floor(t * 2) % 2 ? 'red' : 'blood')
   ground(f, g, 'fog', 'steel')
   rect(ctx, 0, g + 4, w, 1, 'white')
-  for (let x = 0; x < w; x += 8) rect(ctx, x + Math.floor(t * 0) , g + 7, 4, 1, 'lemon')
+  for (let x = 0; x < w; x += 8) rect(ctx, x, g + 7, 4, 1, 'lemon')
   // plane loop: taxi → climb
   const cycle = (t * 14) % (w * 2.2)
   const x = Math.round(cycle - 20)

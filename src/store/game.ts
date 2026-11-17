@@ -126,7 +126,8 @@ export const useGame = create<Store>((set, get) => {
 
     if (step.type === 'scene') {
       const scene = step.scene
-      if (scene.narrate && !scene.isAiEvent) requestNarration(game, key, scene, previous)
+      // Minis are 1-tap beats: instant base text keeps the pace (and the budget).
+      if (scene.narrate && !scene.isAiEvent && scene.kind !== 'mini') requestNarration(game, key, scene, previous)
       if (wantsSurprise(scene.id) && !scene.choices.some((c) => c.id === 'ai_surprise')) requestSurprise(game, scene.id)
     } else if (step.type === 'ai_slot') {
       const slotKey = key

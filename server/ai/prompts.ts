@@ -82,7 +82,7 @@ export const TASK_INSTRUCTIONS: Record<Task, string> = {
 
 Rewrite the scene's base text for this particular player. You have real creative freedom: reinterpret the moment, find a surprising angle, add vivid invented details, a walk-on character, a running joke from this life. The base text is a starting point, not a script. Only two things are fixed: the same decision is at stake, and every listed option must still make sense right after your text, in their order.
 - Let the player's character colour the scene without ever naming a stat: someone strong in Charisma works the room, someone weak in Math & AI dreads the exam, someone low on Health is running on fumes, someone with a big Network gets the insider tip.
-- 2 to 4 sentences, at most 70 words. Second person, present tense.
+- 2 or 3 short sentences, at most 45 words (players read on a phone: punchy beats complete). Second person, present tense.
 - If a previous decision is given, you may acknowledge it in a few words (it just happened), then move to the new moment.
 - Weave in at most one or two callbacks from memories, characters or recent choices, only when they fit.
 - If the scene has a speaker, keep that character present and in voice.
