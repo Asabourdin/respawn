@@ -138,6 +138,8 @@ function EndScreen() {
   const s = useGame()
   const facts = useMemo(() => Object.fromEntries((content?.facts ?? []).map((f) => [f.id, f])) as Record<string, Fact>, [])
   if (!s.summary) return null
+  const last = s.game?.path ?? s.game?.pathHistory[s.game.pathHistory.length - 1]
+  const careerEmblem = last ? emblemFor(last.employerId, last.pathId) : s.game?.startup ? emblemFor(undefined, 'startup') : undefined
   return (
     <EndView
       summary={s.summary}
@@ -148,6 +150,7 @@ function EndScreen() {
       onClearRespawn={s.clearRespawn}
       onReplay={s.replayFrom}
       onNewLife={s.openNewLife}
+      careerEmblem={careerEmblem}
     />
   )
 }
@@ -155,9 +158,9 @@ function EndScreen() {
 function ErrorToast({ message }: { message: string }) {
   const goTitle = useGame((s) => s.goTitle)
   return (
-    <div className="absolute inset-x-[12px] bottom-[12px] z-[60] flex items-center gap-[12px] bg-heat px-[12px] py-[9px] text-paper" role="alert">
-      <span className="flex-1 text-[16px] leading-tight">Something broke: {message}</span>
-      <button type="button" className="pkey is-dark min-h-[44px] px-[12px] text-[16px]" onClick={goTitle}>
+    <div className="absolute inset-x-[12px] bottom-[12px] z-[60] flex items-center gap-[12px] bg-wine px-[12px] py-[9px] text-paper" role="alert">
+      <span className="flex-1 t-meta">Something broke: {message}</span>
+      <button type="button" className="pkey is-dark min-h-[44px] px-[12px] text-[18px]" onClick={goTitle}>
         Title
       </button>
     </div>

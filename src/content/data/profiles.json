@@ -114,9 +114,9 @@
       "weight": 1
     },
     {
-      "id": "prepa",
-      "label": "Prepa survivor",
-      "blurb": "Two years of prépa taught you to work at 2AM and feel guilty at 2PM. Your grades are excellent. Your sleep is not.",
+      "id": "top_student",
+      "label": "Top-of-the-class kid",
+      "blurb": "A 'mention très bien' bac or a near-perfect IB score: high school taught you to revise at 2AM and feel guilty at 2PM. Your grades are excellent. Your sleep is not.",
       "effects": { "stats": { "grades": 10, "energy": -6 } },
       "weight": 1
     }

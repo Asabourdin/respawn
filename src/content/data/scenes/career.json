@@ -9,6 +9,12 @@
     "title": "Your Work Rhythm",
     "text": "You've found your feet at {employer}. Your manager calls you 'high potential', which is how they say 'stay late'. The next ten years will be shaped by one quiet decision: how many hours you give.",
     "art": "finance",
+    "variants": [
+      {
+        "conditions": "flag:phd",
+        "text": "Thesis defended, badge printed: you start at {employer} with a doctorate and a backlog of sleep. Your manager calls you 'high potential', which is how they say 'stay late'. The next ten years will be shaped by one quiet decision: how many hours you give."
+      }
+    ],
     "speaker": "first_manager",
     "ai": {
       "tone": "deceptively calm, big long-term stakes",
@@ -31,7 +37,7 @@
             { "label": "Grind lifestyle: taxis, takeaways, last-minute flights (design estimate)", "category": "lifestyle", "annual": { "id": "grind_lifestyle", "tPerYear": 0.6, "years": 10 } }
           ],
           "factId": "f_who_ilo",
-          "text": "Your calendar becomes a game of Tetris you are losing gracefully."
+          "text": "Your calendar becomes a game of falling blocks you are losing gracefully."
         }
       },
       {
@@ -65,6 +71,7 @@
         "hint": "A year to look around",
         "effects": {
           "years": 1,
+          "leavePath": true,
           "set": { "workHours": 40 },
           "stats": { "happiness": 2, "network": 3, "money": -3 },
           "flags": ["changed_job"],
@@ -100,7 +107,7 @@
     "variants": [
       {
         "conditions": "flag:met_3am",
-        "text": "Thirty. Remember the person from that 3AM conversation outside the sète? You never really stopped talking. Now you share a flat, a plant and one very big question: what does home look like?"
+        "text": "Thirty. Remember the person from that 3AM conversation outside the sète? You never really stopped talking, and lately Noa has started asking the very big question, gently: what does home look like for you?"
       }
     ],
     "ai": {
@@ -286,7 +293,7 @@
     "variants": [
       {
         "conditions": "flag:CREATOR",
-        "text": "Thirty-six. You've been posting daily since Year 1 and your follower count has its own personality. A brand agency wants you full-time. Your partner wants you at dinner. Time to decide your online life for good."
+        "text": "Thirty-six. You've been posting daily since Year 1 and your follower count has its own personality. A brand agency wants you full-time. Your friends want you back at dinner. Time to decide your online life for good."
       },
       {
         "conditions": "flag:phone_intentional",
@@ -322,6 +329,7 @@
           "set": { "screenHours": 2 },
           "stats": { "happiness": 1, "fame": -1 },
           "flags": ["online_as_needed"],
+          "footprint": [{ "label": "Your audience's watch time (influence)", "category": "digital", "influenceTPerYear": 0 }],
           "factId": "f_video_streaming",
           "text": "You post twice a year: one job update, one sunset. Perfectly balanced."
         }
@@ -334,6 +342,7 @@
           "set": { "screenHours": 0.6 },
           "stats": { "happiness": 6, "social": 4, "fame": -8, "contribution": -1 },
           "flags": ["deleted_socials"],
+          "footprint": [{ "label": "Your audience's watch time (influence)", "category": "digital", "influenceTPerYear": 0 }],
           "badges": ["logged_off"],
           "factId": "f_allcott",
           "text": "Week one, your thumb twitches. Week two, you read a novel. Week three, you call your grandmother."
@@ -349,7 +358,7 @@
     "age": 40,
     "mandatory": true,
     "title": "Mid-Career Crossroads",
-    "text": "Forty. Your company offers you a long-term track, your partner floats a sabbatical, a friend pitches a startup over dinner. Your eighteen-year-old self would have opinions. What's the plan for the next twenty years?",
+    "text": "Forty. Your company offers you a long-term track, a friend pitches a startup over dinner, and a slower life keeps whispering from the countryside. Your eighteen-year-old self would have opinions. What's the plan for the next twenty years?",
     "art": "garage",
     "variants": [
       {
@@ -364,7 +373,7 @@
     "ai": {
       "tone": "midlife clarity, humorous",
       "hints": [
-        "If flag ai_job_loss, the 'stay' options are greyed: the player cannot go back to that field.",
+        "If flag ai_job_loss, going back to the old job is greyed: the player cannot go back to that field.",
         "If flag founder later, the AI names the startup."
       ]
     },
@@ -373,27 +382,39 @@
         "id": "c16_stay20",
         "label": "Stay for twenty years",
         "hint": "Security, seniority, golden handcuffs",
-        "conditions": { "all": ["!flag:ai_job_loss", "path != none"] },
-        "lockedReason": "Locked: that job went to an AI in the shock",
+        "visibleIf": "!flag:ai_job_loss",
+        "conditions": "path != none",
+        "lockedReason": "Requires a current job",
         "effects": {
+          "years": 5,
           "stats": { "money": 10, "fame": 2, "happiness": -2 },
           "promotionChance": 0.7,
           "skipScenes": ["c18_late"],
           "flags": ["lifer"],
-          "text": "You get a bigger office and a smaller window. Your badge photo will not be updated until retirement."
+          "text": "You get a bigger office and a smaller window. Five years blur into quarterly reviews, and your badge photo will not be updated until retirement."
         }
       },
       {
         "id": "c16_stay10",
         "label": "Stay ten more years",
         "hint": "Then see",
-        "conditions": { "all": ["!flag:ai_job_loss", "path != none"] },
-        "lockedReason": "Locked: that job went to an AI in the shock",
+        "visibleIf": "!flag:ai_job_loss",
+        "conditions": "path != none",
+        "lockedReason": "Requires a current job",
         "effects": {
+          "years": 5,
           "stats": { "money": 5, "happiness": -1 },
           "flags": ["stay_10"],
-          "text": "You sign up for ten more years and a standing desk you will never stand at."
+          "text": "You sign up for ten more years and a standing desk you will never stand at. The first five go by in a blink."
         }
+      },
+      {
+        "id": "c16_stay_lost",
+        "label": "Go back to your old job",
+        "hint": "That desk has a server on it now",
+        "visibleIf": "flag:ai_job_loss",
+        "conditions": "!flag:ai_job_loss",
+        "lockedReason": "Locked: that job went to an AI in the shock"
       },
       {
         "id": "c16_pivot",
@@ -430,6 +451,7 @@
           "stats": { "happiness": 4, "social": 2, "money": -8, "fame": -6 },
           "path": { "pathId": "isolation" },
           "flags": ["low_tech_life"],
+          "footprint": [{ "label": "Logged off from your audience", "category": "digital", "influenceTPerYear": 0 }],
           "factId": "f_carbone4",
           "text": "You trade the commute for a vegetable garden and the notifications for birdsong. Your old colleagues call it a phase."
         }

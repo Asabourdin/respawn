@@ -100,7 +100,7 @@ export function ChoiceList({ choices, onChoose, compact, disabled, pressedId }: 
             <span className="flex min-w-0 flex-1 flex-col gap-[3px] pt-[2px]">
               <span className={'t-choice ' + (c.locked ? 'text-stone' : '')}>
                 {c.surprise && (
-                  <span className="mr-[6px] inline-flex translate-y-[2px] items-center gap-[3px] bg-night px-[5px] py-[2px] font-tag text-[13px] leading-[15px] text-lime">
+                  <span className="mr-[6px] inline-flex translate-y-[2px] items-center gap-[3px] bg-night px-[5px] py-[2px] font-tag text-[14px] leading-[15px] text-lime">
                     <Sprite rows={SPARKLE} scale={2} /> NEW
                   </span>
                 )}

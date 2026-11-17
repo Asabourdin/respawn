@@ -37,7 +37,7 @@ export function PauseMenu({ onResume, onAbandon }: { onResume: () => void; onAba
         ) : (
           <>
             <h2 className="text-[22px] font-bold text-paper">Abandon this life?</h2>
-            <p className="text-[17px] leading-[1.35] text-stone">You go back to the title screen and this life is gone for good.</p>
+            <p className="t-body text-stone">You go back to the title screen and this life is gone for good.</p>
             <button type="button" className="pkey is-primary min-h-[52px] text-[19px] font-bold" onClick={onAbandon}>
               Abandon
             </button>

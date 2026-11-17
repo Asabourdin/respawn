@@ -51,6 +51,11 @@ export function setPath(
   employerName?: string,
 ): void {
   const path = getPath(content, pathId)
+  // Rule: after an AI job loss, nobody in that field hires you again (enforced here for every route).
+  if (state.bannedFields.includes(path.field)) {
+    if (state.path) leavePath(content, state, false)
+    return
+  }
   const employer = employerId ? getEmployer(content, employerId) : undefined
   if (state.path) leavePath(content, state, false)
   const name = employerName ?? employer?.name

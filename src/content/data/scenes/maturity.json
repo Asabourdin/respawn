@@ -88,12 +88,12 @@
       },
       {
         "id": "c17_debts",
-        "label": "Pay off the flat, sleep well",
+        "label": "Clear your loans, sleep well",
         "hint": "Boring, safe, yours",
         "effects": {
           "stats": { "money": 4, "happiness": 2, "social": -1, "fame": -1 },
           "flags": ["paid_off"],
-          "text": "The day the last payment clears, you sleep eleven hours straight."
+          "text": "The day the last loan payment clears, you sleep eleven hours straight."
         }
       }
     ]
@@ -154,7 +154,7 @@
           "stats": { "social": 5, "contribution": 4, "skillSoft": 3, "money": -2 },
           "flags": ["mentor"],
           "badges": ["mentor"],
-          "text": "Your first lecture is at 8AM. In the corridor, a familiar silhouette raises an eyebrow: PM, now your colleague."
+          "text": "Your first lecture is at 8AM. In the corridor, a familiar silhouette raises an eyebrow: PM, officially retired, still teaching, and now your colleague."
         }
       },
       {

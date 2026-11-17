@@ -32,7 +32,7 @@
           "footprint": [
             { "label": "Smart home and AI companion", "category": "digital", "genAiTPerYear": 0.05, "deviceMultiplier": 1.6, "factId": "f_device_manufacturing" }
           ],
-          "text": "Your fridge orders the milk. Your AI companion laughs at all your jokes. Your grandchildren call a little less."
+          "text": "Your fridge orders the milk. Your AI companion laughs at all your jokes. Your family calls a little less."
         }
       },
       {
@@ -110,7 +110,7 @@
         "effects": {
           "stats": { "social": 6, "happiness": 3, "contribution": -1 },
           "flags": ["legacy_family"],
-          "text": "Your family will inherit your flat, your savings and your terrible puns, in that order of value."
+          "text": "Your family will inherit your savings, your books and your terrible puns, in that order of value."
         }
       },
       {

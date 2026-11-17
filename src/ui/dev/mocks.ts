@@ -325,3 +325,44 @@ export const mockPools = {
     { id: 'social', label: 'Social butterfly', blurb: 'You know everyone by week two.' },
   ],
 }
+
+/** ~45-word narration with four choices: the fold test on a 375×812 phone. */
+export const sceneLong: SceneView = {
+  id: 'c07_travel',
+  kind: 'major',
+  phase: 'aidams34',
+  age: 21,
+  majorIndex: 7,
+  majorCount: 20,
+  title: 'Life in New York',
+  text: 'Your NYU dorm smells of burnt bagels and ambition. Everyone in your seminar has a podcast. Weekends stretch out like an open map: Boston, Montreal, a cheap flight to Miami. Your bank account and your conscience are having a long, awkward conversation about it.',
+  art: 'exchange_west',
+  narrate: true,
+  choices: [
+    { id: 'local', label: 'Stay local and study', hint: 'Grades up, wallet intact', locked: false },
+    { id: 'trains', label: 'Trains and buses around the region', hint: 'Slow travel, big stories', locked: false },
+    { id: 'flights', label: 'A flight every other weekend', hint: 'Seven cities, one tan', locked: false },
+    { id: 'yacht', label: 'Charter a sailboat to the Bahamas', locked: true, lockedReason: 'Requires Wealth 80+' },
+  ],
+  isFollowUp: false,
+  isAiEvent: false,
+}
+
+export const beatMini: Beat = {
+  id: 3,
+  sceneTitle: "PM's 8AM class",
+  sceneKind: 'mini',
+  choiceLabel: 'Go',
+  outcome: {
+    deltas: { grades: 3, energy: -3 },
+    arrows: { happiness: -1 },
+    text: 'PM nods at you. You think. It might have been a yawn.',
+    tonnes: 0,
+    years: 0,
+    promotions: 0,
+  },
+  ageFrom: 18,
+  ageTo: 18,
+  promotions: 0,
+  student: true,
+}

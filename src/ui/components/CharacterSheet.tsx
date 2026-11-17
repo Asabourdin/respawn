@@ -54,9 +54,9 @@ function Bar({ value, color, segments = 10 }: { value: number; color: string; se
 function Row({ label, value, color, right }: { label: string; value: number; color: string; right?: string }) {
   return (
     <div className="flex min-w-0 flex-1 items-center gap-[9px]" role="meter" aria-label={label} aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(value)}>
-      <span className="w-[112px] shrink-0 text-[16px] leading-none text-paper">{label}</span>
+      <span className="w-[118px] shrink-0 t-meta leading-none text-paper">{label}</span>
       <Bar value={value} color={color} />
-      {right && <span className="w-[36px] shrink-0 text-right font-mono text-[18px] leading-none text-stone">{right}</span>}
+      {right && <span className="w-[40px] shrink-0 text-right font-mono text-[20px] leading-none text-stone">{right}</span>}
     </div>
   )
 }
@@ -82,20 +82,20 @@ export function SheetBody({ data, compact }: { data: SheetData; compact?: boolea
         </div>
       )}
       {!compact && (data.profile || data.career) && (
-        <dl className="grid grid-cols-[auto_1fr] gap-x-[12px] gap-y-[3px] font-mono text-[19px] leading-tight">
+        <dl className="grid grid-cols-[auto_1fr] gap-x-[12px] gap-y-[3px] font-mono text-[20px] leading-tight">
           {data.profile && (
             <>
-              <dt className="text-slate">Origin</dt>
+              <dt className="text-stone">Origin</dt>
               <dd className="text-paper">{pixelSafe(data.profile.origin)}</dd>
-              <dt className="text-slate">Budget</dt>
+              <dt className="text-stone">Budget</dt>
               <dd className="text-paper">{pixelSafe(data.profile.budget)}</dd>
-              <dt className="text-slate">Trait</dt>
+              <dt className="text-stone">Trait</dt>
               <dd className="text-paper">{pixelSafe(data.profile.trait)}</dd>
             </>
           )}
           {data.career && (
             <>
-              <dt className="text-slate">Career</dt>
+              <dt className="text-stone">Career</dt>
               <dd className="text-paper">{pixelSafe(data.career)}</dd>
             </>
           )}
@@ -104,7 +104,7 @@ export function SheetBody({ data, compact }: { data: SheetData; compact?: boolea
 
       {!compact && (
         <section className="flex flex-col gap-[9px]" aria-label="Life">
-          <h3 className="font-tag text-[12px] text-lime">LIFE</h3>
+          <h3 className="font-tag text-[14px] text-lime">LIFE</h3>
           {VISIBLE.map((k) => (
             <div key={k} className="flex items-center gap-[9px]">
               <Sprite rows={STAT_META[k].icon} scale={2} />
@@ -115,14 +115,14 @@ export function SheetBody({ data, compact }: { data: SheetData; compact?: boolea
       )}
 
       <section className="flex flex-col gap-[9px]" aria-label="Skills">
-        <h3 className="font-tag text-[12px] text-lime">SKILLS</h3>
+        <h3 className="font-tag text-[14px] text-lime">SKILLS</h3>
         {SKILLS.map((k) => (
           <Row key={k} label={statLabel(k)} value={s[k] ?? 0} color="lime" right={`Lv${level(s[k] ?? 0)}`} />
         ))}
       </section>
 
       <section className="flex flex-col gap-[9px]" aria-label="Condition">
-        <h3 className="font-tag text-[12px] text-lime">CONDITION</h3>
+        <h3 className="font-tag text-[14px] text-lime">CONDITION</h3>
         <Row label={statLabel('energy')} value={s.energy ?? 0} color={(s.energy ?? 0) < 25 ? 'heat' : 'mint'} />
         <Row label={statLabel('network')} value={s.network ?? 0} color="sky" />
         {student && <Row label={statLabel('grades')} value={s.grades ?? 0} color="paper" />}
@@ -145,7 +145,7 @@ export function CharacterSheet({ data, onClose }: { data: SheetData; onClose: ()
       <div className="beat-pop pwin-dark flex max-h-full w-full max-w-[370px] flex-col gap-[12px] overflow-y-auto px-[15px] py-[15px]" onClick={(e) => e.stopPropagation()}>
         <div className="flex items-center justify-between">
           <h2 className="font-mono text-[28px] leading-none text-lime">CHARACTER</h2>
-          <span className="font-mono text-[18px] text-slate">C to close</span>
+          <span className="font-mono text-[20px] text-stone">C to close</span>
         </div>
         <SheetBody data={data} />
         <button type="button" className="pkey is-primary min-h-[50px] text-[18px] font-bold" onClick={onClose} autoFocus>

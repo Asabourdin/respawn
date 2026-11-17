@@ -7,6 +7,7 @@
     "hint": "Top pay, very private clients",
     "tagline": "Your code will help 'keep people safe'. Which people is a later question.",
     "prestige": 9,
+    "visibleIf": "!flag:worked_panoptis",
     "conditions": { "any": ["flag:aced_coding", "flag:OFFER_bigtech", { "all": ["flag:TECH", "skillAi >= 40"] }, "skillAi >= 55"] },
     "lockedReason": "Requires a passed coding interview, a tech internship or Math & AI ≥ 55",
     "perDecade": { "money": 4, "contribution": -4, "ethics": -8 },
@@ -27,6 +28,7 @@
     "hint": "Build the feed everyone hates to love",
     "tagline": "Connecting people, one more scroll at a time.",
     "prestige": 8,
+    "visibleIf": "!flag:worked_infiniscroll",
     "conditions": { "any": ["flag:aced_coding", "flag:OFFER_bigtech", "flag:CREATOR", "flag:TECH", "skillAi >= 45"] },
     "lockedReason": "Requires the AI club, a tech internship, a following or Math & AI ≥ 45",
     "perDecade": { "money": 3, "contribution": -3, "ethics": -3 },
@@ -48,6 +50,7 @@
     "hint": "Servers as far as the eye can see",
     "tagline": "Your data, our cloud, everyone's electricity bill.",
     "prestige": 7,
+    "visibleIf": "!flag:worked_nebulary",
     "conditions": { "any": ["flag:aced_coding", "flag:OFFER_bigtech", "skillAi >= 40"] },
     "lockedReason": "Requires a tech internship, a coding interview or Math & AI ≥ 40",
     "perDecade": { "money": 3, "tech": 4 },
@@ -69,8 +72,9 @@
     "hint": "France's frontier-AI rocket",
     "tagline": "Building Europe's smartest model. Also its largest electricity contract.",
     "prestige": 10,
+    "visibleIf": "!flag:worked_tramontane",
     "conditions": { "any": ["flag:phd", "skillAi >= 65", { "all": ["flag:aced_coding", "skillAi >= 55", "intellect >= 45"] }] },
-    "lockedReason": "Requires a PhD, or Math & AI ≥ 55 and Intelligence ≥ 45 with a passed coding interview",
+    "lockedReason": "Requires a PhD, Math & AI ≥ 65, or a passed coding interview with Math & AI ≥ 55 and Intelligence ≥ 45",
     "perDecade": { "fame": 2, "ai": 4 },
     "effects": {
       "stats": { "money": 7, "tech": 10, "ai": 12, "fame": 6, "skillAi": 6, "energy": -6, "aiLever": 0.01 },
@@ -89,12 +93,13 @@
     "hint": "Public money, open science",
     "tagline": "Open science, open questions, closed coffee machine (broken since forever).",
     "prestige": 8,
+    "visibleIf": "!flag:worked_public_lab",
     "conditions": "flag:phd",
     "lockedReason": "Requires a PhD",
     "effects": {
       "stats": { "money": -3, "tech": 8, "ai": 6, "happiness": 4, "contribution": 3 },
       "flags": ["worked_public_lab", "flew"],
-      "text": "Your salary is modest, your office has a plant, and your code is open for the whole world to criticise."
+      "text": "Postdoc, then permanent researcher. Your salary is modest, your office has a plant, and your code is open for the whole world to criticise."
     }
   },
   {
@@ -105,12 +110,13 @@
     "hint": "Models that steer hospital budgets",
     "tagline": "We put numbers on health so nobody has to guess.",
     "prestige": 6,
+    "visibleIf": "!flag:worked_health_lab",
     "conditions": { "any": ["flag:masters_dsba", "flag:phd", "flag:OFFER_research"] },
     "lockedReason": "Requires a Master's, a PhD or a lab internship",
     "effects": {
       "stats": { "money": -1, "contribution": 6, "skillAi": 3, "happiness": 3 },
       "flags": ["worked_health_lab", "flew"],
-      "text": "Your first model decides where three new MRI machines go. You check the code nine times."
+      "text": "Your first model, as the most junior analyst on the team, decides where three new MRI machines go. You check the code nine times."
     }
   },
   {
@@ -121,15 +127,16 @@
     "hint": "M&A, bonuses, decks at dawn",
     "tagline": "Money never sleeps. Neither will you.",
     "prestige": 9,
-    "conditions": { "any": ["flag:OFFER_finance", "flag:BANK", { "all": ["flag:aced_quant", "skillBusiness >= 35"] }] },
-    "lockedReason": "Requires a bank internship, or a passed quant test and Economics ≥ 35",
+    "visibleIf": "!flag:worked_goldbridge",
+    "conditions": { "any": ["flag:OFFER_finance", "flag:BANK", { "all": ["flag:aced_quant", "flag:masters_dsba", "skillBusiness >= 35"] }] },
+    "lockedReason": "Requires a bank internship, or a Master's and a passed quant test",
     "perDecade": { "money": 6, "happiness": -3 },
     "effects": {
       "set": { "workHours": 62 },
       "stats": { "money": 15, "happiness": -6, "energy": -16, "skillBusiness": 6, "fame": 2, "addiction": 10 },
       "flags": ["worked_goldbridge", "worked_finance", "flew"],
       "factId": "f_who_ilo",
-      "text": "Your first bonus could buy a small car. Your first month could break a small horse."
+      "text": "Analyst, year one. Your first bonus could buy a small car. Your first month could break a small horse."
     }
   },
   {
@@ -140,6 +147,7 @@
     "hint": "Your models versus the market",
     "tagline": "We beat the market. The market has not been informed.",
     "prestige": 8,
+    "visibleIf": "!flag:worked_hedgehog",
     "conditions": { "any": ["flag:aced_quant", { "all": [{ "any": ["flag:FIN", "flag:BANK", "flag:OFFER_finance"] }, "skillAi >= 50"] }] },
     "lockedReason": "Requires a passed quant test, or a finance background and Math & AI ≥ 50",
     "perDecade": { "money": 6, "social": -2 },
@@ -158,6 +166,7 @@
     "hint": "Green funds, mostly green",
     "tagline": "Sustainable finance, sustainably profitable.",
     "prestige": 6,
+    "visibleIf": "!flag:worked_leafline",
     "conditions": { "any": ["flag:FIN", "flag:OFFER_finance", "flag:GREEN", "skillBusiness >= 40"] },
     "lockedReason": "Requires a finance club, the Impact asso or Economics ≥ 40",
     "effects": {
@@ -174,14 +183,15 @@
     "hint": "Eighty slides, three countries a week",
     "tagline": "We'll tell you what you already know, in 80 slides.",
     "prestige": 8,
-    "conditions": { "any": ["flag:aced_case", { "all": ["flag:OFFER_consulting", "skillBusiness >= 30"] }, { "all": ["skillBusiness >= 45", "skillSoft >= 40"] }] },
-    "lockedReason": "Requires a passed case interview, or Economics ≥ 45 and Charisma ≥ 40",
+    "visibleIf": "!flag:worked_sterling",
+    "conditions": { "any": [{ "all": ["flag:OFFER_consulting", { "any": ["flag:aced_case", "skillBusiness >= 30"] }] }, { "all": ["flag:masters_dsba", { "any": ["flag:aced_case", { "all": ["skillBusiness >= 45", "skillSoft >= 40"] }] }] }] },
+    "lockedReason": "Requires a consulting internship, or a Master's and a passed case interview",
     "perDecade": { "money": 4, "network": 4, "energy": -4 },
     "effects": {
       "set": { "workHours": 58 },
       "stats": { "money": 11, "network": 10, "energy": -14, "skillBusiness": 6, "happiness": -4 },
       "flags": ["worked_sterling", "worked_consulting", "flew"],
-      "text": "Monday in Frankfurt, Wednesday in Madrid, Friday in a hotel lobby that looks exactly like Monday's."
+      "text": "Junior business analyst: Monday in Frankfurt, Wednesday in Madrid, Friday in a hotel lobby that looks exactly like Monday's."
     }
   },
   {
@@ -192,6 +202,7 @@
     "hint": "Process, excellence, process",
     "tagline": "Synergies identified. Headcount optimised. Invoice attached.",
     "prestige": 5,
+    "visibleIf": "!flag:worked_synergeia",
     "effects": {
       "stats": { "money": 8, "skillBusiness": 5, "happiness": -3, "energy": -5 },
       "flags": ["worked_synergeia", "worked_consulting", "flew"],
@@ -206,8 +217,9 @@
     "hint": "Treaties, translators, trains to Geneva",
     "tagline": "Making sure the robots sign the treaty too.",
     "prestige": 8,
+    "visibleIf": "!flag:worked_gcai",
     "conditions": { "any": ["flag:aced_policy", "flag:OFFER_diplomacy", { "all": ["flag:TECH", "skillSoft >= 40", "intellect >= 45"] }] },
-    "lockedReason": "Requires a policy internship or a passed policy panel",
+    "lockedReason": "Requires a policy internship, a passed policy panel, or an AI asso with Charisma ≥ 40 and Intelligence ≥ 45",
     "effects": {
       "stats": { "money": 5, "contribution": 6, "fame": 4, "network": 6, "skillSoft": 4, "energy": -4 },
       "flags": ["worked_gcai", "flew"],
@@ -222,6 +234,7 @@
     "hint": "Climate summits, endless drafts",
     "tagline": "Saving the planet, one bracketed paragraph at a time.",
     "prestige": 7,
+    "visibleIf": "!flag:worked_terra",
     "conditions": { "any": ["flag:OFFER_diplomacy", "flag:aced_policy", { "all": ["flag:GREEN", "skillSoft >= 35"] }] },
     "lockedReason": "Requires a policy internship, or the Impact asso and Charisma ≥ 35",
     "effects": {
@@ -239,6 +252,7 @@
     "hint": "Strategy for handbags and heritage",
     "tagline": "Selling timelessness, refreshed every season.",
     "prestige": 7,
+    "visibleIf": "!flag:worked_lumiere",
     "conditions": { "any": ["flag:OFFER_strategy", "flag:OFFER_consulting", "flag:aced_case", "skillBusiness >= 35"] },
     "lockedReason": "Requires a strategy internship or Economics ≥ 35",
     "effects": {
@@ -255,6 +269,7 @@
     "hint": "Logistics, algorithms, next-day everything",
     "tagline": "Next-day delivery. Next-day regret.",
     "prestige": 6,
+    "visibleIf": "!flag:worked_hyperbox",
     "effects": {
       "stats": { "money": 8, "tech": 4, "skillAi": 3, "contribution": -3, "ethics": -3, "aiLever": 0.003 },
       "flags": ["worked_hyperbox", "flew"],
@@ -269,6 +284,7 @@
     "hint": "Huge salary, heavy conscience",
     "tagline": "Powering progress since before you were born. And after.",
     "prestige": 8,
+    "visibleIf": "!flag:worked_petrolia",
     "perDecade": { "money": 4, "ethics": -5, "contribution": -2 },
     "effects": {
       "stats": { "money": 13, "skillBusiness": 4, "ethics": -12, "contribution": -5 },
@@ -288,6 +304,7 @@
     "hint": "Wind farms, permits, patience",
     "tagline": "Plugging France into the future, one permit at a time.",
     "prestige": 6,
+    "visibleIf": "!flag:worked_voltaire",
     "conditions": { "any": ["flag:OFFER_energy", "flag:GREEN", "skillAi >= 35"] },
     "lockedReason": "Requires an energy internship, the Impact asso or Math & AI ≥ 35",
     "effects": {
@@ -304,6 +321,7 @@
     "hint": "Save the world on a shoestring",
     "tagline": "Saving the world on a shoestring budget.",
     "prestige": 6,
+    "visibleIf": "!flag:worked_verdant",
     "conditions": { "any": ["flag:OFFER_ngo", "flag:GREEN", "flag:IMPACT", "flag:gap_year"] },
     "lockedReason": "Requires an NGO internship, the Impact asso or a gap year",
     "effects": {
@@ -320,6 +338,7 @@
     "hint": "Profit with a purpose, mostly purpose",
     "tagline": "Profit with a purpose. Mostly purpose.",
     "prestige": 5,
+    "visibleIf": "!flag:worked_common_ground",
     "conditions": { "any": ["flag:OFFER_ngo", "flag:IMPACT", "flag:gap_year", "contribution >= 56"] },
     "lockedReason": "Requires an NGO internship, a gap year or Impact ≥ 56",
     "effects": {
@@ -336,8 +355,9 @@
     "hint": "Six people, one dog, short runway",
     "tagline": "Six people, one dog, infinite runway (approx. nine months).",
     "prestige": 5,
+    "visibleIf": "!flag:worked_sprout",
     "conditions": { "any": ["flag:STARTUP", "flag:OFFER_bigtech"] },
-    "lockedReason": "Requires a startup internship or the entrepreneurship club",
+    "lockedReason": "Requires a startup internship, a startup asso or a Big Tech internship",
     "effects": {
       "stats": { "money": -2, "skillAi": 6, "skillBusiness": 5, "fame": 3, "energy": -8, "network": 4 },
       "flags": ["worked_sprout", "flew"],
@@ -352,12 +372,14 @@
     "hint": "No Wi-Fi, excellent tomatoes",
     "tagline": "No Wi-Fi. Excellent tomatoes.",
     "prestige": 3,
+    "visibleIf": "!flag:worked_farm",
     "conditions": "flag:gap_year",
     "lockedReason": "Requires a gap year off-grid",
     "effects": {
       "set": { "screenHours": 1 },
       "stats": { "money": -8, "happiness": 6, "fame": -6, "energy": 4 },
       "flags": ["worked_farm", "low_tech_life"],
+      "footprint": [{ "label": "Logged off from your audience", "category": "digital", "influenceTPerYear": 0 }],
       "factId": "f_carbone4",
       "text": "Your classmates send salary screenshots. You send a photo of a tomato. Yours gets more likes."
     }

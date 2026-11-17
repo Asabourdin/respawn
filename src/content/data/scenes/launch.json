@@ -7,13 +7,14 @@
     "age": 22,
     "mandatory": true,
     "title": "After AIDAMS",
-    "text": "Graduation: gowns, a speech about 'the future', and parents crying in two languages. You hold an offer from your internship, a Master's brochure and a PhD supervisor's email that says 'no pressure'. What now?",
+    "text": "Graduation at twenty-two: gowns, a speech about 'the future', parents crying in two languages and a bachelor's diploma with your name spelled right. You also hold an offer from your internship, a Master's brochure and a lab's email: 'research master, then a PhD? No pressure.' What now?",
     "art": "stage",
     "ai": {
       "tone": "bittersweet, proud, a little scared",
       "hints": [
         "Mention the internship that produced the offer.",
-        "If flag pm_regular, PM shakes the player's hand on stage."
+        "If flag pm_regular, PM shakes the player's hand on stage.",
+        "AIDAMS is a bachelor (BSc): the player graduates with a bachelor's, not a master's or an engineering diploma. A PhD needs a master's first, hence the research-master route."
       ]
     },
     "choices": [
@@ -40,15 +41,15 @@
       },
       {
         "id": "c10_phd",
-        "label": "PhD, three years",
-        "hint": "Deep work, thin wallet",
+        "label": "Research master, then a PhD",
+        "hint": "Five years of deep work, thin wallet",
         "conditions": { "any": ["intellect >= 40", "grades >= 66"] },
         "lockedReason": "Requires Intelligence ≥ 40 or Grades ≥ 66",
         "effects": {
-          "years": 3,
-          "stats": { "skillAi": 15, "intellect": 12, "contribution": 2, "fame": 2, "money": -6, "happiness": -2 },
-          "flags": ["phd"],
-          "text": "Three years, one thesis, 214 papers read and three that actually mattered. You are now Dr {name}."
+          "years": 5,
+          "stats": { "skillAi": 16, "intellect": 14, "contribution": 2, "fame": 2, "money": -7, "happiness": -2 },
+          "flags": ["research_master", "phd"],
+          "text": "Two years of research master, three of thesis, 214 papers read and three that actually mattered. At twenty-seven, you are Dr {name}."
         }
       },
       {

@@ -241,14 +241,14 @@ function SceneTags({ scene, family }: { scene: SceneView; family?: string }) {
     return (
       <div className="absolute top-[6px] left-[6px] flex items-center gap-[6px] bg-night px-[8px] py-[4px]">
         <Sprite rows={SIREN} scale={2} />
-        <span className="font-tag text-[13px] leading-none text-gold">{family === 'student' ? 'CAMPUS NEWS' : 'LIFE EVENT'}</span>
+        <span className="font-tag text-[14px] leading-none text-gold">{family === 'student' ? 'CAMPUS NEWS' : 'LIFE EVENT'}</span>
       </div>
     )
   }
   if (scene.kind === 'mini') {
     return (
       <div className="absolute top-[6px] left-[6px] bg-night px-[8px] py-[4px]">
-        <span className="font-tag text-[13px] leading-none text-mint">QUICK ONE</span>
+        <span className="font-tag text-[14px] leading-none text-mint">QUICK ONE</span>
       </div>
     )
   }
@@ -364,7 +364,7 @@ function SceneBody(
               {scene.isAiEvent && (
                 <span className="mt-[3px] flex shrink-0 items-center gap-[3px] text-slate" title="Event written by AI for this life">
                   <Sprite rows={SPARKLE} scale={2} color="slate" />
-                  <span className="font-tag text-[13px] leading-none">AI</span>
+                  <span className="font-tag text-[14px] leading-none">AI</span>
                 </span>
               )}
             </div>

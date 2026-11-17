@@ -7,14 +7,21 @@
     "age": 18,
     "mandatory": true,
     "title": "Welcome to AIDAMS",
-    "text": "Parcoursup is over and you survived it. You're in AIDAMS, the ESSEC × CentraleSupélec bachelor in AI, data and management, and Year 1 bounces you between Cergy and the windy plateau de Saclay. First real decision, {name}: where do you sleep?",
+    "text": "Parcoursup is over and you survived it. Straight out of high school, you're in AIDAMS, the ESSEC × CentraleSupélec bachelor in AI, data and management: Year 1 on the windy plateau de Saclay, Year 2 in Cergy. First real decision, {name}: where do you sleep this year?",
     "art": "campus",
+    "variants": [
+      {
+        "conditions": "profile.origin == intl",
+        "text": "The international admissions are behind you, your diploma is stamped and your visa almost is. You're in AIDAMS, the ESSEC × CentraleSupélec bachelor in AI, data and management: Year 1 on the windy plateau de Saclay, Year 2 in Cergy. First real decision, {name}: where do you sleep this year?"
+      }
+    ],
     "ai": {
       "tone": "warm, excited, slightly overwhelmed first week",
       "hints": [
         "Weave in the player's origin, family budget and trait naturally, in one clause.",
         "The plateau de Saclay wind and the RER B are running jokes for the whole game.",
-        "If the origin is international, staying at the parents' is impossible: say it lightly."
+        "The player arrives straight from high school (French bac via Parcoursup, or an international diploma): never mention prépa, a concours or any earlier degree.",
+        "Only Paris-region families can host the player: if the parents live far away (abroad, a regional city, a small town), say lightly that staying at home is impossible."
       ]
     },
     "choices": [
@@ -25,7 +32,7 @@
         "effects": {
           "stats": { "social": 6, "money": -2, "energy": -2 },
           "flags": ["housing_campus"],
-          "text": "Your room is nine square metres. Your roommate Lou already knows everyone. The wind on the plateau is free."
+          "text": "Your room is nine square metres. Your next-door neighbour Lou already knows everyone. The wind on the plateau is free."
         }
       },
       {
@@ -42,14 +49,14 @@
               "annual": { "id": "commute_student", "tPerYear": 0.1, "untilAge": 22 }
             }
           ],
-          "text": "You learn the RER B timetable by heart. The RER B does not."
+          "text": "Your flatmate Lou cooks pasta at midnight. You learn the RER B timetable by heart. The RER B does not."
         }
       },
       {
         "id": "c01_parents",
         "label": "Stay at your parents'",
         "hint": "Free laundry, zero freedom",
-        "conditions": { "all": ["profile.origin != intl", "profile.origin != expat_kid"] },
+        "conditions": { "any": ["profile.origin == paris_suburbs", "profile.origin == central_paris"] },
         "lockedReason": "Requires parents within commuting distance",
         "effects": {
           "stats": { "money": 6, "social": -6, "happiness": -1 },

@@ -37,7 +37,7 @@
   {
     "id": "end_startup_legend",
     "title": "Startup Legend",
-    "description": "A whiteboard, a domain name, a terrible first pitch, and then an exit. Your old asso still tells the story at the fair.",
+    "description": "A whiteboard, a domain name, a terrible first pitch, and then an exit. AIDAMS still tells the story at the asso fair.",
     "conditions": { "any": ["flag:startup_success", "flag:cto_success"] },
     "priority": 88
   },
@@ -102,7 +102,7 @@
   {
     "id": "end_reinvented",
     "title": "Reinvented",
-    "description": "An algorithm took your job at forty. You took the rest of your life back. Not bad for a cardboard box.",
+    "description": "An algorithm took your job around forty. You took the rest of your life back. Not bad for a cardboard box.",
     "conditions": { "all": ["flag:ai_job_loss", "happiness >= 50", { "any": ["flag:restarted", "flag:pivot_impact", "flag:founder", "flag:low_tech_life"] }] },
     "priority": 63
   },

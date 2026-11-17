@@ -5,6 +5,8 @@ import { cloneState } from './clone'
 import { getScene, getSlot, indexContent } from './contentIndex'
 import { SURPRISE_CHOICE_ID } from './dynamic'
 import { addUnique } from './effects'
+import { evaluate } from './conditions'
+import { makeEnv } from './planet'
 import { AI_EVENT_PREFIX, makePending } from './scheduler'
 import type { AiEventDraft, GameState, StartupState, SurpriseOfferDraft } from './types'
 import { aiEventTemplates } from './views'
@@ -93,6 +95,10 @@ export function validateSurpriseOffer(
   if (!employerName) return null
   const path = typeof offer.pathId === 'string' ? ix.paths.get(offer.pathId) : undefined
   if (!path || state.bannedFields.includes(path.field)) return null
+  // The AI can't open a career the player isn't qualified for: at least one employer of that path must be reachable.
+  const env = makeEnv(content, state)
+  const employers = content.employers.filter((e) => e.pathId === path.id)
+  if (employers.length > 0 && !employers.some((e) => evaluate(e.conditions, env))) return null
   if (!content.constants.surpriseOfferTemplateIds.includes(offer.templateId) || !ix.templates.has(offer.templateId))
     return null
   return { employerName, tagline, pathId: path.id, templateId: offer.templateId, pitch }

@@ -127,6 +127,13 @@ function earliestTimed(content: Content, state: GameState, major: Scene): Timed 
   return best
 }
 
+/** A pseudo-major at the projected death age, so timed items before death still get scheduled. */
+function deathBoundary(content: Content, state: GameState): Scene {
+  const lifespan = lifespanFor(content, state.stats, state.grindYears, state.player.gender)
+  const age = Math.max(Math.round(lifespan), Math.ceil(state.age - EPS))
+  return { id: '__death__', kind: 'major', phase: state.phase, age, order: 9999, title: '', text: '', choices: [] } as Scene
+}
+
 /** Advances to the death age and ends the life. */
 export function endLife(content: Content, state: GameState): void {
   const lifespan = lifespanFor(content, state.stats, state.grindYears, state.player.gender)
@@ -147,11 +154,13 @@ export function resolveNextMut(content: Content, state: GameState): void {
       return
     }
     const major = nextMajor(content, state)
-    if (!major) {
+    // After the last major, late events (e.g. old-age heatwaves) can still happen before death.
+    const boundary = major ?? deathBoundary(content, state)
+    const item = earliestTimed(content, state, boundary)
+    if (!major && item.kind === 'major') {
       endLife(content, state)
       return
     }
-    const item = earliestTimed(content, state, major)
     if (item.age > state.age + EPS) {
       advanceTo(content, state, item.age)
       continue // re-check consequence events at the new age

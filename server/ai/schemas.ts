@@ -38,7 +38,8 @@ export const AIContextSchema = z.object({
   phase: text(24),
   profile: z.object({ origin: text(80), budget: text(80), trait: text(80) }),
   gauges: z
-    .record(text(32), z.union([z.number(), text(48)]))
+    // Keys are display labels ("Math & AI"): allowlisted characters only, so a key can't smuggle markup into the prompt.
+    .record(z.string().regex(/^[A-Za-z0-9 &'.-]{1,32}$/), z.union([z.number(), text(48)]))
     .refine((g) => Object.keys(g).length <= 24, 'too many gauges'),
   career: z
     .object({

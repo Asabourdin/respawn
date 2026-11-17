@@ -146,8 +146,14 @@
     "age": 21.5,
     "mandatory": true,
     "title": "The Six-Month Internship",
-    "text": "Year 4. The six-month internship is where job offers are born. The forum entreprises left you with fourteen tote bags and three business cards. Whatever you pick will probably become your first job, so pick like it matters.",
+    "text": "Year 4, back from the exchange. The six-month internship is where job offers are born: your inbox holds three recruiter emails and one suspicious 'opportunity'. Whatever you pick will probably become your first job, so pick like it matters.",
     "art": "bigtech",
+    "variants": [
+      {
+        "conditions": "chose:m_forum=m_forum_goodies",
+        "text": "Year 4, back from the exchange. The six-month internship is where job offers are born. The forum entreprises left you with nine tote bags and a stress ball shaped like a server. Whatever you pick will probably become your first job, so pick like it matters."
+      }
+    ],
     "ai": {
       "tone": "serious stakes, still funny",
       "hints": [
@@ -161,7 +167,7 @@
         "label": "Big Tech AI product team",
         "hint": "Free lunch, big scale",
         "conditions": { "any": ["flag:TECH", "flag:STARTUP"] },
-        "lockedReason": "Requires the AI club or an AI internship",
+        "lockedReason": "Requires an AI or startup asso, or a startup internship",
         "effects": {
           "stats": { "skillAi": 8, "tech": 4, "money": 4, "energy": -4 },
           "flags": ["OFFER_bigtech"],
@@ -207,7 +213,7 @@
         "label": "International AI or climate policy",
         "hint": "Geneva, treaties, translators",
         "conditions": { "all": ["flag:INTL", { "any": ["flag:GREEN", "flag:TECH", "flag:IMPACT"] }] },
-        "lockedReason": "Requires the AI club or an impact background",
+        "lockedReason": "Requires an AI asso or an impact background",
         "effects": {
           "stats": { "contribution": 4, "network": 6, "skillSoft": 6, "money": -2 },
           "flags": ["OFFER_diplomacy"],

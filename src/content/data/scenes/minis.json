@@ -6,13 +6,13 @@
     "age": 18.2,
     "order": 1,
     "title": "PM's 8AM Class",
-    "text": "It's 8AM. Outside, the Saclay wind is trying to remove your eyebrows. Inside, PM is already writing on the board, cheerful, as if 8AM were a reasonable time for anything. Do you go?",
+    "text": "8AM on the plateau. The Saclay wind is trying to remove your eyebrows, and PM is already at the board, cheerful, as if 8AM were a reasonable hour. Do you go?",
     "speaker": "pm",
     "art": "lecture",
     "ai": {
       "tone": "friendly, first-week innocence",
       "hints": [
-        "The professor is only ever called PM. First of three 8AM classes: keep it light."
+        "The professor is only ever called PM. Year 1, CentraleSupélec campus at Saclay. First of three 8AM classes: keep it light."
       ]
     },
     "choices": [
@@ -62,7 +62,8 @@
     "conditions": {
       "any": [
         "flag:housing_paris",
-        "flag:housing_studio"
+        "flag:housing_studio",
+        "flag:housing_parents"
       ]
     },
     "title": "RER B, Somewhere",
@@ -170,7 +171,7 @@
     "phase": "aidams12",
     "followUpOnly": true,
     "title": "3AM",
-    "text": "It's 3AM. The music is still going but you're outside, deep in a great conversation with someone you just met, about AI, free will and the best kebab in Cergy. Your phone is at 4%. Do you go home?",
+    "text": "It's 3AM. The music is still going but you're outside, deep in a great conversation with someone you just met, about AI, free will and the best kebab on the plateau. Your phone is at 4%. Do you go home?",
     "speaker": "stranger_3am",
     "art": "party",
     "ai": {
@@ -220,8 +221,14 @@
     "age": 18.7,
     "order": 1,
     "conditions": "profile.budget == tight",
-    "title": "Rent Is Due",
+    "title": "The Red Number",
     "text": "Your bank app greets you with a red number. Rent is due, the canteen card is empty and pasta has become a personality. Something has to give.",
+    "variants": [
+      {
+        "conditions": "flag:housing_parents",
+        "text": "Your bank app greets you with a red number. No rent, thankfully, but the transport pass, the canteen card and the textbooks have emptied everything. Something has to give."
+      }
+    ],
     "art": "dorm",
     "ai": {
       "tone": "honest about money stress, never pitying"
@@ -298,7 +305,7 @@
     "id": "m_family_dinner",
     "kind": "mini",
     "phase": "aidams12",
-    "age": 18.9,
+    "age": 18.3,
     "order": 1,
     "p": 0.35,
     "title": "What Do You Even Do?",
@@ -314,7 +321,7 @@
       {
         "id": "m_dinner_explain",
         "label": "Explain AI, data AND management",
-        "hint": "A ten-minute TED talk",
+        "hint": "A ten-minute keynote, unprompted",
         "effects": {
           "stats": {
             "skillSoft": 3,
@@ -350,19 +357,51 @@
     ]
   },
   {
+    "id": "m_essec_fair",
+    "kind": "mini",
+    "phase": "aidams12",
+    "age": 19,
+    "order": 1,
+    "mandatory": true,
+    "conditions": "flag:asso_waiting",
+    "title": "The ESSEC Asso Fair",
+    "text": "Year 2: you've swapped the plateau for Cergy, and the ESSEC asso fair is everything you waited for. Crêpes, drums, a rugby scrum near the lake and forty stands that all claim to be 'a family'. You held out a whole year. Time to choose.",
+    "art": "campus",
+    "dynamic": { "type": "assoDraw" },
+    "ai": {
+      "tone": "chaotic, festive, recruitment frenzy",
+      "hints": [
+        "The player skipped the CentraleSupélec clubs in Year 1 to wait for the ESSEC assos in Cergy: this is the payoff.",
+        "The asso friend (Malik) is met here if the player joins any asso."
+      ]
+    },
+    "choices": [
+      {
+        "id": "m_fair_no_asso",
+        "label": "No association after all",
+        "hint": "More sleep, more study, fewer stories",
+        "effects": {
+          "stats": { "grades": 8, "social": -4, "happiness": -2 },
+          "flags": ["no_asso"],
+          "text": "You walk past the stands, crêpe in hand, with the focus of someone who owns a library card."
+        }
+      }
+    ]
+  },
+  {
     "id": "m_pm_8am_2",
     "kind": "mini",
     "phase": "aidams12",
-    "age": 19.2,
+    "age": 18.4,
     "order": 1,
     "title": "PM's 8AM, Again",
-    "text": "8AM again. Year 2, same room, same squeaky marker. PM greets a half-empty amphitheatre with suspicious enthusiasm and a slide titled 'This will be on the exam'. Do you go?",
+    "text": "8AM again: same room, same squeaky marker. PM greets a half-empty amphitheatre with a slide titled 'This will be on the exam'. Do you go?",
     "speaker": "pm",
     "art": "lecture",
     "variants": [
       {
         "conditions": "flag:pm_skipped_1",
-        "text": "8AM again. Last time you skipped, PM said 'we missed you' to the whole room while looking straight at your empty seat. Today's slide is titled 'This will be on the exam'. Do you go?"
+        "text": "8AM again. Last time, PM said 'we missed you' to the whole room while looking straight at your empty seat. Today's slide: 'This will be on the exam'. Do you go?"
       }
     ],
     "ai": {
@@ -406,8 +445,7 @@
           "text": "You find out later that it was on the exam. All of it."
         }
       }
-    ],
-    "p": 0.5
+    ]
   },
   {
     "id": "m_sete_2",
@@ -525,10 +563,10 @@
     "id": "m_pm_8am_3",
     "kind": "mini",
     "phase": "aidams12",
-    "age": 19.6,
+    "age": 18.75,
     "order": 1,
     "title": "PM Looks Straight at You",
-    "text": "8AM, last class before the exams. You reach the door at 8:04. PM stops mid-sentence and looks straight at you. The whole amphitheatre turns around. Do you walk in, or quietly disappear?",
+    "text": "Last 8AM before the Year 1 finals. You reach the door at 8:04. PM stops mid-sentence and looks straight at you. So does the whole amphitheatre. Walk in, or vanish?",
     "speaker": "pm",
     "art": "lecture",
     "variants": [
@@ -539,7 +577,7 @@
             "flag:pm_went_2"
           ]
         },
-        "text": "8AM, last class before the exams. You're in your usual seat, of course. PM pauses, looks straight at you and says: 'At least someone has been here every single time.' Do you stay for the whole thing?"
+        "text": "Last 8AM before the Year 1 finals. You're in your usual seat, of course. PM pauses, looks straight at you: 'At least someone has been here every single time.' Stay for the whole thing?"
       }
     ],
     "ai": {
@@ -975,14 +1013,14 @@
       {
         "id": "m_forum_skip",
         "label": "Skip it, go for a run",
-        "hint": "The plateau is empty today",
+        "hint": "The campus is empty today",
         "effects": {
           "stats": {
             "happiness": 3,
             "energy": 3,
             "network": -1
           },
-          "text": "The plateau is all yours. The wind applauds."
+          "text": "The running track is all yours. The wind applauds."
         }
       }
     ]
@@ -1000,7 +1038,7 @@
     "ai": {
       "tone": "comic, old-friends chaos",
       "hints": [
-        "Name old friends from the asso or the roommate Lou if known."
+        "Name old friends from the asso, or Lou (the Year 1 neighbour or flatmate) if known."
       ]
     },
     "choices": [
@@ -1052,7 +1090,7 @@
     "order": 1,
     "p": 0.25,
     "title": "Ski Trips Every Winter?",
-    "text": "Your colleagues have a chalet plan: every February, same resort, same fondue, same knee injury from 2019. They want you in, for good. The group chat already has a name.",
+    "text": "Your colleagues have a chalet plan: every February, same resort, same fondue, the same knee injury every single year. They want you in, for good. The group chat already has a name.",
     "art": "home",
     "ai": {
       "tone": "cosy, snowy, a little bourgeois"
@@ -1131,7 +1169,7 @@
     "age": 29,
     "order": 1,
     "title": "The New Phone Just Dropped",
-    "text": "Another keynote, another phone. This one folds in half, like your resolve. A colleague has already ordered two. Your phone is four years old and only slightly haunted. Upgrade?",
+    "text": "Another keynote, another phone. This one folds in half, like your resolve. A colleague has already ordered two. Yours still works and is only slightly haunted. Upgrade?",
     "art": "home",
     "ai": {
       "tone": "consumer satire"
@@ -1292,7 +1330,7 @@
     "id": "m_phone_3",
     "kind": "mini",
     "phase": "career",
-    "age": 41,
+    "age": 39.5,
     "order": 1,
     "title": "The New Phone Just Dropped",
     "text": "The new phone just dropped, with an AI that 'understands your mood'. Your current one is so old that teenagers ask if it's 'vintage'. Upgrade?",
@@ -2000,6 +2038,7 @@
     "age": 23.2,
     "order": 1,
     "p": 0.4,
+    "conditions": "path != isolation",
     "title": "Flat Hunting in Paris",
     "text": "Your new salary meets the Paris rental market. Twenty-two square metres, 'charming' (no lift, sixth floor), €1,350 a month, forty people at the viewing. Then a listing appears that's half the price, and the landlord is 'abroad'.",
     "art": "home",
@@ -2083,12 +2122,12 @@
         "label": "Back to your parents' for a year",
         "hint": "Save hard, swallow pride",
         "conditions": {
-          "all": [
-            "profile.origin != intl",
-            "profile.origin != expat_kid"
+          "any": [
+            "profile.origin == paris_suburbs",
+            "profile.origin == central_paris"
           ]
         },
-        "lockedReason": "Requires parents within commuting distance",
+        "lockedReason": "Requires parents in the Paris region",
         "effects": {
           "stats": {
             "money": 6,

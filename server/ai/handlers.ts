@@ -13,7 +13,7 @@ import type { AiEventDraft, SurpriseOfferDraft } from '../../src/engine/types.js
 import type { Epitaph, Narration, StartupMeta } from '../../src/ai/types.js'
 import { getEnv, type EnvReader } from '../env.js'
 import { errorJson, json } from '../http.js'
-import { acceptText, brandsIn, professorTokensIn, type FilterOptions } from './filter.js'
+import { acceptText, professorTokensIn, type FilterOptions } from './filter.js'
 import { createGuard, type Guard } from './guard.js'
 import { toJsonSchema, type JsonSchema } from './jsonSchema.js'
 import { formatUsd, tierOf, type Task } from './models.js'
@@ -206,7 +206,8 @@ export async function runTask(task: Task, input: unknown, provider: AiProvider, 
   if (!parsed.success) return { ...meta, ok: false, reason: 'invalid_output' }
   const ctx = (input as { ctx?: { name?: string; lastName?: string; characters?: { name: string }[] } }).ctx
   const names = [ctx?.name ?? '', ctx?.lastName ?? '', ...(ctx?.characters ?? []).map((c) => c.name)]
-  const data = def.finalize(input, parsed.data, { allowBrands: brandsIn(user), allowNameTokens: professorTokensIn(names) })
+  // Brand exceptions never come from request text (the player controls it): content has no brands, so none are allowed.
+  const data = def.finalize(input, parsed.data, { allowBrands: new Set<string>(), allowNameTokens: professorTokensIn(names) })
   if (data === null) return { ...meta, ok: false, reason: 'filtered' }
   return { ...meta, ok: true, data }
 }

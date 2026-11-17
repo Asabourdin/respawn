@@ -13,13 +13,15 @@ interface TypewriterProps {
   onDone?: () => void
   className?: string
   sound?: boolean
+  /** Keep the typing position visible inside the nearest scrolling box (clipped story card). */
+  follow?: boolean
 }
 
 /**
  * Types text in place. The untyped remainder is rendered invisible so the box never
  * changes height while typing (no layout jumps).
  */
-export function Typewriter({ text, cps = 75, skip, onDone, className, sound = true }: TypewriterProps) {
+export function Typewriter({ text, cps = 75, skip, onDone, className, sound = true, follow = true }: TypewriterProps) {
   const reduced = useReducedMotion()
   const [n, setN] = useState(reduced ? text.length : 0)
   const doneRef = useRef(onDone)
@@ -47,9 +49,21 @@ export function Typewriter({ text, cps = 75, skip, onDone, className, sound = tr
     if (done) doneRef.current?.()
   }, [done, text])
 
+  const caret = useRef<HTMLSpanElement>(null)
+  useEffect(() => {
+    if (!follow || !caret.current || n === 0) return
+    let box = caret.current.parentElement
+    while (box && !(box.scrollHeight > box.clientHeight + 1 && /(auto|scroll)/.test(getComputedStyle(box).overflowY))) box = box.parentElement
+    if (!box) return
+    const c = caret.current.getBoundingClientRect()
+    const b = box.getBoundingClientRect()
+    if (c.bottom > b.bottom - 6) box.scrollTop += c.bottom - b.bottom + 6
+  }, [n, follow])
+
   return (
     <p className={className} aria-live="polite">
       <span>{text.slice(0, n)}</span>
+      <span ref={caret} aria-hidden />
       <span className="invisible" aria-hidden>
         {text.slice(n)}
       </span>

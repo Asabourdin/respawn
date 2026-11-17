@@ -83,12 +83,11 @@ export function chooseMut(content: Content, state: GameState, choiceId: string):
     }
 
     // Matching scene variants (all apply), evaluated now, with this choice counted as recorded.
+    // Match every variant against the same state first, so one variant's effects can't trigger another.
     if (scene?.variants) {
-      for (const v of scene.variants) {
-        if (!v.effects) continue
-        if (evaluate(v.conditions, makeEnv(content, state, { current: { sceneId, choiceId } })))
-          applyEffects(content, state, v.effects, ctx, 1)
-      }
+      const env = makeEnv(content, state, { current: { sceneId, choiceId } })
+      const matched = scene.variants.filter((v) => v.effects && evaluate(v.conditions, env))
+      for (const v of matched) applyEffects(content, state, v.effects!, ctx, 1)
     }
 
     if (src.kind === 'surprise') {

@@ -63,17 +63,27 @@
     "age": 18,
     "mandatory": true,
     "title": "The Asso Fair",
-    "text": "The asso fair takes over the hall: free crêpes, loud speakers, and forty people trying to recruit you in thirty seconds each. Everyone says your asso is your real degree. Choose wisely, or at least choose.",
+    "text": "The CentraleSupélec asso fair takes over the plateau: free crêpes, loud speakers, and forty people trying to recruit you in thirty seconds each. Everyone says your asso is your real degree. The ESSEC assos will court you next year in Cergy, if you can wait that long.",
     "art": "campus",
     "dynamic": { "type": "assoDraw" },
     "ai": {
       "tone": "chaotic, festive, recruitment frenzy",
       "hints": [
-        "Mention that ESSEC and CentraleSupélec assos compete for the same AIDAMS students.",
+        "Year 1, Saclay: only CentraleSupélec clubs recruit here. ESSEC assos recruit in Year 2, in Cergy, which is why waiting is an option.",
         "The asso friend (Malik) is met here if the player joins any asso."
       ]
     },
     "choices": [
+      {
+        "id": "c03_wait_essec",
+        "label": "Wait for the ESSEC fair",
+        "hint": "Cergy has the assos you came for",
+        "effects": {
+          "stats": { "grades": 4, "social": -3 },
+          "flags": ["asso_waiting"],
+          "text": "You pocket three flyers and decide your asso life starts in Cergy. Year 1 is for surviving maths."
+        }
+      },
       {
         "id": "c03_no_asso",
         "label": "No association",
@@ -94,12 +104,12 @@
     "age": 19,
     "mandatory": true,
     "title": "A Sète Every Week",
-    "text": "Year 2. There is a sète every Thursday, and sometimes on Tuesday 'because it's someone's birthday'. Your grades, your liver and your friendships are negotiating a treaty. What kind of student are you this year?",
+    "text": "Year 2, Cergy. There is a sète every Thursday, and sometimes on Tuesday 'because it's someone's birthday'. Your grades, your liver and your friendships are negotiating a treaty. What kind of student are you this year?",
     "art": "party",
     "variants": [
       {
         "conditions": "flag:met_3am",
-        "text": "Year 2. There is a sète every Thursday, and the person from that 3AM conversation keeps asking if you're coming. Your grades, your liver and your friendships are negotiating a treaty. What kind of student are you this year?"
+        "text": "Year 2, Cergy. There is a sète every Thursday, and the person from that 3AM conversation keeps asking if you're coming. Your grades, your liver and your friendships are negotiating a treaty. What kind of student are you this year?"
       }
     ],
     "ai": {

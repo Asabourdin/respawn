@@ -85,7 +85,7 @@ export function Beat({ beat, displayAge, onDone }: Props) {
                 {chips.map((c) => (
                   <li
                     key={c.key}
-                    className={'px-[6px] py-[3px] font-tag text-[13px] leading-[15px] ' + (c.good ? 'bg-lime text-night' : 'bg-charcoal text-stone')}
+                    className={'px-[6px] py-[3px] font-tag text-[14px] leading-[15px] ' + (c.good ? 'bg-lime text-night' : 'bg-charcoal text-stone')}
                   >
                     {c.up ? '+' : '-'} {statLabel(c.key).toUpperCase()}
                   </li>
@@ -149,7 +149,7 @@ function DiceCheck({ result, stat }: { result: 'success' | 'failure'; stat?: str
   return (
     <div className={'flex items-center gap-[9px] self-start px-[9px] py-[6px] ' + (landed ? (ok ? 'bg-lime text-night' : 'bg-wine text-paper') : 'bg-forest text-paper')}>
       <Sprite rows={landed ? (ok ? CHECK : CROSS) : DICE[face]} scale={3} className={landed ? 'beat-pop' : 'anim-shake'} />
-      <span className="font-tag text-[13px] leading-none">
+      <span className="font-tag text-[14px] leading-none">
         {(stat ? statLabel(stat) : 'Luck').toUpperCase()} CHECK{landed ? (ok ? ' PASSED' : ' FAILED') : '...'}
       </span>
     </div>

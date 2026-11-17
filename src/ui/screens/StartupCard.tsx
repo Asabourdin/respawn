@@ -24,16 +24,16 @@ export function StartupCard({ card, onDone }: { card: StartupData; onDone: () =>
               <PixelSpinner label="Naming your startup" />
               <p className="text-[18px] text-stone">Registering the company, pitching investors, inventing a rival...</p>
             </div>
-            <button type="button" className="min-h-[44px] self-end text-[17px] text-stone underline decoration-[2px] underline-offset-[5px]" onClick={onDone}>
+            <button type="button" className="min-h-[44px] self-end t-body text-stone underline decoration-[2px] underline-offset-[5px]" onClick={onDone}>
               Skip
             </button>
           </>
         ) : (
           <>
-            <p className="font-tag text-[12px] text-mint">YOUR STARTUP / {pixelSafe(card.sectorLabel).toUpperCase()}</p>
+            <p className="font-tag text-[14px] text-mint">YOUR STARTUP / {pixelSafe(card.sectorLabel).toUpperCase()}</p>
             <h2 className="text-[30px] leading-none font-bold text-paper">{m ? pixelSafe(m.name) : 'Your startup'}</h2>
-            {m && <p className="text-[18px] leading-[1.3] text-stone">{pixelSafe(m.product)}</p>}
-            {m && <p className="bg-night px-[12px] py-[9px] text-[17px] leading-[1.35] text-lime">"{pixelSafe(m.pitch)}"</p>}
+            {m && <p className="t-body text-stone">{pixelSafe(m.product)}</p>}
+            {m && <p className="bg-night px-[12px] py-[9px] t-body text-lime">"{pixelSafe(m.pitch)}"</p>}
             {m && (
               <dl className="grid grid-cols-[auto_1fr] gap-x-[12px] gap-y-[3px] font-mono text-[20px] leading-tight">
                 <dt className="text-stone">Investor</dt>
@@ -43,7 +43,7 @@ export function StartupCard({ card, onDone }: { card: StartupData; onDone: () =>
               </dl>
             )}
             {card.outcome && (
-              <p className={'self-start px-[9px] py-[3px] font-tag text-[14px] ' + (ok ? 'bg-lime text-night' : 'bg-heat text-paper')}>
+              <p className={'self-start px-[9px] py-[3px] font-tag text-[14px] ' + (ok ? 'bg-lime text-night' : 'bg-wine text-paper')}>
                 {ok ? 'IT TOOK OFF' : 'IT FOLDED'}
               </p>
             )}

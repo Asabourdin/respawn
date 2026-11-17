@@ -102,7 +102,7 @@
     "name": "Low-tech life",
     "field": "low-tech work",
     "perDecade": { "money": -7, "happiness": 3, "social": 2, "fame": -6, "contribution": 3, "energy": 4 },
-    "annual": { "tPerYear": -3.5, "label": "Low-tech life (no car, local food, small home)", "category": "lifestyle" },
+    "annual": { "tPerYear": -4, "label": "Low-tech life (no car, local food, small home)", "category": "lifestyle" },
     "aiExposure": "low",
     "defaultPromotionChance": 0,
     "description": "A farm co-op, a workshop, a small life on purpose. Fewer things, slower days, a much lighter footprint."

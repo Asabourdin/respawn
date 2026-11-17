@@ -9,7 +9,7 @@
   {
     "id": "roommate",
     "name": "Lou",
-    "role": "Your Year 1 roommate",
+    "role": "Your Year 1 neighbour or flatmate",
     "description": "Cooks pasta at midnight, studies at dawn and knows everyone's business on campus. Becomes the friend who tells you the truth at every big turn of your life.",
     "knownIf": { "any": ["flag:housing_campus", "flag:housing_paris"] }
   },
@@ -25,13 +25,13 @@
     "name": "Bertrand",
     "role": "Your first manager",
     "description": "Says 'quick question' before forty-minute questions and 'no pressure' before a lot of pressure. Taught you how work works, for better and worse.",
-    "knownIf": "age >= 23"
+    "knownIf": { "all": ["age >= 23", { "any": ["path != none", "age >= 28"] }] }
   },
   {
     "id": "asso_friend",
     "name": "Malik",
     "role": "Your old asso friend",
-    "description": "Ran the asso with you in Year 1, slept even less than you, and still runs on cold brew and big ideas. Will call one day with a startup and a very long deck.",
+    "description": "Ran the asso with you as a student, slept even less than you, and still runs on cold brew and big ideas. Will call one day with a startup and a very long deck.",
     "knownIf": "flag:in_asso"
   },
   {

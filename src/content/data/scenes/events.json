@@ -504,7 +504,7 @@
     "p": 0.3,
     "conditions": "money >= 45",
     "title": "A Coin Called Moonshot",
-    "text": "A friend from the old blockchain crowd swears by a new coin, $MOONSHOT. 'It's not a bubble, it's a community.' The chart is vertical. Your savings account earns 2% a year and looks at you sadly.",
+    "text": "A friend who never left the blockchain crowd swears by a new coin, $MOONSHOT. 'It's not a bubble, it's a community.' The chart is vertical. Your savings account earns 2% a year and looks at you sadly.",
     "art": "finance",
     "ai": {
       "tone": "crypto-bro satire"
@@ -1103,12 +1103,12 @@
     "family": "life",
     "window": [
       38,
-      41
+      40
     ],
     "p": 0.4,
     "conditions": "flag:family_kids",
     "title": "Your Kid Wants a Phone",
-    "text": "Your nine-year-old has prepared a slide deck titled 'Why I Need a Phone', with a chart. 'Everyone in my class has one,' says slide four. You suspect slide four is lying.",
+    "text": "Your kid, not even ten, has prepared a slide deck titled 'Why I Need a Phone', with a chart. 'Everyone in my class has one,' says slide four. You suspect slide four is lying.",
     "speaker": "kid",
     "art": "home",
     "ai": {
@@ -1224,12 +1224,13 @@
           "stats": {
             "social": 3,
             "happiness": 3,
-            "network": 3
+            "network": 2,
+            "energy": -2
           },
           "flags": [
             "pm_reunion"
           ],
-          "text": "One coffee becomes three. PM still writes on napkins like they're whiteboards."
+          "text": "One coffee becomes three and eats your whole afternoon. PM still writes on napkins like they're whiteboards."
         }
       },
       {
@@ -1352,11 +1353,11 @@
         "effects": {
           "stats": {
             "happiness": 4,
-            "energy": 8,
-            "social": 2,
-            "fame": 1
+            "energy": 6,
+            "fame": 1,
+            "social": -3
           },
-          "text": "Kilometre 35 is the worst moment of your life. Kilometre 42 is one of the best."
+          "text": "Six months of dawn runs and early nights, goodbye Friday drinks. Kilometre 35 is the worst moment of your life. Kilometre 42 is one of the best."
         }
       },
       {
@@ -1369,7 +1370,7 @@
             "fame": 1,
             "money": -1
           },
-          "text": "A small sprout on your wrist. Your kids say it's cringe. You think it means everything grows back."
+          "text": "A small sprout on your wrist. Your younger colleagues say it's cringe. You think it means everything grows back."
         }
       },
       {
@@ -2053,7 +2054,7 @@
     "family": "consequence",
     "conditions": "addiction > 60",
     "title": "It's Not Just a Habit",
-    "text": "What started as 'just Thursdays' has quietly taken over your weeks. You've cancelled plans to keep the habit fed, and your hands shake in morning meetings. Someone who loves you finally says it out loud.",
+    "text": "What started as 'just Thursdays' has quietly taken over your weeks. You've cancelled plans to keep the habit fed, and your mornings start with shaking hands. Someone who loves you finally says it out loud.",
     "art": "party",
     "ai": {
       "tone": "serious, caring, zero judgement"
@@ -2157,7 +2158,7 @@
             "happiness": 2
           },
           "factId": "f_holt_lunstad",
-          "text": "Lou picks up on the second ring: 'Finally!' You talk for two hours."
+          "text": "Your oldest friend from AIDAMS picks up on the second ring: 'Finally!' You talk for two hours."
         }
       },
       {
@@ -2666,9 +2667,9 @@
           "stats": {
             "social": 3,
             "contribution": 1,
-            "energy": 1
+            "energy": -3
           },
-          "text": "Your kid walks to school with the neighbours' kids and comes home with three new best friends and a cold."
+          "text": "Your kid walks to school with the neighbours' kids and comes home with three new best friends and, thanks to the broken heater, a cold every winter."
         }
       },
       {
@@ -2774,6 +2775,10 @@
             "flags": [
               "divorced"
             ],
+            "unflags": [
+              "partner",
+              "partner_no_kids"
+            ],
             "text": "Therapy check failed: you both try, honestly, and it isn't enough. You separate as kindly as two people can."
           }
         }
@@ -2791,6 +2796,10 @@
           "flags": [
             "divorced"
           ],
+          "unflags": [
+            "partner",
+            "partner_no_kids"
+          ],
           "text": "Two flats, two sets of keys, and a shared calendar for everything that still matters."
         }
       },
@@ -2806,6 +2815,10 @@
           },
           "flags": [
             "divorced"
+          ],
+          "unflags": [
+            "partner",
+            "partner_no_kids"
           ],
           "text": "You hit every deadline that year. Your partner moves out in March. You notice in April."
         }

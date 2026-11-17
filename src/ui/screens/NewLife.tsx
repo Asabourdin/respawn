@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import type { Gender, PlayerInfo } from '../../engine/types'
-import { COIN_SLOT, SPROUT, SPROUT_SEED } from '../art/sprites'
+import { COIN_SLOT } from '../art/sprites'
+import { sproutUrl, type SproutStage } from '../assets'
+import { PixelImg } from '../components/PixelImg'
 import { SheetBody, type SheetData } from '../components/CharacterSheet'
 import { Sprite } from '../components/Sprite'
 import { pixelSafe } from '../format'
@@ -38,15 +40,11 @@ export function NewLifeView(p: NewLifeProps) {
 
 /** A sprout that grows one stage per answered question. */
 export function GrowingSprout({ stage, of = STEPS }: { stage: number; of?: number }) {
-  const scale = [0, 4, 6, 8][Math.min(stage, 3)]
+  const art: SproutStage = (['seed', 'tiny', 'sprout', 'sapling'] as const)[Math.min(stage, 3)]
   return (
     <div className="flex flex-col items-center" aria-label={`Step ${Math.min(stage + 1, of)} of ${of}`} role="img">
-      <div className="flex h-[118px] items-end justify-center">
-        {stage === 0 ? (
-          <Sprite key="seed" rows={SPROUT_SEED} scale={8} className="beat-pop" />
-        ) : (
-          <Sprite key={scale} rows={SPROUT} scale={scale} className="beat-pop" />
-        )}
+      <div className="flex h-[80px] items-end justify-center">
+        <PixelImg key={art} path={sproutUrl(art)} size={40} scale={2} className="beat-pop" />
       </div>
       <div className="h-[6px] w-[132px] bg-skin3" />
       <div className="mt-[9px] flex gap-[6px]" aria-hidden>
@@ -58,6 +56,24 @@ export function GrowingSprout({ stage, of = STEPS }: { stage: number; of?: numbe
   )
 }
 
+/** Height hidden by the on-screen keyboard (0 when closed). Uses the visual viewport, which iOS shrinks. */
+function useKeyboardInset(): number {
+  const [inset, setInset] = useState(0)
+  useEffect(() => {
+    const vv = window.visualViewport
+    if (!vv) return
+    const update = () => setInset(Math.max(0, Math.round(window.innerHeight - vv.height - vv.offsetTop)))
+    update()
+    vv.addEventListener('resize', update)
+    vv.addEventListener('scroll', update)
+    return () => {
+      vv.removeEventListener('resize', update)
+      vv.removeEventListener('scroll', update)
+    }
+  }, [])
+  return inset
+}
+
 function Onboarding({ onRoll, onBack, initialStep = 0 }: NewLifeProps) {
   const [step, setStep] = useState(initialStep)
   const [first, setFirst] = useState('')
@@ -65,10 +81,18 @@ function Onboarding({ onRoll, onBack, initialStep = 0 }: NewLifeProps) {
   const [gender, setGender] = useState<Gender | undefined>()
   const [rolling, setRolling] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
+  const kb = useKeyboardInset()
+  const keyboardOpen = kb > 120
 
   useEffect(() => {
     inputRef.current?.focus({ preventScroll: true })
   }, [step])
+  // Once the keyboard has settled, keep the field (and the button under it) in view.
+  useEffect(() => {
+    if (!keyboardOpen) return
+    const id = window.setTimeout(() => inputRef.current?.scrollIntoView({ block: 'center', behavior: 'smooth' }), 120)
+    return () => window.clearTimeout(id)
+  }, [keyboardOpen, step])
 
   const roll = (g?: Gender) => {
     setRolling(true)
@@ -114,7 +138,7 @@ function Onboarding({ onRoll, onBack, initialStep = 0 }: NewLifeProps) {
   if (rolling) {
     return (
       <div className="flex h-full flex-col items-center justify-center gap-[24px] bg-forest px-[18px]">
-        <Sprite rows={SPROUT} scale={6} className="anim-bob" />
+        <PixelImg path={sproutUrl('sprout')} size={40} scale={3} className="anim-bob" />
         <p className="font-mono text-[30px] text-lime" role="status">
           Rolling your destiny<span className="anim-blink">...</span>
         </p>
@@ -124,7 +148,8 @@ function Onboarding({ onRoll, onBack, initialStep = 0 }: NewLifeProps) {
 
   return (
     <form
-      className="flex h-full flex-col overflow-y-auto bg-forest px-[18px] pt-[max(18px,env(safe-area-inset-top))] pb-[max(18px,env(safe-area-inset-bottom))]"
+      className="flex h-full flex-col overflow-y-auto bg-forest px-[18px] pt-[max(18px,env(safe-area-inset-top))] lg:px-[max(48px,calc(50%-300px))] lg:py-[32px]"
+      style={{ paddingBottom: kb > 0 ? kb + 18 : 'max(18px, env(safe-area-inset-bottom))' }}
       onSubmit={(e) => {
         e.preventDefault()
         next()
@@ -134,22 +159,34 @@ function Onboarding({ onRoll, onBack, initialStep = 0 }: NewLifeProps) {
         <button type="button" className="min-h-[44px] pr-[12px] text-[18px] text-stone hover:text-paper" onClick={back}>
           {'<'} Back
         </button>
-        <span className="font-mono text-[22px] text-slate">CREATE YOUR CHARACTER</span>
+        <span className="font-mono text-[22px] text-stone">CREATE YOUR CHARACTER</span>
       </div>
 
-      <div className="mt-[18px]">
-        <GrowingSprout stage={step} />
-      </div>
+      {!keyboardOpen && (
+        <div className="mt-[18px]">
+          <GrowingSprout stage={step} />
+        </div>
+      )}
 
-      <div key={step} className="rise-in mt-[24px] flex flex-col gap-[9px]">
+      {/* No entrance animation on text steps: it would fight the keyboard opening. */}
+      <div key={step} className={(step === 2 ? 'rise-in ' : '') + (keyboardOpen ? 'mt-[12px]' : 'mt-[24px]') + ' flex flex-col gap-[9px]'}>
         <h1 className="text-[28px] leading-[1.1] font-bold text-paper">{q.title}</h1>
-        <p className="text-[17px] leading-[1.3] text-stone">{q.sub}</p>
+        <p className="t-body text-stone">{q.sub}</p>
 
         {step === 0 && (
-          <TextField inputRef={inputRef} value={first} onChange={setFirst} label="First name" autoComplete="given-name" placeholder="Your first name" />
+          <TextField inputRef={inputRef} value={first} onChange={setFirst} label="First name" autoComplete="given-name" placeholder="Your first name" enterKeyHint="next" />
         )}
         {step === 1 && (
-          <TextField inputRef={inputRef} value={last} onChange={setLast} label="Last name" autoComplete="family-name" placeholder="Optional" />
+          <TextField inputRef={inputRef} value={last} onChange={setLast} label="Last name" autoComplete="family-name" placeholder="Optional" enterKeyHint="done" />
+        )}
+        {step < 2 && (
+          <button
+            type="submit"
+            className="pkey is-primary mt-[12px] min-h-[60px] text-[22px] font-bold"
+            aria-disabled={step === 0 && !first.trim() ? 'true' : undefined}
+          >
+            {step === 0 ? "That's me" : last.trim() ? 'Next' : 'Skip'}
+          </button>
         )}
         {step === 2 && (
           <div className="mt-[9px] grid grid-cols-1 gap-[15px]" role="radiogroup" aria-label="Gender">
@@ -177,15 +214,10 @@ function Onboarding({ onRoll, onBack, initialStep = 0 }: NewLifeProps) {
       </div>
 
       <div className="mt-auto flex flex-col gap-[12px] pt-[24px]">
-        {step < 2 && (
-          <button type="submit" className="pkey is-primary min-h-[60px] text-[22px] font-bold" aria-disabled={step === 0 && !first.trim() ? 'true' : undefined}>
-            {step === 0 ? "That's me" : last.trim() ? 'Next' : 'Skip'}
-          </button>
-        )}
         {step === 2 && (
           <button
             type="button"
-            className="min-h-[44px] text-[17px] text-stone underline decoration-[2px] underline-offset-[5px] hover:text-paper"
+            className="min-h-[44px] t-body text-stone underline decoration-[2px] underline-offset-[5px] hover:text-paper"
             onClick={() => roll('unspecified')}
           >
             Skip
@@ -203,6 +235,7 @@ function TextField({
   label,
   autoComplete,
   placeholder,
+  enterKeyHint,
 }: {
   inputRef: React.RefObject<HTMLInputElement | null>
   value: string
@@ -210,6 +243,7 @@ function TextField({
   label: string
   autoComplete: string
   placeholder: string
+  enterKeyHint: 'next' | 'done'
 }) {
   return (
     <input
@@ -222,9 +256,12 @@ function TextField({
       autoCapitalize="words"
       autoCorrect="off"
       spellCheck={false}
-      enterKeyHint="next"
+      enterKeyHint={enterKeyHint}
+      inputMode="text"
+      type="text"
+      name={autoComplete}
       placeholder={placeholder}
-      className="pbox mt-[9px] min-h-[60px] px-[15px] font-pixel text-[24px] text-paper placeholder:text-slate focus:outline-none"
+      className="pbox mt-[9px] min-h-[60px] w-full px-[15px] font-pixel text-[24px] text-paper caret-lime placeholder:text-slate focus:outline-[3px] focus:outline-offset-[3px] focus:outline-lime"
     />
   )
 }
@@ -255,10 +292,10 @@ function Reveal({ rolled, pools, onBegin, onBack }: NewLifeProps & { rolled: Non
   })
 
   return (
-    <div className="flex h-full flex-col overflow-y-auto bg-forest px-[18px] pt-[max(24px,env(safe-area-inset-top))] pb-[max(18px,env(safe-area-inset-bottom))]">
+    <div className="flex h-full flex-col overflow-y-auto bg-forest px-[18px] pt-[max(24px,env(safe-area-inset-top))] pb-[max(18px,env(safe-area-inset-bottom))] lg:px-[max(48px,calc(50%-300px))] lg:py-[32px]">
       <div className="flex items-center justify-between">
-        <span className="font-mono text-[22px] text-slate">AGE 18</span>
-        <Sprite rows={SPROUT_SEED} scale={4} />
+        <span className="font-mono text-[22px] text-stone">AGE 18</span>
+        <PixelImg path={sproutUrl('seed')} size={40} />
       </div>
       <div className="mt-[12px] flex flex-1 flex-col gap-[15px]">
         <h1 className="text-[28px] leading-[1.1] font-bold text-paper">Welcome to AIDAMS, {pixelSafe(rolled.name)}.</h1>
@@ -295,11 +332,11 @@ function Reel({ title, pool, result, stopped }: { title: string; pool: ProfileOp
   return (
     <div className={'pwin-dark flex flex-col gap-[6px] px-[15px] py-[12px] ' + (stopped ? 'beat-pop' : '')}>
       <div className="flex items-center justify-between">
-        <span className="text-[15px] text-stone">{title}</span>
+        <span className="t-meta text-stone">{title}</span>
         {stopped && <Sprite rows={COIN_SLOT} scale={3} />}
       </div>
-      <span className={'text-[21px] leading-[1.15] font-bold ' + (stopped ? 'text-lime' : 'text-slate')}>{pixelSafe(shown.label)}</span>
-      <span className={'text-[16px] leading-[1.3] ' + (stopped ? 'text-stone' : 'invisible')}>{pixelSafe(result.blurb)}</span>
+      <span className={'text-[21px] leading-[1.15] font-bold ' + (stopped ? 'text-lime' : 'text-stone')}>{pixelSafe(shown.label)}</span>
+      <span className={'t-meta ' + (stopped ? 'text-stone' : 'invisible')}>{pixelSafe(result.blurb)}</span>
     </div>
   )
 }

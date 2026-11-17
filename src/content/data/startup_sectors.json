@@ -15,7 +15,7 @@
       "stats": { "money": 14, "fame": 10, "contribution": 10, "tech": 6, "aiLever": -0.02 },
       "flags": ["startup_success"],
       "factId": "f_ai_climate",
-      "text": "Investor pitch: your Charisma and Economics sold it. {startup} signs its first national grid operator. Your software keeps the lights on when the wind drops, and investors finally return your calls."
+      "text": "Investor pitch: your Network and Economics sold it. {startup} signs its first national grid operator. Your software keeps the lights on when the wind drops, and investors finally return your calls."
     },
     "failure": {
       "years": 3,
@@ -42,7 +42,7 @@
       "years": 3,
       "stats": { "money": 14, "fame": 8, "contribution": 9, "tech": 5, "ai": 5 },
       "flags": ["startup_success"],
-      "text": "Investor pitch: your Charisma and Economics sold it. {startup} gets regulatory approval on a Tuesday. By Friday, forty hospitals want a demo, and a radiologist sends you a thank-you card."
+      "text": "Investor pitch: your Math & AI and Network sold it. {startup} gets regulatory approval on a Tuesday. By Friday, forty hospitals want a demo, and a radiologist sends you a thank-you card."
     },
     "failure": {
       "years": 3,
@@ -66,7 +66,7 @@
       "years": 3,
       "stats": { "money": 18, "fame": 6, "tech": 4, "ai": 6, "aiLever": 0.005 },
       "flags": ["startup_success"],
-      "text": "Investor pitch: your Charisma and Economics sold it. {startup} gets acquired eighteen months in, mostly for the team and the logo. You are rich, and slightly unsure what you built."
+      "text": "Investor pitch: your Math & AI and Charisma sold it. {startup} gets acquired eighteen months in, mostly for the team and the logo. You are rich, and slightly unsure what you built."
     },
     "failure": {
       "years": 3,
@@ -93,7 +93,7 @@
       "footprint": [
         { "label": "Your app's users' watch time (influence)", "category": "digital", "influenceTPerYear": 3000, "factId": "f_influence" }
       ],
-      "text": "Investor pitch: your Charisma and Economics sold it. {startup} hits ten million users. Your 'healthy feed' has an average session of 52 minutes. The irony is not lost on you, or on the press."
+      "text": "Investor pitch: your Fame and Charisma sold it. {startup} hits ten million users. Your 'healthy feed' has an average session of 52 minutes. The irony is not lost on you, or on the press."
     },
     "failure": {
       "years": 3,
@@ -118,7 +118,7 @@
       "years": 3,
       "stats": { "money": 22, "fame": 6, "ethics": -3 },
       "flags": ["startup_success"],
-      "text": "Investor pitch: your Charisma and Economics sold it. {startup} gets its banking licence and a valuation with too many zeros. Your old finance club now invites you as a speaker."
+      "text": "Investor pitch: your Economics and Charisma sold it. {startup} gets its banking licence and a valuation with too many zeros. AIDAMS now invites you to speak at the forum."
     },
     "failure": {
       "years": 3,
@@ -143,7 +143,7 @@
       "years": 3,
       "stats": { "money": 22, "fame": 4, "tech": 6, "ai": 6, "ethics": -8, "contribution": -4 },
       "flags": ["startup_success"],
-      "text": "Investor pitch: your Charisma and Economics sold it. {startup} wins a ministry contract. You can't tell your family what it does, and some nights you can't tell yourself."
+      "text": "Investor pitch: your Network and Math & AI sold it. {startup} wins a ministry contract. You can't tell your family what it does, and some nights you can't tell yourself."
     },
     "failure": {
       "years": 3,
