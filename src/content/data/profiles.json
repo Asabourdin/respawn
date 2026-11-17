@@ -1,0 +1,130 @@
+{
+  "origins": [
+    {
+      "id": "paris_suburbs",
+      "label": "Paris suburbs",
+      "blurb": "You grew up one RER ride from everything and two from anything. You can read a delayed-train announcement like poetry.",
+      "effects": { "stats": { "skillSoft": 6, "network": 2 } },
+      "weight": 1.3
+    },
+    {
+      "id": "small_town",
+      "label": "Small-town kid",
+      "blurb": "One bakery, one roundabout, one bus a day. Everyone back home calls you 'the one who went to the big school'.",
+      "effects": { "stats": { "happiness": 3, "skillSoft": 3, "network": -4 } },
+      "weight": 1.2
+    },
+    {
+      "id": "central_paris",
+      "label": "Central Paris",
+      "blurb": "Your parents' friends all 'know someone at a bank'. You have never once been lost in the metro, and you will mention it.",
+      "effects": { "stats": { "network": 8, "social": 2, "skillSoft": -2 } },
+      "weight": 1
+    },
+    {
+      "id": "regional_city",
+      "label": "Regional city",
+      "blurb": "Lyon, Lille, Nantes or Toulouse: you came up on the TGV with a suitcase of homemade jam and strong opinions about Paris prices.",
+      "effects": { "stats": { "happiness": 2, "skillBusiness": 3 } },
+      "weight": 1.2
+    },
+    {
+      "id": "intl",
+      "label": "International student",
+      "blurb": "You crossed borders for this. The canteen is your first culture shock, the bureaucracy your second, the bise your third.",
+      "effects": {
+        "stats": { "skillSoft": 6, "fame": 2, "social": -3 },
+        "flags": ["intl_origin", "flew"],
+        "footprint": [
+          {
+            "label": "Flights home for the holidays (student years)",
+            "category": "flights",
+            "annual": { "id": "flights_home", "tPerYear": 0.9, "untilAge": 22 },
+            "factId": "f_flight_ny"
+          }
+        ]
+      },
+      "weight": 0.9
+    },
+    {
+      "id": "expat_kid",
+      "label": "Third-culture kid",
+      "blurb": "Four countries, three accents, zero good answers to 'so where are you from?'. You make friends fast and miss them faster.",
+      "effects": { "stats": { "skillSoft": 4, "network": 4, "social": -2 } },
+      "weight": 0.6
+    }
+  ],
+  "budgets": [
+    {
+      "id": "tight",
+      "label": "Tight budget",
+      "blurb": "Scholarship, part-time hopes and a spreadsheet for groceries. Pasta is not a meal, it is a lifestyle.",
+      "effects": { "stats": { "money": -14, "skillSoft": 2 } },
+      "weight": 1
+    },
+    {
+      "id": "comfortable",
+      "label": "Comfortable",
+      "blurb": "Your parents help with rent and you pretend not to need it. The occasional sète is in the budget. Mostly.",
+      "effects": { "stats": {} },
+      "weight": 1.4
+    },
+    {
+      "id": "wealthy",
+      "label": "Wealthy",
+      "blurb": "Your family has a 'house in the countryside' that has a name. You've never checked a price tag before checkout.",
+      "effects": { "stats": { "money": 14, "network": 5, "skillSoft": -2 } },
+      "weight": 0.7
+    }
+  ],
+  "traits": [
+    {
+      "id": "math",
+      "label": "Maths olympiad kid",
+      "blurb": "You solved your first integral at fourteen, for fun. Code compiles when you look at it.",
+      "effects": { "stats": { "skillAi": 14 } },
+      "weight": 1
+    },
+    {
+      "id": "people",
+      "label": "Born networker",
+      "blurb": "You remember everyone's name and their dog's. Group projects mysteriously go well when you're in them.",
+      "effects": { "stats": { "skillSoft": 10, "network": 6 } },
+      "weight": 1
+    },
+    {
+      "id": "hustler",
+      "label": "Hustler",
+      "blurb": "You sold sweets in middle school at a 300% margin. You already have a side project and a pitch for it.",
+      "effects": { "stats": { "skillBusiness": 12, "money": 2 } },
+      "weight": 1
+    },
+    {
+      "id": "creative",
+      "label": "Creative",
+      "blurb": "You draw in the margins, film everything and name your playlists like art exhibitions.",
+      "effects": { "stats": { "skillSoft": 6, "fame": 4, "happiness": 2 } },
+      "weight": 1
+    },
+    {
+      "id": "athlete",
+      "label": "Athlete",
+      "blurb": "You run before breakfast and recover after. Your resting heart rate is a flex.",
+      "effects": { "stats": { "energy": 10, "happiness": 3 } },
+      "weight": 1
+    },
+    {
+      "id": "prepa",
+      "label": "Prepa survivor",
+      "blurb": "Two years of prépa taught you to work at 2AM and feel guilty at 2PM. Your grades are excellent. Your sleep is not.",
+      "effects": { "stats": { "grades": 10, "energy": -6 } },
+      "weight": 1
+    }
+  ],
+  "names": [
+    "Alex", "Sacha", "Noor", "Yanis", "Inès", "Léa", "Mehdi", "Chloé",
+    "Hugo", "Aïcha", "Kenji", "Priya", "Zoé", "Mamadou", "Elif", "Mateo",
+    "Linh", "Jade", "Adam", "Sofia", "Rayan", "Maëlys", "Tomás", "Anaïs",
+    "Wei", "Amara", "Nathan", "Louise", "Karim", "Ana", "Jules", "Fatou"
+  ]
+}

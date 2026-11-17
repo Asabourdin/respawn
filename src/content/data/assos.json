@@ -1,0 +1,302 @@
+[
+  {
+    "id": "asso_ert",
+    "label": "ERT (rugby)",
+    "hint": "Mud, scrums and a very long third half",
+    "category": "sport",
+    "school": "ESSEC",
+    "blurb": "The rugby team: training in the rain, matches against other schools, and a third half that lasts until Sunday.",
+    "effects": {
+      "stats": { "happiness": 5, "energy": 6, "social": 6, "skillSoft": 4, "grades": -3, "addiction": 3 },
+      "flags": ["in_asso", "SPORT", "asso_ert"],
+      "text": "Your first scrum leaves a bruise shaped like friendship."
+    }
+  },
+  {
+    "id": "asso_efc",
+    "label": "EFC (football)",
+    "hint": "Tuesday five-a-side, weekend drama",
+    "category": "sport",
+    "school": "ESSEC",
+    "blurb": "The football club: five-a-side on Tuesdays, eleven-a-side drama every weekend, one group chat that never sleeps.",
+    "effects": {
+      "stats": { "happiness": 5, "energy": 6, "social": 5, "skillSoft": 3, "grades": -2 },
+      "flags": ["in_asso", "SPORT", "asso_efc"],
+      "text": "You score once in your first match. You will tell this story for twenty years."
+    }
+  },
+  {
+    "id": "asso_edc",
+    "label": "EDC (dance club)",
+    "hint": "Midnight choreos, a gala in spring",
+    "category": "sport",
+    "school": "ESSEC",
+    "blurb": "The dance club: rehearsals at midnight, a spring gala, and sore muscles you didn't know existed.",
+    "effects": {
+      "stats": { "happiness": 6, "energy": 4, "social": 4, "fame": 2, "skillSoft": 4, "grades": -2 },
+      "flags": ["in_asso", "SPORT", "asso_edc"],
+      "text": "Eight counts, forty mistakes, one standing ovation at the gala."
+    }
+  },
+  {
+    "id": "asso_boxing",
+    "label": "Boxing club",
+    "hint": "Learn to take a punch",
+    "category": "sport",
+    "school": "CentraleSupélec",
+    "blurb": "The boxing club: skipping ropes, sparring, and a coach who believes discipline is a love language.",
+    "effects": {
+      "stats": { "happiness": 4, "energy": 8, "skillSoft": 3, "grades": -2 },
+      "flags": ["in_asso", "SPORT", "asso_boxing"],
+      "text": "You learn to take a punch. Exam season will feel lighter."
+    }
+  },
+  {
+    "id": "asso_bds",
+    "label": "BDS (sports office)",
+    "hint": "Every tournament, every bus, every early run",
+    "category": "sport",
+    "school": "CentraleSupélec",
+    "blurb": "The sports office runs every tournament, every bus and every 7AM run on the plateau, wind included.",
+    "effects": {
+      "stats": { "social": 6, "energy": 4, "network": 4, "skillSoft": 3, "grades": -3 },
+      "flags": ["in_asso", "SPORT", "asso_bds"],
+      "text": "You now own a clipboard, a whistle and the phone numbers of three bus companies."
+    }
+  },
+  {
+    "id": "asso_comedia",
+    "label": "Comedia (theatre)",
+    "hint": "Improv on Mondays, ego all week",
+    "category": "arts",
+    "school": "ESSEC",
+    "blurb": "The theatre troupe: improv on Mondays, a classic on Fridays, and the best-dressed people on campus.",
+    "effects": {
+      "stats": { "skillSoft": 8, "happiness": 4, "social": 3, "grades": -2 },
+      "flags": ["in_asso", "ARTS", "asso_comedia"],
+      "text": "You forget your line on opening night and improvise something better. A star is born, slightly sweaty."
+    }
+  },
+  {
+    "id": "asso_nsb",
+    "label": "NSB (photography)",
+    "hint": "You'll never see light the same way",
+    "category": "arts",
+    "school": "ESSEC",
+    "blurb": "The photography club: sunrise shoots, darkroom nights and very strong feelings about grain.",
+    "effects": {
+      "stats": { "happiness": 5, "fame": 3, "skillSoft": 4, "money": -2 },
+      "flags": ["in_asso", "ARTS", "asso_nsb"],
+      "text": "Your shot of the plateau in the fog wins the club contest. You print it. You frame it. You stare at it."
+    }
+  },
+  {
+    "id": "asso_ldm",
+    "label": "LDM (restaurant reviews)",
+    "hint": "Eat, rate, repeat",
+    "category": "arts",
+    "school": "ESSEC",
+    "blurb": "The restaurant-review club: weekly tastings, ruthless ratings, a blog read by four hundred very hungry students.",
+    "effects": {
+      "stats": { "happiness": 6, "social": 5, "money": -3 },
+      "flags": ["in_asso", "ARTS", "asso_ldm"],
+      "text": "Your review of the canteen's lasagne goes viral on campus. The chef is not amused."
+    }
+  },
+  {
+    "id": "asso_utopia",
+    "label": "Utopia (AI association)",
+    "hint": "Talks, hackathons, prompt wars",
+    "category": "corpo",
+    "school": "ESSEC",
+    "blurb": "ESSEC's AI association: conferences, hackathons, and long debates about whether the robots will be nice.",
+    "effects": {
+      "stats": { "skillAi": 10, "intellect": 3, "network": 5, "energy": -3 },
+      "flags": ["in_asso", "TECH", "asso_utopia"],
+      "text": "Your first hackathon: 36 hours, 9 coffees, 1 demo that works exactly once, live, in front of the jury."
+    }
+  },
+  {
+    "id": "asso_automatants",
+    "label": "Automatants (AI club)",
+    "hint": "GPUs, papers, very late nights",
+    "category": "corpo",
+    "school": "CentraleSupélec",
+    "blurb": "CentraleSupélec's AI club: reading groups, GPU clusters and leaderboard competitions that end at 4AM.",
+    "conditions": "skillAi >= 25",
+    "lockedReason": "Requires Math & AI ≥ 25",
+    "effects": {
+      "stats": { "skillAi": 14, "intellect": 4, "grades": 2, "social": -2, "energy": -4 },
+      "flags": ["in_asso", "TECH", "asso_automatants"],
+      "text": "You train your first neural network on a borrowed GPU. It recognises cats. Mostly."
+    }
+  },
+  {
+    "id": "asso_krypto",
+    "label": "Kryptosphère (blockchain)",
+    "hint": "DeFi, tokens and a lot of optimism",
+    "category": "corpo",
+    "school": "ESSEC",
+    "blurb": "The blockchain association: DeFi workshops, token debates and a whiteboard that has said 'WAGMI' since 2021.",
+    "effects": {
+      "stats": { "skillBusiness": 5, "skillAi": 4, "money": 2, "ethics": -2, "addiction": 3 },
+      "flags": ["in_asso", "FIN", "asso_krypto"],
+      "text": "You buy a token 'for research'. It goes up 40%, then down 90%. Research complete."
+    }
+  },
+  {
+    "id": "asso_ecc",
+    "label": "ECC (economics club)",
+    "hint": "Inflation debates over cheap coffee",
+    "category": "corpo",
+    "school": "ESSEC",
+    "blurb": "The economics club: talks with central bankers, inflation debates and a very competitive monetary policy game.",
+    "effects": {
+      "stats": { "skillBusiness": 8, "intellect": 4, "skillSoft": 3, "grades": 2, "energy": -2 },
+      "flags": ["in_asso", "FIN", "asso_ecc"],
+      "text": "You win the monetary policy game by raising rates on everyone's feelings."
+    }
+  },
+  {
+    "id": "asso_transaction",
+    "label": "ESSEC Transaction",
+    "hint": "M&A cases, suits on Tuesdays",
+    "category": "corpo",
+    "school": "ESSEC",
+    "blurb": "The M&A association: case studies, valuation nights, suits on Tuesdays and a feed full of handshakes.",
+    "conditions": "skillBusiness >= 25",
+    "lockedReason": "Requires Economics ≥ 25",
+    "effects": {
+      "stats": { "skillBusiness": 8, "network": 8, "energy": -4, "happiness": -1 },
+      "flags": ["in_asso", "FIN", "asso_transaction"],
+      "text": "You learn to say 'synergies' with a straight face. A banker gives you a business card. You frame it, ironically."
+    }
+  },
+  {
+    "id": "asso_csfinance",
+    "label": "CentraleSupélec Finance",
+    "hint": "Quant puzzles and trading games",
+    "category": "corpo",
+    "school": "CentraleSupélec",
+    "blurb": "The finance club: quant brainteasers, trading simulations and Excel shortcuts as a personality.",
+    "effects": {
+      "stats": { "skillBusiness": 6, "skillAi": 4, "network": 4, "energy": -3 },
+      "flags": ["in_asso", "FIN", "asso_csfinance"],
+      "text": "You solve the famous 'how many tennis balls fit in a plane' question. The answer is always 'it depends'."
+    }
+  },
+  {
+    "id": "asso_junior",
+    "label": "Junior-Entreprise",
+    "hint": "Real clients, real invoices",
+    "category": "corpo",
+    "school": "CentraleSupélec",
+    "blurb": "The student consultancy: real clients, real invoices, real deadlines, and a président who sends emails at 1AM.",
+    "effects": {
+      "stats": { "skillBusiness": 7, "money": 3, "network": 5, "energy": -4 },
+      "flags": ["in_asso", "STARTUP", "asso_junior"],
+      "text": "Your first client pays on time. Your second does not. You learn more from the second."
+    }
+  },
+  {
+    "id": "asso_genius",
+    "label": "Genius (entrepreneurship)",
+    "hint": "Pitch nights and startup weekends",
+    "category": "corpo",
+    "school": "ESSEC",
+    "blurb": "The entrepreneurship club: pitch nights, startup weekends and a co-founder in every corridor.",
+    "effects": {
+      "stats": { "skillBusiness": 5, "network": 6, "fame": 2, "energy": -3 },
+      "flags": ["in_asso", "STARTUP", "asso_genius"],
+      "text": "You pitch an app at a startup weekend. It wins 'most disruptive'. Nobody knows what it disrupts."
+    }
+  },
+  {
+    "id": "asso_ultra",
+    "label": "Ultra (supporters)",
+    "hint": "Drums, chants and banners",
+    "category": "impact",
+    "school": "ESSEC",
+    "blurb": "The supporters' club: drums, chants and giant banners at every inter-school match, win or lose.",
+    "effects": {
+      "stats": { "social": 7, "happiness": 4, "fame": 2, "grades": -3, "addiction": 3 },
+      "flags": ["in_asso", "asso_ultra"],
+      "text": "You lose your voice at your first match. You find it again, mostly, by Wednesday."
+    }
+  },
+  {
+    "id": "asso_peak",
+    "label": "Peak (extreme sports)",
+    "hint": "Climbing, skiing, mild panic",
+    "category": "impact",
+    "school": "ESSEC",
+    "blurb": "The extreme-sports club: climbing walls, ski weekends and paragliding trips your family doesn't need to hear about.",
+    "effects": {
+      "stats": { "happiness": 6, "energy": 4, "money": -4 },
+      "flags": ["in_asso", "SPORT", "asso_peak"],
+      "text": "You hang off a cliff in the Alps, laughing. Your mum finds out from a group photo."
+    }
+  },
+  {
+    "id": "asso_delta",
+    "label": "Delta (humanitarian trip)",
+    "hint": "A year of fundraising, a trip that matters",
+    "category": "impact",
+    "school": "ESSEC",
+    "blurb": "A year of fundraising for a humanitarian project in South Africa, then a summer on site with the partner school.",
+    "conditions": "money >= 40",
+    "lockedReason": "Requires Wealth ≥ 40 (the trip isn't free)",
+    "effects": {
+      "stats": { "contribution": 10, "social": 4, "money": -3, "skillSoft": 3 },
+      "flags": ["in_asso", "asso_delta", "flew"],
+      "footprint": [
+        {
+          "label": "Delta trip flight to South Africa",
+          "category": "flights",
+          "oneOffT": 2.4,
+          "factId": "f_long_haul"
+        }
+      ],
+      "text": "You paint a classroom, teach a coding workshop and come back with a very different idea of 'busy'."
+    }
+  },
+  {
+    "id": "asso_impact",
+    "label": "Impact (sustainability)",
+    "hint": "Climate workshops and compost wars",
+    "category": "impact",
+    "school": "ESSEC",
+    "blurb": "The sustainability association: climate workshops, a campus compost project and endless meetings with facilities.",
+    "effects": {
+      "stats": { "contribution": 6, "ethics": 4, "skillSoft": 3, "intellect": 2, "fame": -1 },
+      "flags": ["in_asso", "GREEN", "asso_impact"],
+      "text": "You run your first climate workshop. A finance student leaves very quiet and very thoughtful."
+    }
+  },
+  {
+    "id": "asso_oser",
+    "label": "OSER (tutoring)",
+    "hint": "Tutor kids told this wasn't for them",
+    "category": "impact",
+    "school": "CentraleSupélec",
+    "blurb": "Weekly tutoring for high schoolers who were told grandes écoles weren't for people like them.",
+    "effects": {
+      "stats": { "contribution": 10, "skillSoft": 4, "energy": -3 },
+      "flags": ["in_asso", "asso_oser"],
+      "text": "Your tutee gets into prépa. You cry in the RER. Nobody judges."
+    }
+  },
+  {
+    "id": "asso_humacs",
+    "label": "HumaCS (solidarity)",
+    "hint": "Water pumps to coding camps",
+    "category": "impact",
+    "school": "CentraleSupélec",
+    "blurb": "International solidarity projects, from water pumps to coding camps, run with partner associations abroad.",
+    "effects": {
+      "stats": { "contribution": 8, "social": 4, "skillSoft": 3, "money": -2 },
+      "flags": ["in_asso", "asso_humacs"],
+      "text": "Your project spreadsheet has more tabs than your life. Every one of them matters to someone."
+    }
+  }
+]

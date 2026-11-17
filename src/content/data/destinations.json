@@ -1,0 +1,213 @@
+[
+  {
+    "id": "dest_ntu",
+    "label": "NTU, Singapore",
+    "hint": "Hawker food and serious AI labs",
+    "tier": "high",
+    "university": "Nanyang Technological University",
+    "city": "Singapore",
+    "country": "Singapore",
+    "tripT": 3.2,
+    "effects": {
+      "stats": { "skillAi": 6, "fame": 3, "money": -4 },
+      "flags": ["INTL", "dest_ntu", "flew"],
+      "factId": "f_flight_singapore",
+      "text": "Thirteen hours of flight, thirty-two degrees, and a campus that looks like a sci-fi set. Your lab partner has already published twice."
+    }
+  },
+  {
+    "id": "dest_cuhk",
+    "label": "CUHK, Hong Kong",
+    "hint": "Hills, skylines and dim sum at midnight",
+    "tier": "high",
+    "university": "The Chinese University of Hong Kong",
+    "city": "Hong Kong",
+    "country": "Hong Kong SAR",
+    "tripT": 2.9,
+    "effects": {
+      "stats": { "skillBusiness": 5, "social": 3, "money": -4 },
+      "flags": ["INTL", "dest_cuhk", "flew"],
+      "factId": "f_long_haul",
+      "text": "Your campus is on a mountain, your classes are at sea level, and your calves will never forgive you."
+    }
+  },
+  {
+    "id": "dest_ucl",
+    "label": "UCL, London",
+    "hint": "A train away, rent from another planet",
+    "tier": "high",
+    "university": "University College London",
+    "city": "London",
+    "country": "United Kingdom",
+    "tripT": 0.02,
+    "byTrain": true,
+    "effects": {
+      "stats": { "network": 6, "fame": 2, "money": -7 },
+      "flags": ["INTL", "dest_ucl"],
+      "factId": "f_train_europe",
+      "text": "Two hours under the Channel and you're there. Your room costs as much as a Cergy flat and is the size of its fridge."
+    }
+  },
+  {
+    "id": "dest_bocconi",
+    "label": "Bocconi, Milan",
+    "hint": "Finance, fashion, focaccia",
+    "tier": "high",
+    "university": "Università Bocconi",
+    "city": "Milan",
+    "country": "Italy",
+    "tripT": 0.05,
+    "byTrain": true,
+    "effects": {
+      "stats": { "skillBusiness": 6, "happiness": 3, "money": -4 },
+      "flags": ["INTL", "dest_bocconi"],
+      "factId": "f_train_europe",
+      "text": "You arrive by train through the Alps. By week two you have opinions about espresso and a classmate who owns a yacht."
+    }
+  },
+  {
+    "id": "dest_nyu",
+    "label": "NYU, New York",
+    "hint": "The city that never sleeps, nor do you",
+    "tier": "high",
+    "university": "New York University",
+    "city": "New York",
+    "country": "United States",
+    "tripT": 1.8,
+    "effects": {
+      "stats": { "fame": 5, "network": 5, "money": -9 },
+      "flags": ["INTL", "dest_nyu", "flew"],
+      "factId": "f_flight_ny",
+      "text": "A $9 coffee, a $3,000 room, a priceless skyline. Your stories have never looked this expensive."
+    }
+  },
+  {
+    "id": "dest_emory",
+    "label": "Emory, Atlanta",
+    "hint": "Southern warmth, public health giants",
+    "tier": "mid",
+    "university": "Emory University",
+    "city": "Atlanta",
+    "country": "United States",
+    "tripT": 2.0,
+    "effects": {
+      "stats": { "skillSoft": 4, "social": 3, "money": -4 },
+      "flags": ["INTL", "dest_emory", "flew"],
+      "factId": "f_long_haul",
+      "text": "Peach trees, humidity and a roommate who says 'y'all' with total sincerity. You start saying it too."
+    }
+  },
+  {
+    "id": "dest_utaustin",
+    "label": "UT Austin, Texas",
+    "hint": "Tacos, tech and live music",
+    "tier": "mid",
+    "university": "The University of Texas at Austin",
+    "city": "Austin",
+    "country": "United States",
+    "tripT": 2.1,
+    "effects": {
+      "stats": { "skillAi": 4, "happiness": 3, "money": -4 },
+      "flags": ["INTL", "dest_utaustin", "flew"],
+      "factId": "f_long_haul",
+      "text": "Everything is bigger in Texas, including the tacos, the stadium and your appetite for startups."
+    }
+  },
+  {
+    "id": "dest_gwu",
+    "label": "GWU, Washington DC",
+    "hint": "Policy, think tanks, power lunches",
+    "tier": "mid",
+    "university": "George Washington University",
+    "city": "Washington DC",
+    "country": "United States",
+    "tripT": 1.8,
+    "effects": {
+      "stats": { "network": 5, "skillSoft": 3, "money": -5 },
+      "flags": ["INTL", "dest_gwu", "flew"],
+      "factId": "f_flight_ny",
+      "text": "Your classmates intern at think tanks and talk about 'the Hill'. You learn that lunch is a negotiation."
+    }
+  },
+  {
+    "id": "dest_erasmus",
+    "label": "Erasmus, Rotterdam",
+    "hint": "Bikes, harbours, direct Dutch feedback",
+    "tier": "mid",
+    "university": "Erasmus University Rotterdam",
+    "city": "Rotterdam",
+    "country": "Netherlands",
+    "tripT": 0.03,
+    "byTrain": true,
+    "effects": {
+      "stats": { "skillBusiness": 4, "happiness": 2, "money": -2 },
+      "flags": ["INTL", "dest_erasmus"],
+      "factId": "f_train_europe",
+      "text": "Three hours by train, one second-hand bike, and a group-project partner who tells you exactly what's wrong with your slides."
+    }
+  },
+  {
+    "id": "dest_uwa",
+    "label": "UWA, Perth",
+    "hint": "Beaches, quokkas, the far side of Earth",
+    "tier": "mid",
+    "university": "University of Western Australia",
+    "city": "Perth",
+    "country": "Australia",
+    "tripT": 4.6,
+    "effects": {
+      "stats": { "happiness": 6, "social": 2, "money": -5 },
+      "flags": ["INTL", "dest_uwa", "flew"],
+      "factId": "f_long_haul",
+      "text": "Twenty hours of travel, then sunshine, surf and a quokka selfie that will outlive you."
+    }
+  },
+  {
+    "id": "dest_ets",
+    "label": "ÉTS, Montréal",
+    "hint": "Poutine, French, minus thirty",
+    "tier": "mid",
+    "university": "École de technologie supérieure",
+    "city": "Montréal",
+    "country": "Canada",
+    "tripT": 1.5,
+    "effects": {
+      "stats": { "skillAi": 5, "social": 2, "money": -3 },
+      "flags": ["INTL", "dest_ets", "flew"],
+      "factId": "f_flight_ny",
+      "text": "Everyone speaks French, just not your French. By January, minus thirty feels like a personality test."
+    }
+  },
+  {
+    "id": "dest_daejeon",
+    "label": "Daejeon University, Korea",
+    "hint": "Science city, late-night karaoke",
+    "tier": "low",
+    "university": "Daejeon University",
+    "city": "Daejeon",
+    "country": "South Korea",
+    "tripT": 2.6,
+    "effects": {
+      "stats": { "skillSoft": 5, "happiness": 3, "money": -2 },
+      "flags": ["INTL", "dest_daejeon", "flew"],
+      "factId": "f_long_haul",
+      "text": "Not your first choice, maybe. But the karaoke rooms, the late-night markets and your Korean buddy turn it into the best year yet."
+    }
+  },
+  {
+    "id": "dest_uchile",
+    "label": "Universidad de Chile, Santiago",
+    "hint": "Andes views, protests, empanadas",
+    "tier": "low",
+    "university": "Universidad de Chile",
+    "city": "Santiago",
+    "country": "Chile",
+    "tripT": 3.4,
+    "effects": {
+      "stats": { "skillSoft": 5, "social": 3, "money": -2 },
+      "flags": ["INTL", "dest_uchile", "flew"],
+      "factId": "f_long_haul",
+      "text": "The Andes on your left, the Pacific a bus ride away, and a Spanish that improves one empanada at a time."
+    }
+  }
+]

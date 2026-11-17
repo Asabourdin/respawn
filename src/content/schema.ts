@@ -13,9 +13,36 @@ import { z } from 'zod'
 
 /** Visible gauges during play (0–100). */
 export const VISIBLE_STATS = ['money', 'happiness', 'social', 'fame', 'contribution'] as const
-/** Hidden 0–100 stats with diminishing returns. */
-export const SKILL_STATS = ['skillAi', 'skillBusiness', 'skillSoft'] as const
+/**
+ * Skills (0–100, diminishing returns) — shown on the character sheet with these display names:
+ * intellect "Intelligence", skillAi "Math & AI", skillBusiness "Economics", skillSoft "Charisma".
+ */
+export const SKILL_STATS = ['intellect', 'skillAi', 'skillBusiness', 'skillSoft'] as const
+/** Other 0–100 stats with diminishing returns. Display: energy "Health", network "Network", grades "Grades". */
 export const DR_HIDDEN_STATS = [...SKILL_STATS, 'energy', 'network', 'grades'] as const
+
+/** Display names for every stat (character sheet, locked reasons, AI context). */
+export const STAT_LABELS: Record<string, string> = {
+  money: 'Wealth',
+  happiness: 'Happiness',
+  social: 'Social',
+  fame: 'Fame',
+  contribution: 'Impact',
+  intellect: 'Intelligence',
+  skillAi: 'Math & AI',
+  skillBusiness: 'Economics',
+  skillSoft: 'Charisma',
+  energy: 'Health',
+  network: 'Network',
+  grades: 'Grades',
+  ethics: 'Integrity',
+  addiction: 'Vices',
+  tech: 'Tech progress',
+  ai: 'AI progress',
+  aiLever: 'AI lever',
+  screenHours: 'Screen time',
+  workHours: 'Work hours',
+}
 /** Hidden linear stats (clamped, no diminishing returns). */
 export const LINEAR_STATS = ['ethics', 'addiction', 'tech', 'ai', 'aiLever', 'screenHours', 'workHours'] as const
 
@@ -423,6 +450,8 @@ export const Constants = z
     lifespan: z
       .object({
         base: z.number(),
+        /** Optional life expectancy by gender (INSEE 2025: woman 85.9, man 80.3); falls back to base. */
+        baseByGender: z.object({ woman: z.number(), man: z.number() }).strict().optional(),
         socialSwing: z.number(),
         grindPenaltyPerYear: z.number(),
         addictionPenalty: z.number(),

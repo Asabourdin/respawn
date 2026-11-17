@@ -1,0 +1,89 @@
+[
+  {
+    "id": "c10_after",
+    "kind": "major",
+    "phase": "launch",
+    "order": 10,
+    "age": 22,
+    "mandatory": true,
+    "title": "After AIDAMS",
+    "text": "Graduation: gowns, a speech about 'the future', and parents crying in two languages. You hold an offer from your internship, a Master's brochure and a PhD supervisor's email that says 'no pressure'. What now?",
+    "art": "stage",
+    "ai": {
+      "tone": "bittersweet, proud, a little scared",
+      "hints": [
+        "Mention the internship that produced the offer.",
+        "If flag pm_regular, PM shakes the player's hand on stage."
+      ]
+    },
+    "choices": [
+      {
+        "id": "c10_offer",
+        "label": "Take the offer now",
+        "hint": "Money now, questions later",
+        "effects": {
+          "stats": { "money": 4, "network": 3, "happiness": -1 },
+          "flags": ["took_offer"],
+          "text": "You sign on a Tuesday. On Wednesday you buy a real coffee machine."
+        }
+      },
+      {
+        "id": "c10_masters",
+        "label": "Master's, one more year",
+        "hint": "A sharper toolkit, a later start",
+        "effects": {
+          "years": 1,
+          "stats": { "skillAi": 8, "skillBusiness": 5, "intellect": 5, "network": 3, "money": -3 },
+          "flags": ["masters_dsba"],
+          "text": "One more year of cases, code and canteen pasta at the ESSEC–CentraleSupélec data science Master's. Your CV gets a second line in bold."
+        }
+      },
+      {
+        "id": "c10_phd",
+        "label": "PhD, three years",
+        "hint": "Deep work, thin wallet",
+        "conditions": { "any": ["intellect >= 40", "grades >= 66"] },
+        "lockedReason": "Requires Intelligence ≥ 40 or Grades ≥ 66",
+        "effects": {
+          "years": 3,
+          "stats": { "skillAi": 15, "intellect": 12, "contribution": 2, "fame": 2, "money": -6, "happiness": -2 },
+          "flags": ["phd"],
+          "text": "Three years, one thesis, 214 papers read and three that actually mattered. You are now Dr {name}."
+        }
+      },
+      {
+        "id": "c10_gap",
+        "label": "Gap year, off-grid volunteering",
+        "hint": "Mud, meaning, no Wi-Fi",
+        "effects": {
+          "years": 1,
+          "stats": { "happiness": 5, "social": 3, "contribution": 4, "skillSoft": 4, "money": -4, "network": -3 },
+          "flags": ["gap_year"],
+          "factId": "f_carbone4",
+          "text": "A year rebuilding dry-stone walls in the Cévennes. Your hands are rough. Your head is quiet."
+        }
+      }
+    ]
+  },
+  {
+    "id": "c11_first_job",
+    "kind": "major",
+    "phase": "launch",
+    "order": 11,
+    "age": 22.1,
+    "mandatory": true,
+    "title": "Your First Real Job",
+    "text": "Offers land in your inbox, each with a salary, a mission statement and a photo of a beanbag. This is the big one: whoever you join, you'll slowly become a bit like them. Read the taglines carefully.",
+    "art": "bigtech",
+    "dynamic": { "type": "jobOffers", "count": 3, "lockedCount": 2, "aiSurprise": true },
+    "ai": {
+      "tone": "high stakes, satirical about corporate taglines",
+      "hints": [
+        "Employers are fictional archetypes (defense analytics, oil major, bank, consulting, social media). Never name a real company.",
+        "Greyed offers show what earlier choices would have unlocked.",
+        "This choice sets the career path for years: make it feel heavy."
+      ]
+    },
+    "choices": []
+  }
+]

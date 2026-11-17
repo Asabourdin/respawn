@@ -1,0 +1,174 @@
+[
+  {
+    "id": "c17_money",
+    "kind": "major",
+    "phase": "maturity",
+    "order": 17,
+    "age": 45,
+    "mandatory": true,
+    "title": "What Do You Do With Your Money?",
+    "text": "Forty-five. For the first time there's money left at the end of the month, and a banker who calls you by your first name. Your friends post from Bali and Patagonia; your home still leaks heat like a sieve. What do you do with it?",
+    "art": "home",
+    "variants": [
+      {
+        "conditions": "money < 40",
+        "text": "Forty-five. There isn't much left at the end of the month, but there is a little, and a banker who keeps sending brochures. Your friends post from Bali and Patagonia; your home still leaks heat like a sieve. What do you do with what you have?"
+      }
+    ],
+    "ai": {
+      "tone": "grown-up, candid about lifestyle trade-offs",
+      "hints": [
+        "Locked options are about savings: say it kindly if money is tight.",
+        "Long-haul holidays are genuinely wonderful; the receipt will speak later."
+      ]
+    },
+    "choices": [
+      {
+        "id": "c17_holidays",
+        "label": "Two long-haul trips a year",
+        "hint": "Twenty years of postcards",
+        "conditions": "money >= 45",
+        "lockedReason": "Requires Wealth ≥ 45",
+        "effects": {
+          "stats": { "happiness": 6, "social": 3, "fame": 2, "money": -6 },
+          "flags": ["long_haul_holidays", "flew"],
+          "footprint": [
+            {
+              "label": "Two long-haul holidays a year (20 years)",
+              "category": "flights",
+              "annual": { "id": "long_haul_holidays", "tPerYear": 3.6, "years": 20 },
+              "factId": "f_one_percent_flyers"
+            }
+          ],
+          "text": "Bali in spring, Patagonia in autumn. Your photo library needs its own data centre."
+        }
+      },
+      {
+        "id": "c17_low_carbon",
+        "label": "Low-carbon comfort",
+        "hint": "Insulate, train, electric car, less meat",
+        "conditions": "money >= 40",
+        "lockedReason": "Requires Wealth ≥ 40",
+        "effects": {
+          "stats": { "happiness": 3, "money": -5 },
+          "flags": ["low_carbon_comfort"],
+          "footprint": [
+            {
+              "label": "Low-carbon comfort (insulation, trains, EV, less meat)",
+              "category": "housing",
+              "annual": { "id": "low_carbon_comfort", "tPerYear": -2.5 },
+              "factId": "f_carbone4"
+            }
+          ],
+          "text": "Your home stops leaking heat. Your train seat comes with a view. You still miss steak sometimes."
+        }
+      },
+      {
+        "id": "c17_give",
+        "label": "Give a tenth to climate & health",
+        "hint": "Your money, working elsewhere",
+        "effects": {
+          "stats": { "contribution": 8, "happiness": 2, "ethics": 4, "money": -6 },
+          "flags": ["giver"],
+          "badges": ["ten_percent"],
+          "text": "Every month a tenth of your income goes to bed nets, vaccines and heat pumps for people you'll never meet."
+        }
+      },
+      {
+        "id": "c17_invest",
+        "label": "Invest in AI and tech",
+        "hint": "Let the robots work for you",
+        "conditions": "money >= 40",
+        "lockedReason": "Requires Wealth ≥ 40",
+        "effects": {
+          "stats": { "money": 6, "tech": 2, "ai": 2, "contribution": -1, "aiLever": 0.002 },
+          "flags": ["ai_investor"],
+          "text": "Your portfolio is seventy percent chips and thirty percent hope. It goes up. Mostly."
+        }
+      },
+      {
+        "id": "c17_debts",
+        "label": "Pay off the flat, sleep well",
+        "hint": "Boring, safe, yours",
+        "effects": {
+          "stats": { "money": 4, "happiness": 2, "social": -1, "fame": -1 },
+          "flags": ["paid_off"],
+          "text": "The day the last payment clears, you sleep eleven hours straight."
+        }
+      }
+    ]
+  },
+  {
+    "id": "c18_late",
+    "kind": "major",
+    "phase": "maturity",
+    "order": 18,
+    "age": 55,
+    "title": "Late-Career Influence",
+    "text": "Fifty-five. You're now the person juniors are slightly afraid of. You have a seat at tables that matter and maybe ten working years left. How do you spend your influence?",
+    "art": "stage",
+    "variants": [
+      {
+        "conditions": "path == none",
+        "text": "Fifty-five, and no title on your door any more. But people still call to ask what you think, and you have maybe ten active years left. How do you spend your influence?"
+      }
+    ],
+    "ai": {
+      "tone": "seasoned, a little reflective",
+      "hints": [
+        "If the player mentors, PM shows up as a colleague at AIDAMS; if flag skipped_pm, PM teases about 8AM."
+      ]
+    },
+    "choices": [
+      {
+        "id": "c18_board",
+        "label": "Join the board, mandate frugality",
+        "hint": "Make measuring and disclosing the rule",
+        "conditions": { "all": ["path != none", { "any": ["promotions >= 1", "network >= 55", "fame >= 60"] }] },
+        "lockedReason": "Requires a job, plus a promotion, Network ≥ 55 or Fame ≥ 60",
+        "effects": {
+          "stats": { "contribution": 5, "social": 2, "money": 2, "energy": -5, "aiLever": -0.01 },
+          "flags": ["board_frugal"],
+          "factId": "f_afnor",
+          "text": "Your first motion: every AI project must measure and publish its footprint. Three directors sigh. It passes."
+        }
+      },
+      {
+        "id": "c18_bonus",
+        "label": "Maximise your last bonuses",
+        "hint": "Retirement won't fund itself",
+        "conditions": "path != none",
+        "lockedReason": "Requires a job",
+        "effects": {
+          "set": { "workHours": 55 },
+          "stats": { "money": 8, "ethics": -4, "happiness": -2, "contribution": -2 },
+          "flags": ["max_bonus"],
+          "text": "You optimise everything, including your own exit package. The spreadsheet is a masterpiece."
+        }
+      },
+      {
+        "id": "c18_mentor",
+        "label": "Mentor and teach at AIDAMS",
+        "hint": "Give back where it started",
+        "effects": {
+          "stats": { "social": 5, "contribution": 4, "skillSoft": 3, "money": -2 },
+          "flags": ["mentor"],
+          "badges": ["mentor"],
+          "text": "Your first lecture is at 8AM. In the corridor, a familiar silhouette raises an eyebrow: PM, now your colleague."
+        }
+      },
+      {
+        "id": "c18_retire",
+        "label": "Retire early",
+        "hint": "Time rich, pension poor",
+        "effects": {
+          "leavePath": true,
+          "set": { "workHours": 0 },
+          "stats": { "happiness": 5, "money": -6, "fame": -3 },
+          "flags": ["early_retirement"],
+          "text": "You hand back your badge and keep the lanyard. Nobody knows why, including you."
+        }
+      }
+    ]
+  }
+]

@@ -1,0 +1,220 @@
+[
+  {
+    "id": "c02_phone",
+    "kind": "major",
+    "phase": "aidams12",
+    "order": 2,
+    "age": 18,
+    "mandatory": true,
+    "title": "You and Your Phone",
+    "text": "Orientation week ends and the group chats begin: fourteen of them, all muted except the one that matters. Every Sunday your screen-time report lands like a parking ticket. Time to decide what kind of relationship you have with this rectangle.",
+    "art": "dorm",
+    "ai": {
+      "tone": "playful, a little self-aware about phones",
+      "hints": [
+        "This habit lasts until the online-presence choice at 36: say it quietly matters.",
+        "Never moralise; make the trade-off funny."
+      ]
+    },
+    "choices": [
+      {
+        "id": "c02_intentional",
+        "label": "An hour a day, max",
+        "hint": "More life, fewer likes",
+        "effects": {
+          "set": { "screenHours": 1 },
+          "stats": { "happiness": 6, "social": 4, "fame": -4 },
+          "flags": ["phone_intentional"],
+          "factId": "f_allcott",
+          "text": "You switch your screen to greyscale. Your thumb is confused but your evenings are back."
+        }
+      },
+      {
+        "id": "c02_average",
+        "label": "Like everyone, about 2 h 20",
+        "hint": "The global average, give or take",
+        "effects": {
+          "set": { "screenHours": 2.33 },
+          "stats": { "fame": 1, "happiness": -1 },
+          "flags": ["phone_average"],
+          "factId": "f_datareportal",
+          "text": "You scroll at exactly the speed of society."
+        }
+      },
+      {
+        "id": "c02_doomscroll",
+        "label": "Doomscroll and post daily",
+        "hint": "Followers now, focus later",
+        "effects": {
+          "set": { "screenHours": 4.3 },
+          "stats": { "fame": 8, "happiness": -8, "social": -2, "grades": -4, "addiction": 10 },
+          "flags": ["CREATOR"],
+          "factId": "f_surgeon_general",
+          "text": "Your first video about the canteen gets 40,000 views. You check it 40,000 times."
+        }
+      }
+    ]
+  },
+  {
+    "id": "c03_asso",
+    "kind": "major",
+    "phase": "aidams12",
+    "order": 3,
+    "age": 18,
+    "mandatory": true,
+    "title": "The Asso Fair",
+    "text": "The asso fair takes over the hall: free crêpes, loud speakers, and forty people trying to recruit you in thirty seconds each. Everyone says your asso is your real degree. Choose wisely, or at least choose.",
+    "art": "campus",
+    "dynamic": { "type": "assoDraw" },
+    "ai": {
+      "tone": "chaotic, festive, recruitment frenzy",
+      "hints": [
+        "Mention that ESSEC and CentraleSupélec assos compete for the same AIDAMS students.",
+        "The asso friend (Malik) is met here if the player joins any asso."
+      ]
+    },
+    "choices": [
+      {
+        "id": "c03_no_asso",
+        "label": "No association",
+        "hint": "More sleep, more study, fewer stories",
+        "effects": {
+          "stats": { "grades": 12, "social": -6, "happiness": -2 },
+          "flags": ["no_asso"],
+          "text": "You walk past the stands with the focus of someone who owns a library card."
+        }
+      }
+    ]
+  },
+  {
+    "id": "c04_student",
+    "kind": "major",
+    "phase": "aidams12",
+    "order": 4,
+    "age": 19,
+    "mandatory": true,
+    "title": "A Sète Every Week",
+    "text": "Year 2. There is a sète every Thursday, and sometimes on Tuesday 'because it's someone's birthday'. Your grades, your liver and your friendships are negotiating a treaty. What kind of student are you this year?",
+    "art": "party",
+    "variants": [
+      {
+        "conditions": "flag:met_3am",
+        "text": "Year 2. There is a sète every Thursday, and the person from that 3AM conversation keeps asking if you're coming. Your grades, your liver and your friendships are negotiating a treaty. What kind of student are you this year?"
+      }
+    ],
+    "ai": {
+      "tone": "affectionate teasing, student slang (sète = party, ESSEC slang)",
+      "hints": ["This sets how often sète minis show up later in Year 2."]
+    },
+    "choices": [
+      {
+        "id": "c04_party",
+        "label": "Party animal",
+        "hint": "Legend status, hangover included",
+        "effects": {
+          "stats": { "social": 10, "happiness": 4, "skillSoft": 6, "grades": -12, "energy": -8, "addiction": 20 },
+          "flags": ["party_animal"],
+          "text": "Every bouncer at every sète knows your first name. Your 8AM self has filed a formal complaint."
+        }
+      },
+      {
+        "id": "c04_balanced",
+        "label": "Balanced, mostly",
+        "hint": "Some sètes, some sleep",
+        "effects": {
+          "stats": { "social": 4, "happiness": 3, "grades": 4, "skillSoft": 2, "intellect": 2, "energy": -2 },
+          "flags": ["balanced_student"],
+          "text": "You leave at 1AM, which everyone agrees is both wise and deeply suspicious."
+        }
+      },
+      {
+        "id": "c04_monk",
+        "label": "Library monk",
+        "hint": "Your grades thank you. Your friends?",
+        "effects": {
+          "stats": { "grades": 20, "intellect": 6, "skillAi": 4, "social": -8, "happiness": -3 },
+          "flags": ["library_monk"],
+          "text": "The library becomes your second home. The security guard knows your coffee order."
+        }
+      }
+    ]
+  },
+  {
+    "id": "c05_internship",
+    "kind": "major",
+    "phase": "aidams12",
+    "order": 5,
+    "age": 20,
+    "mandatory": true,
+    "title": "Summer Internship",
+    "text": "Time for the mandatory three-month internship. Your feed is a wall of 'Thrilled to announce'. Your uncle still thinks AIDAMS is a brand of yoghurt. Where do you spend the summer?",
+    "art": "finance",
+    "ai": {
+      "tone": "ambitious, a little anxious",
+      "hints": [
+        "Locked options are greyed with their reason: acknowledge that assos and grades opened or closed doors.",
+        "This internship unlocks the Year 4 internship options."
+      ]
+    },
+    "choices": [
+      {
+        "id": "c05_ai_startup",
+        "label": "AI startup, twelve people",
+        "hint": "Ship fast, learn faster",
+        "conditions": { "any": ["flag:TECH", "skillAi >= 35"] },
+        "lockedReason": "Requires the AI club or Math & AI ≥ 35",
+        "effects": {
+          "stats": { "skillAi": 10, "network": 4, "money": 2, "energy": -5 },
+          "flags": ["STARTUP"],
+          "text": "Day one: you push to production. Day two: you learn what 'rollback' means."
+        }
+      },
+      {
+        "id": "c05_bank",
+        "label": "Investment bank",
+        "hint": "Big money, small sleep",
+        "conditions": "flag:FIN",
+        "lockedReason": "Requires a finance club",
+        "effects": {
+          "stats": { "money": 6, "skillBusiness": 10, "network": 4, "energy": -10, "happiness": -3 },
+          "flags": ["BANK"],
+          "text": "You format a pitch deck at 2AM and feel strangely alive. That should worry you."
+        }
+      },
+      {
+        "id": "c05_ngo",
+        "label": "Impact NGO or social enterprise",
+        "hint": "Small budget, big meaning",
+        "conditions": { "any": ["flag:GREEN", "contribution >= 54"] },
+        "lockedReason": "Requires the Impact asso or Impact ≥ 54",
+        "effects": {
+          "stats": { "contribution": 8, "skillSoft": 4, "happiness": 3, "money": -2, "ethics": 5 },
+          "flags": ["IMPACT"],
+          "text": "You build a spreadsheet that actually helps people. It is the most beautiful spreadsheet in the world."
+        }
+      },
+      {
+        "id": "c05_corporate",
+        "label": "Data analyst at a big corporate",
+        "hint": "Safe, beige, paid",
+        "effects": {
+          "stats": { "money": 4, "skillBusiness": 4, "skillAi": 3, "happiness": -3 },
+          "flags": ["intern_corporate"],
+          "text": "You discover the dashboard nobody reads. You make it beautiful. Nobody reads it."
+        }
+      },
+      {
+        "id": "c05_lab",
+        "label": "CentraleSupélec research lab",
+        "hint": "Papers, pipelines, pizza Fridays",
+        "conditions": "grades >= 60",
+        "lockedReason": "Requires Grades ≥ 60",
+        "effects": {
+          "stats": { "skillAi": 9, "intellect": 5, "grades": 4, "money": -2, "social": -1 },
+          "flags": ["LAB"],
+          "text": "Your model converges on a Friday at 6PM. Nobody is there to see it, so you tell the coffee machine."
+        }
+      }
+    ]
+  }
+]

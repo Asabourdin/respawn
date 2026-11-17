@@ -56,6 +56,17 @@ export interface FootprintState {
   genAiTPerYear: number
 }
 
+export type Gender = 'woman' | 'man' | 'nonbinary' | 'unspecified'
+
+/** Entered at onboarding. Only `name` is required. */
+export interface PlayerInfo {
+  /** First name (personalises every narration). */
+  name: string
+  lastName?: string
+  /** Drives pronouns in third-person texts (epitaph) and the life-expectancy base (INSEE). */
+  gender?: Gender
+}
+
 export interface PathState {
   pathId: string
   employerId?: string
@@ -97,6 +108,8 @@ export interface Pending {
   /** For AI events: the draft and the slot. */
   aiSlotId?: string
   aiDraft?: AiEventDraft
+  /** The validated AI surprise offer appended to a job-offers scene. */
+  surpriseOffer?: SurpriseOfferDraft
 }
 
 export interface HistoryEntry {
@@ -122,8 +135,7 @@ export interface GameState {
   seed: number
   /** Current RNG state (mulberry32). */
   rng: number
-  player: {
-    name: string
+  player: PlayerInfo & {
     profile: { originId: string; budgetId: string; traitId: string }
   }
   age: number
@@ -244,6 +256,7 @@ export interface TopChoice {
 
 export interface EndSummary {
   name: string
+  player: PlayerInfo
   deathAge: number
   title: Ending
   you: Record<YouPole, number>
@@ -277,6 +290,9 @@ export interface EndSummary {
 /** Compact, human-readable context for prompts (≈ 300–500 words max). */
 export interface AIContext {
   name: string
+  lastName?: string
+  /** Pronouns for third-person text (epitaph, LinkedIn post). 'they' when unspecified. */
+  pronouns: { subject: string; object: string; possessive: string }
   age: number
   phase: Phase
   profile: { origin: string; budget: string; trait: string }
@@ -298,7 +314,7 @@ export interface AIContext {
 // ---------------------------------------------------------------------------
 
 export interface EngineAPI {
-  createGame(content: Content, opts?: { seed?: number; name?: string }): GameState
+  createGame(content: Content, opts?: { seed?: number } & Partial<PlayerInfo>): GameState
   /** What is next. Pure: calling twice returns the same step. Advances time lazily via resolveNext. */
   getStep(content: Content, state: GameState): Step
   /**

@@ -1,0 +1,129 @@
+[
+  {
+    "id": "big_risk_tech",
+    "description": "Big risk, big tech upside: about 40% chance of a huge win (tech, money, fame), otherwise a painful money loss.",
+    "outcomes": [
+      { "p": 0.4, "effects": { "stats": { "tech": 15, "money": 12, "fame": 6, "ai": 4 }, "text": "It works. Against every odd, it works." } },
+      { "p": 0.6, "effects": { "stats": { "money": -12, "happiness": -4 }, "text": "It doesn't work. It costs you, in every sense." } }
+    ]
+  },
+  {
+    "id": "small_gain_tired",
+    "description": "Small, safe gain in money or skills that costs energy.",
+    "outcomes": [
+      { "p": 1, "effects": { "stats": { "money": 3, "skillBusiness": 3, "energy": -6 }, "text": "A small win, paid for in sleep." } }
+    ]
+  },
+  {
+    "id": "neutral",
+    "description": "Mostly flavour: tiny effects either way. Use for the 'do nothing' or 'shrug' option.",
+    "outcomes": [
+      { "p": 1, "effects": { "stats": { "happiness": 1 }, "text": "Life goes on, mostly unchanged." } }
+    ]
+  },
+  {
+    "id": "ethical_cost_money",
+    "description": "Money now at an ethical cost: money up, ethics and impact down.",
+    "outcomes": [
+      { "p": 1, "effects": { "stats": { "money": 8, "ethics": -8, "contribution": -3 }, "text": "The money arrives quickly. The feeling stays longer." } }
+    ]
+  },
+  {
+    "id": "green_sacrifice",
+    "description": "The lower-carbon option that costs some comfort or money: impact up, footprint down for a decade.",
+    "outcomes": [
+      {
+        "p": 1,
+        "effects": {
+          "stats": { "money": -3, "happiness": -1, "contribution": 3, "ethics": 2 },
+          "footprint": [
+            { "label": "A lower-carbon habit you picked up", "category": "lifestyle", "annual": { "id": "ai_green_habit", "tPerYear": -0.3, "years": 10 }, "factId": "f_carbone4" }
+          ],
+          "text": "Slightly less comfortable, noticeably lighter."
+        }
+      }
+    ]
+  },
+  {
+    "id": "social_boost",
+    "description": "Time with people: social and happiness up, a little energy down.",
+    "outcomes": [
+      { "p": 1, "effects": { "stats": { "social": 6, "happiness": 3, "energy": -3 }, "text": "You come home late, tired and full." } }
+    ]
+  },
+  {
+    "id": "fame_gamble",
+    "description": "A public bet: 50% fame up, 50% public embarrassment.",
+    "outcomes": [
+      { "p": 0.5, "effects": { "stats": { "fame": 10, "happiness": 2 }, "text": "It lands. People are talking about you, nicely." } },
+      { "p": 0.5, "effects": { "stats": { "fame": -6, "happiness": -3 }, "text": "It flops, publicly. Screenshots exist." } }
+    ]
+  },
+  {
+    "id": "burnout_risk",
+    "description": "Push hard: usually money up and energy down, with a 30% chance of a real crash in energy and happiness.",
+    "outcomes": [
+      { "p": 0.7, "effects": { "stats": { "money": 6, "energy": -10 }, "text": "You deliver. Your body sends a polite complaint." } },
+      { "p": 0.3, "effects": { "stats": { "money": 2, "energy": -25, "happiness": -6 }, "text": "You deliver, and then you collapse on the sofa for a week." } }
+    ]
+  },
+  {
+    "id": "generous_act",
+    "description": "Give time or money to others: impact and ethics up, money down.",
+    "outcomes": [
+      { "p": 1, "effects": { "stats": { "contribution": 8, "money": -4, "happiness": 2, "ethics": 4 }, "text": "It costs you something. It's worth more than that to someone else." } }
+    ]
+  },
+  {
+    "id": "learning_curve",
+    "description": "Learn something hard: AI and soft skills up, energy down.",
+    "outcomes": [
+      { "p": 1, "effects": { "stats": { "skillAi": 8, "skillSoft": 4, "energy": -5 }, "text": "Your brain hurts in the good way." } }
+    ]
+  },
+  {
+    "id": "flight_temptation",
+    "description": "A trip far away: happiness and social up, money down, one long-haul return flight.",
+    "outcomes": [
+      {
+        "p": 1,
+        "effects": {
+          "stats": { "happiness": 5, "social": 3, "money": -4 },
+          "flags": ["flew"],
+          "footprint": [{ "label": "A long-haul trip (AI event)", "category": "flights", "oneOffT": 1.8, "factId": "f_flight_ny" }],
+          "text": "Jet lag, sunsets, a story you'll tell for years."
+        }
+      }
+    ]
+  },
+  {
+    "id": "surprise_moonshot",
+    "description": "Surprise job offer from a moonshot employer: 50% rocket ride (money, fame, tech), 50% crash landing.",
+    "outcomes": [
+      { "p": 0.5, "effects": { "stats": { "money": 12, "fame": 8, "tech": 8, "ai": 6 }, "text": "The rocket actually flies. You're on it." } },
+      { "p": 0.5, "effects": { "stats": { "money": -2, "fame": 3, "happiness": -4, "energy": -6 }, "text": "The rocket wobbles. You learn a lot, fast, mostly about chaos." } }
+    ]
+  },
+  {
+    "id": "surprise_mission",
+    "description": "Surprise job offer from a mission-driven employer: low pay, high meaning.",
+    "outcomes": [
+      { "p": 1, "effects": { "stats": { "money": -4, "contribution": 10, "happiness": 4, "ethics": 6 }, "text": "The salary is small. The reason to get up is not." } }
+    ]
+  },
+  {
+    "id": "surprise_golden_cage",
+    "description": "Surprise job offer with very high pay in an ethically grey business.",
+    "outcomes": [
+      { "p": 1, "effects": { "stats": { "money": 14, "ethics": -10, "happiness": -3, "contribution": -4 }, "text": "The pay is unreal. So are some of the clients." } }
+    ]
+  },
+  {
+    "id": "surprise_wildcard",
+    "description": "Surprise job offer from an odd, creative employer: fame and fun, unstable money.",
+    "outcomes": [
+      { "p": 0.6, "effects": { "stats": { "fame": 8, "happiness": 5, "money": 2 }, "text": "Weird job, great stories, decent pay. Your parents still don't get it." } },
+      { "p": 0.4, "effects": { "stats": { "fame": 4, "money": -6, "happiness": 2 }, "text": "Fun, chaotic, and paid mostly in exposure." } }
+    ]
+  }
+]

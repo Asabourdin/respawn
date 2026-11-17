@@ -1,0 +1,241 @@
+[
+  {
+    "id": "c06_exchange",
+    "kind": "major",
+    "phase": "aidams34",
+    "order": 6,
+    "age": 20.4,
+    "mandatory": true,
+    "title": "Exchange Destination",
+    "text": "Year 3 means exchange, no exceptions. The international office opens the list and your grades decide which doors are open. Somewhere out there, a dorm room and a new version of you are waiting.",
+    "art": "airport",
+    "dynamic": { "type": "exchange", "count": 3, "lockedFromTierAbove": 2 },
+    "variants": [
+      {
+        "conditions": "grades >= 72",
+        "text": "Year 3 means exchange, no exceptions. Your grades put you in the top tier, and the list reads like a travel magazine. Somewhere out there, a dorm room and a new version of you are waiting."
+      },
+      {
+        "conditions": "grades >= 50",
+        "text": "Year 3 means exchange, no exceptions. Your grades put you in the middle tier: good options, and the top tier greyed out just above, close enough to sting. Somewhere out there, a dorm room is waiting."
+      },
+      {
+        "conditions": "grades < 50",
+        "text": "Year 3 means exchange, no exceptions. Your grades leave a short list, and the sètes of Year 2 are looking at you from the photo albums. Still: somewhere out there, a dorm room and a new version of you are waiting."
+      }
+    ],
+    "ai": {
+      "tone": "anticipation, wanderlust",
+      "hints": [
+        "If flag skipped_pm, joke that PM's 8AM class had a say in this list.",
+        "Never say a destination is bad: every tier is an adventure."
+      ]
+    },
+    "choices": []
+  },
+  {
+    "id": "c07_travel",
+    "kind": "major",
+    "phase": "aidams34",
+    "order": 7,
+    "age": 20.5,
+    "mandatory": true,
+    "title": "Life in {city}",
+    "text": "You've landed in {city}. Your stories already feature a skyline, a street-food stall and a suspiciously aesthetic coffee. Classmates are planning weekends everywhere. How much do you move?",
+    "art": "exchange_west",
+    "ai": {
+      "tone": "wide-eyed, sensory, specific to the city",
+      "hints": [
+        "Describe {city} and {country} concretely (food, weather, campus).",
+        "The flight option is fun; never shame it, just let the numbers speak later."
+      ]
+    },
+    "choices": [
+      {
+        "id": "c07_local",
+        "label": "Stay local and study",
+        "hint": "Know one city by heart",
+        "effects": {
+          "stats": { "grades": 4, "intellect": 3, "social": 2, "happiness": 1, "fame": -2 },
+          "flags": ["exchange_local"],
+          "text": "You find the best cheap noodle place in {city} and become a regular. That's a kind of passport too."
+        }
+      },
+      {
+        "id": "c07_trains",
+        "label": "Trains and buses around",
+        "hint": "Slow travel, big stories",
+        "effects": {
+          "stats": { "social": 5, "happiness": 5, "intellect": 3, "skillSoft": 2, "money": -3, "energy": -2 },
+          "flags": ["exchange_trains"],
+          "badges": ["slow_traveller"],
+          "footprint": [{ "label": "Trains and buses during the exchange", "category": "travel", "oneOffT": 0.1, "factId": "f_train_europe" }],
+          "text": "Nine-hour bus rides, one stolen sandwich, zero regrets."
+        }
+      },
+      {
+        "id": "c07_flights",
+        "label": "A flight every other weekend",
+        "hint": "See everything, fast",
+        "effects": {
+          "stats": { "social": 6, "happiness": 6, "fame": 4, "skillSoft": 3, "money": -6, "grades": -3 },
+          "flags": ["exchange_flights", "flew"],
+          "footprint": [{ "label": "Weekend flights during the exchange", "category": "flights", "oneOffT": 2.5, "factId": "f_one_percent_flyers" }],
+          "text": "Twelve countries, twelve stories, one very tired passport."
+        }
+      }
+    ]
+  },
+  {
+    "id": "c08_research",
+    "kind": "major",
+    "phase": "aidams34",
+    "order": 8,
+    "age": 21,
+    "mandatory": true,
+    "title": "The Research Paper",
+    "text": "The summer after the exchange belongs to the mandatory research paper: forty pages, one supervisor, zero excuses. GenAI is open in another tab, blinking at you like a slot machine. How do you use it?",
+    "art": "research",
+    "ai": {
+      "tone": "focused, honest about temptation",
+      "hints": [
+        "This choice decides how the player's skills hold up when AI gets much stronger at 38–40.",
+        "Do not reveal that consequence explicitly; hint at 'what you'll actually know'."
+      ]
+    },
+    "choices": [
+      {
+        "id": "c08_all_in",
+        "label": "All in: prompts, images, video",
+        "hint": "Fast now, shallow later?",
+        "effects": {
+          "stats": { "skillAi": 4, "grades": 2, "energy": 3, "intellect": -3, "skillSoft": -3 },
+          "flags": ["SHALLOW"],
+          "footprint": [{ "label": "Heavy GenAI use (text, images, video)", "category": "digital", "genAiTPerYear": 0.08, "factId": "f_ai_text_video" }],
+          "text": "The paper writes itself in a week. You're not entirely sure what it says."
+        }
+      },
+      {
+        "id": "c08_targeted",
+        "label": "Targeted: a few prompts a day",
+        "hint": "A sparring partner, not a ghostwriter",
+        "effects": {
+          "stats": { "skillAi": 7, "intellect": 4, "grades": 4, "energy": -2 },
+          "flags": ["COMPLEMENT"],
+          "footprint": [{ "label": "Targeted GenAI use (text prompts)", "category": "digital", "genAiTPerYear": 0.002, "factId": "f_median_prompt" }],
+          "text": "You argue with the model, win twice, lose once, and learn more than either of you."
+        }
+      },
+      {
+        "id": "c08_none",
+        "label": "None. Pen, brain, library",
+        "hint": "Slow, solid, a bit stubborn",
+        "effects": {
+          "stats": { "grades": 6, "intellect": 7, "skillSoft": 4, "energy": -6, "happiness": -2 },
+          "flags": ["no_genai"],
+          "text": "Your supervisor writes 'finally, a human voice' in the margin."
+        }
+      }
+    ]
+  },
+  {
+    "id": "c09_internship",
+    "kind": "major",
+    "phase": "aidams34",
+    "order": 9,
+    "age": 21.5,
+    "mandatory": true,
+    "title": "The Six-Month Internship",
+    "text": "Year 4. The six-month internship is where job offers are born. The forum entreprises left you with fourteen tote bags and three business cards. Whatever you pick will probably become your first job, so pick like it matters.",
+    "art": "bigtech",
+    "ai": {
+      "tone": "serious stakes, still funny",
+      "hints": [
+        "Reference the summer internship and the asso when explaining what's unlocked.",
+        "Locked options show their reason; say which past choice would have opened them."
+      ]
+    },
+    "choices": [
+      {
+        "id": "c09_bigtech",
+        "label": "Big Tech AI product team",
+        "hint": "Free lunch, big scale",
+        "conditions": { "any": ["flag:TECH", "flag:STARTUP"] },
+        "lockedReason": "Requires the AI club or an AI internship",
+        "effects": {
+          "stats": { "skillAi": 8, "tech": 4, "money": 4, "energy": -4 },
+          "flags": ["OFFER_bigtech"],
+          "text": "Your A/B test ships to forty million people. Your mum asks if you 'fixed the internet'."
+        }
+      },
+      {
+        "id": "c09_finance",
+        "label": "Bank or asset manager",
+        "hint": "Spreadsheets with consequences",
+        "conditions": { "any": ["flag:FIN", "flag:BANK"] },
+        "lockedReason": "Requires a finance club or a bank internship",
+        "effects": {
+          "stats": { "money": 8, "skillBusiness": 6, "energy": -8, "happiness": -3 },
+          "flags": ["OFFER_finance"],
+          "text": "Your model values a company at 2.3 billion. Your rent is still due on the 5th."
+        }
+      },
+      {
+        "id": "c09_consulting",
+        "label": "Strategy consulting",
+        "hint": "Slides, clients, hotel breakfasts",
+        "effects": {
+          "stats": { "money": 5, "network": 6, "skillBusiness": 6, "energy": -8 },
+          "flags": ["OFFER_consulting"],
+          "text": "You learn that 'let's take this offline' means 'never'. Also, how to align a text box to the pixel."
+        }
+      },
+      {
+        "id": "c09_research",
+        "label": "Research lab: ML, health, econ",
+        "hint": "Deep questions, cheap coffee",
+        "conditions": { "any": ["flag:LAB", "skillAi >= 55"] },
+        "lockedReason": "Requires a lab internship or Math & AI ≥ 55",
+        "effects": {
+          "stats": { "skillAi": 8, "grades": 4, "contribution": 2, "money": -2 },
+          "flags": ["OFFER_research"],
+          "text": "You co-author your first paper. Your name is sixth of seven. You print it anyway."
+        }
+      },
+      {
+        "id": "c09_policy",
+        "label": "International AI or climate policy",
+        "hint": "Geneva, treaties, translators",
+        "conditions": { "all": ["flag:INTL", { "any": ["flag:GREEN", "flag:TECH", "flag:IMPACT"] }] },
+        "lockedReason": "Requires the AI club or an impact background",
+        "effects": {
+          "stats": { "contribution": 4, "network": 6, "skillSoft": 6, "money": -2 },
+          "flags": ["OFFER_diplomacy"],
+          "text": "You take the night train to Geneva and spend six months drafting paragraph 14(b). It matters, eventually."
+        }
+      },
+      {
+        "id": "c09_ngo",
+        "label": "NGO",
+        "hint": "Field work, real people",
+        "conditions": { "any": ["flag:GREEN", "flag:IMPACT"] },
+        "lockedReason": "Requires the Impact asso or an NGO internship",
+        "effects": {
+          "stats": { "contribution": 8, "ethics": 5, "happiness": 2, "money": -4 },
+          "flags": ["OFFER_ngo"],
+          "text": "Your project gets three thousand families connected to clean water data. Your salary is a thank-you card."
+        }
+      },
+      {
+        "id": "c09_energy",
+        "label": "Corporate strategy, energy or industry",
+        "hint": "Big groups, big decisions",
+        "effects": {
+          "stats": { "money": 5, "skillBusiness": 4, "happiness": -1 },
+          "flags": ["OFFER_energy", "OFFER_strategy"],
+          "text": "You present to an executive committee. Someone says 'interesting' and you replay it for a week."
+        }
+      }
+    ]
+  }
+]

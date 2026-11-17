@@ -1,0 +1,165 @@
+[
+  {
+    "id": "end_whistleblower",
+    "title": "The Whistleblower",
+    "description": "You saw something, said something, and paid for it. History will be kinder to you than your bank ever was.",
+    "conditions": "flag:whistleblower",
+    "priority": 100
+  },
+  {
+    "id": "end_carbon_unicorn",
+    "title": "Carbon Unicorn",
+    "description": "Rich, famous and light on the planet: the rarest creature in the business world. Investors still don't believe you exist.",
+    "conditions": { "all": ["money >= 70", "fame >= 62", "footprintScore >= 52"] },
+    "priority": 96
+  },
+  {
+    "id": "end_yacht_tycoon",
+    "title": "Yacht Tycoon",
+    "description": "You won the game everyone told you to play, and then bought a boat bigger than your school's amphitheatre. The ocean noticed.",
+    "conditions": { "any": ["flag:yacht", "flag:space_tourist"] },
+    "priority": 94
+  },
+  {
+    "id": "end_panopticon",
+    "title": "Panopticon Architect",
+    "description": "Your code kept 'people' safe. You never quite asked which people, and the dashboards never told you.",
+    "conditions": { "all": ["flag:worked_panoptis", "ethics < -10"] },
+    "priority": 92
+  },
+  {
+    "id": "end_fossil_baron",
+    "title": "Fossil Baron",
+    "description": "You powered progress, as the brochure said, and the progress came with a very large receipt.",
+    "conditions": { "all": ["flag:worked_petrolia", "money >= 62"] },
+    "priority": 90
+  },
+  {
+    "id": "end_startup_legend",
+    "title": "Startup Legend",
+    "description": "A whiteboard, a domain name, a terrible first pitch, and then an exit. Your old asso still tells the story at the fair.",
+    "conditions": { "any": ["flag:startup_success", "flag:cto_success"] },
+    "priority": 88
+  },
+  {
+    "id": "end_scandal",
+    "title": "No Comment",
+    "description": "Your lawyers were excellent. Your reputation was not. A lifetime of statements with the word 'regrettable' in them.",
+    "conditions": "flag:scandal_denied",
+    "priority": 86
+  },
+  {
+    "id": "end_burnt_out",
+    "title": "Burnt-out Consultant",
+    "description": "Fifty-five-hour weeks, three countries a week, one car park where it all stopped. You climbed fast. Your body sent the bill.",
+    "conditions": { "all": ["flag:burnout", { "any": ["flag:worked_consulting", "flag:worked_finance", "flag:grind"] }] },
+    "priority": 84
+  },
+  {
+    "id": "end_doomscroll",
+    "title": "Doomscroll Royalty",
+    "description": "Millions knew your face, few knew you. You were always one post away from happy, for decades.",
+    "conditions": { "all": [{ "any": ["flag:personal_brand", "flag:CREATOR", "flag:reality_tv"] }, "fame >= 66", "happiness < 50"] },
+    "priority": 82
+  },
+  {
+    "id": "end_off_grid",
+    "title": "Off-Grid Sage",
+    "description": "Tomatoes, birdsong and a footprint so small the planet barely felt you. Your old classmates still don't understand, and envy you.",
+    "conditions": { "all": [{ "any": ["flag:low_tech_life", "flag:worked_farm"] }, "F <= 7"] },
+    "priority": 80
+  },
+  {
+    "id": "end_frugal_researcher",
+    "title": "Frugal Researcher",
+    "description": "Small models, honest papers, cheap coffee. You made the field a little smarter and a lot more careful.",
+    "conditions": {
+      "all": [{ "any": ["flag:worked_public_lab", "flag:worked_health_lab", "flag:phd"] }, "contribution >= 55", "footprintScore >= 42"]
+    },
+    "priority": 78
+  },
+  {
+    "id": "end_treaty_whisperer",
+    "title": "Treaty Whisperer",
+    "description": "Bracketed paragraphs, night trains to Geneva, and one annex that quietly changed how the world builds AI.",
+    "conditions": { "all": [{ "any": ["flag:worked_gcai", "flag:worked_terra"] }, "contribution >= 58"] },
+    "priority": 76
+  },
+  {
+    "id": "end_jet_set",
+    "title": "Jet-Set Nomad",
+    "description": "Every continent, every lounge, every sunset. If everyone lived like you, the sunsets would be spectacular and very hot.",
+    "conditions": "F >= 12.5",
+    "priority": 74
+  },
+  {
+    "id": "end_golden_handcuffs",
+    "title": "Golden Handcuffs",
+    "description": "The salary was perfect, the bonus generous, the Sundays long and grey. You were very good at a life you didn't love.",
+    "conditions": { "all": ["money >= 72", "happiness < 46"] },
+    "priority": 72
+  },
+  {
+    "id": "end_reinvented",
+    "title": "Reinvented",
+    "description": "An algorithm took your job at forty. You took the rest of your life back. Not bad for a cardboard box.",
+    "conditions": { "all": ["flag:ai_job_loss", "happiness >= 50", { "any": ["flag:restarted", "flag:pivot_impact", "flag:founder", "flag:low_tech_life"] }] },
+    "priority": 63
+  },
+  {
+    "id": "end_quiet_hero",
+    "title": "Quiet Hero",
+    "description": "No headlines, no keynotes. Just thousands of people whose lives went a little better because you were there.",
+    "conditions": { "all": ["contribution >= 66", "fame < 52"] },
+    "priority": 68
+  },
+  {
+    "id": "end_pm_successor",
+    "title": "PM's Successor",
+    "description": "Front row at 8AM in Year 1, front of the room at 8AM decades later. PM would be proud. PM is proud.",
+    "conditions": { "all": ["flag:mentor", { "any": ["flag:pm_regular", "flag:pm_reunion", "flag:pm_panel"] }] },
+    "priority": 66
+  },
+  {
+    "id": "end_analog_soul",
+    "title": "Analog Soul",
+    "description": "You kept your phone on a leash and your eyes on people. Your screen time report was a short read for sixty years.",
+    "conditions": { "all": ["flag:deleted_socials", { "any": ["flag:phone_intentional", "flag:kept_phone_3"] }] },
+    "priority": 64
+  },
+  {
+    "id": "end_impact_convert",
+    "title": "The Late Convert",
+    "description": "Half a life chasing the next title, half a life chasing the next good deed. The second half wrote the better story.",
+    "conditions": { "all": ["flag:pivot_impact", "contribution >= 55"] },
+    "priority": 62
+  },
+  {
+    "id": "end_failed_up",
+    "title": "Failed Up",
+    "description": "Your startup died, beautifully. You learned more in three years than in the previous twenty, and dined out on it forever.",
+    "conditions": { "any": ["flag:startup_failed", "flag:cto_failed"] },
+    "priority": 60
+  },
+  {
+    "id": "end_beloved_elder",
+    "title": "Beloved Elder",
+    "description": "Your funeral was standing room only, and the stories were funny. That's the whole point, really.",
+    "conditions": { "all": ["social >= 72", "happiness >= 60"] },
+    "priority": 58
+  },
+  {
+    "id": "end_corporate_lifer",
+    "title": "Corporate Lifer",
+    "description": "One badge, one parking spot, twenty years of quarterly reviews. Solid, safe, slightly beige. Someone has to.",
+    "conditions": { "all": ["flag:lifer", "money >= 58"] },
+    "priority": 54
+  },
+  {
+    "id": "end_ordinary_legend",
+    "title": "Ordinary Legend",
+    "description": "No single headline, just a whole life: good choices, bad ones, and a few great 3AM conversations. Which is what most legends are made of.",
+    "conditions": "age >= 0",
+    "priority": 0
+  }
+]

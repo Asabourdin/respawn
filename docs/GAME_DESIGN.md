@@ -51,10 +51,23 @@ Read a short scene (2–4 sentences, narrated by AI for *you*) → pick one of 2
 
 Feedback shows only arrows (↑, ↑↑, ↓…), never exact numbers.
 
+### Character sheet (skills, 0–100, visible on demand, RPG-style)
+| Key | Display | Raised by | Used for |
+|---|---|---|---|
+| intellect | Intelligence | PM's class, reading, research, travel, debates | research, exams, critical choices, PhD |
+| skillAi | Math & AI | AI club, hackathons, coding, quant | tech/AI offers, coding interviews, AI shock |
+| skillBusiness | Economics | finance/econ clubs, internships, startups | finance/consulting offers, case interviews, fundraising |
+| skillSoft | Charisma | theatre, sport, parties, associations | negotiations, pitches, promotions, relationships |
+| energy | Health | sleep, sport, balance | burnout < 20 |
+| network | Network | assos, forums, sètes, alumni | hidden offers, fundraising |
+| grades | Grades | studying, PM's class | exchange tier |
+| ethics | Integrity | refusing shady projects | scandal, endings |
+
+Skill checks: `chance.modifiers` on skills ("Case interview: Economics + Charisma check") and locked reasons using display names ("Requires Math & AI ≥ 60"). The character sheet shows the change after each choice (+Math & AI).
+
 ### Hidden
 | Key | Range | Role |
 |---|---|---|
-| skillAi, skillBusiness, skillSoft | 0–100 | Gate offers, promotions, outcomes |
 | energy | 0–100 | < 20 triggers burnout |
 | network | 0–100 | Hidden offers, fundraising |
 | ethics | −50..50 | Scandal < −30; colours narration and endings |

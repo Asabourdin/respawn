@@ -1,0 +1,81 @@
+[
+  {
+    "id": "c01_housing",
+    "kind": "major",
+    "phase": "arrival",
+    "order": 1,
+    "age": 18,
+    "mandatory": true,
+    "title": "Welcome to AIDAMS",
+    "text": "Parcoursup is over and you survived it. You're in AIDAMS, the ESSEC × CentraleSupélec bachelor in AI, data and management, and Year 1 bounces you between Cergy and the windy plateau de Saclay. First real decision, {name}: where do you sleep?",
+    "art": "campus",
+    "ai": {
+      "tone": "warm, excited, slightly overwhelmed first week",
+      "hints": [
+        "Weave in the player's origin, family budget and trait naturally, in one clause.",
+        "The plateau de Saclay wind and the RER B are running jokes for the whole game.",
+        "If the origin is international, staying at the parents' is impossible: say it lightly."
+      ]
+    },
+    "choices": [
+      {
+        "id": "c01_campus",
+        "label": "Campus residence",
+        "hint": "Cheap, windy, everyone next door",
+        "effects": {
+          "stats": { "social": 6, "money": -2, "energy": -2 },
+          "flags": ["housing_campus"],
+          "text": "Your room is nine square metres. Your roommate Lou already knows everyone. The wind on the plateau is free."
+        }
+      },
+      {
+        "id": "c01_paris",
+        "label": "Paris flatshare + RER B",
+        "hint": "City nights, long commutes",
+        "effects": {
+          "stats": { "social": 8, "happiness": 2, "money": -6, "energy": -8 },
+          "flags": ["housing_paris"],
+          "footprint": [
+            {
+              "label": "Daily RER commute (student years)",
+              "category": "travel",
+              "annual": { "id": "commute_student", "tPerYear": 0.1, "untilAge": 22 }
+            }
+          ],
+          "text": "You learn the RER B timetable by heart. The RER B does not."
+        }
+      },
+      {
+        "id": "c01_parents",
+        "label": "Stay at your parents'",
+        "hint": "Free laundry, zero freedom",
+        "conditions": { "all": ["profile.origin != intl", "profile.origin != expat_kid"] },
+        "lockedReason": "Requires parents within commuting distance",
+        "effects": {
+          "stats": { "money": 6, "social": -6, "happiness": -1 },
+          "flags": ["housing_parents"],
+          "text": "Home-cooked dinners, your childhood bedroom and a curfew you thought you'd outgrown."
+        }
+      },
+      {
+        "id": "c01_studio",
+        "label": "Your own studio in Paris",
+        "hint": "Privacy, a view, a big bill",
+        "conditions": "profile.budget == wealthy",
+        "lockedReason": "Requires a wealthy family budget",
+        "effects": {
+          "stats": { "happiness": 4, "social": 2, "money": -9 },
+          "flags": ["housing_studio"],
+          "footprint": [
+            {
+              "label": "Daily RER commute (student years)",
+              "category": "travel",
+              "annual": { "id": "commute_student", "tPerYear": 0.1, "untilAge": 22 }
+            }
+          ],
+          "text": "A studio with a balcony and a view on the rooftops. Your classmates call it 'the embassy'."
+        }
+      }
+    ]
+  }
+]

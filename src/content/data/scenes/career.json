@@ -1,0 +1,481 @@
+[
+  {
+    "id": "c12_rhythm",
+    "kind": "major",
+    "phase": "career",
+    "order": 12,
+    "age": 25,
+    "mandatory": true,
+    "title": "Your Work Rhythm",
+    "text": "You've found your feet at {employer}. Your manager calls you 'high potential', which is how they say 'stay late'. The next ten years will be shaped by one quiet decision: how many hours you give.",
+    "art": "finance",
+    "speaker": "first_manager",
+    "ai": {
+      "tone": "deceptively calm, big long-term stakes",
+      "hints": [
+        "Bertrand, the first manager, is in the room and says 'no pressure'.",
+        "This is the 'extreme time' choice: hours shape promotions, health and lifespan."
+      ]
+    },
+    "choices": [
+      {
+        "id": "c12_grind",
+        "label": "Grind: fifty-five hours and up",
+        "hint": "Fast ladder, short fuse",
+        "effects": {
+          "set": { "workHours": 58 },
+          "promotionChance": 0.7,
+          "stats": { "money": 3, "energy": -25, "addiction": 8 },
+          "flags": ["grind"],
+          "footprint": [
+            { "label": "Grind lifestyle: taxis, takeaways, last-minute flights (design estimate)", "category": "lifestyle", "annual": { "id": "grind_lifestyle", "tPerYear": 0.6, "years": 10 } }
+          ],
+          "factId": "f_who_ilo",
+          "text": "Your calendar becomes a game of Tetris you are losing gracefully."
+        }
+      },
+      {
+        "id": "c12_balanced",
+        "label": "Balanced: a real forty",
+        "hint": "Steady climb, real weekends",
+        "effects": {
+          "set": { "workHours": 40 },
+          "promotionChance": 0.5,
+          "stats": { "happiness": 2, "social": 2, "money": -1 },
+          "flags": ["balanced_rhythm"],
+          "text": "You leave at 6:30PM. Some colleagues look at you like you're defecting. You are."
+        }
+      },
+      {
+        "id": "c12_four_day",
+        "label": "A four-day week",
+        "hint": "Fridays are yours, raises less so",
+        "effects": {
+          "set": { "workHours": 32 },
+          "promotionChance": 0.3,
+          "stats": { "happiness": 6, "social": 5, "energy": 5, "money": -5, "fame": -2 },
+          "flags": ["four_day_week"],
+          "factId": "f_four_day_week",
+          "text": "Friday becomes market day, sport day, nap day. Your career slows down. You speed up."
+        }
+      },
+      {
+        "id": "c12_change",
+        "label": "Change job",
+        "hint": "A year to look around",
+        "effects": {
+          "years": 1,
+          "set": { "workHours": 40 },
+          "stats": { "happiness": 2, "network": 3, "money": -3 },
+          "flags": ["changed_job"],
+          "text": "You hand in your notice with a speech you rehearsed in the shower."
+        },
+        "next": "c12_new_job"
+      }
+    ]
+  },
+  {
+    "id": "c12_new_job",
+    "kind": "major",
+    "phase": "career",
+    "order": 12,
+    "followUpOnly": true,
+    "title": "Back on the Market",
+    "text": "A year of coffees, interviews and 'tell me about a time you failed'. Your inbox fills up again, and this time you know what the beanbags mean. Who gets the next ten years?",
+    "art": "bigtech",
+    "dynamic": { "type": "jobOffers", "count": 3, "lockedCount": 1, "aiSurprise": false },
+    "ai": { "tone": "wiser, a bit cynical", "hints": ["Reference the old employer the player just left."] },
+    "choices": []
+  },
+  {
+    "id": "c13_family",
+    "kind": "major",
+    "phase": "career",
+    "order": 13,
+    "age": 30,
+    "mandatory": true,
+    "title": "Life at Home",
+    "text": "Thirty. Your friends' group chat has turned into a slideshow of weddings, babies and sourdough. Everyone at family dinners asks the same question, with the same face. What does your life look like at home?",
+    "art": "home",
+    "variants": [
+      {
+        "conditions": "flag:met_3am",
+        "text": "Thirty. Remember the person from that 3AM conversation outside the sète? You never really stopped talking. Now you share a flat, a plant and one very big question: what does home look like?"
+      }
+    ],
+    "ai": {
+      "tone": "tender, funny, never judgemental about any family shape",
+      "hints": [
+        "If flag met_3am, the partner is Noa, the person from the 3AM conversation: reference that night.",
+        "Never use gendered pronouns for the player or the partner."
+      ]
+    },
+    "choices": [
+      {
+        "id": "c13_kids_low",
+        "label": "Partner + kids, screens limited",
+        "hint": "Loud dinners, board games, chaos",
+        "effects": {
+          "stats": { "social": 10, "happiness": 5, "money": -6, "energy": -8 },
+          "flags": ["partner", "family_kids", "kids_low_screens"],
+          "text": "Your kids think a tablet is something you take for a headache. You are exhausted and weirdly proud."
+        }
+      },
+      {
+        "id": "c13_kids_tablets",
+        "label": "Partner + kids, tablets early",
+        "hint": "Peaceful dinners, for now",
+        "effects": {
+          "stats": { "social": 8, "happiness": 4, "money": -6, "energy": -3 },
+          "flags": ["partner", "family_kids", "kids_tablets"],
+          "factId": "f_surgeon_general",
+          "text": "Dinner is quiet. Very quiet. Three faces lit blue from below."
+        }
+      },
+      {
+        "id": "c13_no_kids",
+        "label": "A partner, no kids",
+        "hint": "Freedom, long brunches, maybe a cat",
+        "effects": {
+          "stats": { "social": 5, "happiness": 3, "money": 3, "energy": -1 },
+          "flags": ["partner", "partner_no_kids"],
+          "text": "Two careers, one cat, zero bedtime stories. Sundays are long and lovely."
+        }
+      },
+      {
+        "id": "c13_solo",
+        "label": "Solo, career first",
+        "hint": "Total focus, quiet evenings",
+        "effects": {
+          "stats": { "money": 6, "fame": 3, "social": -6, "happiness": -3 },
+          "flags": ["solo"],
+          "factId": "f_holt_lunstad",
+          "text": "Your flat is spotless and silent. Your career is grateful. Your plants, less so."
+        }
+      }
+    ]
+  },
+  {
+    "id": "c14_project",
+    "kind": "major",
+    "phase": "career",
+    "order": 14,
+    "age": 33,
+    "mandatory": true,
+    "title": "Your Flagship Project",
+    "text": "Thirty-three, and {employer} hands you the project everyone will remember you for. The budget is real, the deadline is not. The big question in the room: how much AI, and at what cost?",
+    "art": "lab",
+    "variants": [
+      {
+        "conditions": "path == finance",
+        "text": "Thirty-three, and {employer} hands you the new AI trading system: the project everyone will remember you for. The budget is real, the deadline is not. How much AI, and at what cost?"
+      },
+      {
+        "conditions": "path == consulting",
+        "text": "Thirty-three, and {employer} puts you in charge of a client's 'AI transformation programme', eighty slides deep. The fees are real, the deadline is not. How much AI do you actually recommend?"
+      },
+      {
+        "conditions": "path == bigtech",
+        "text": "Thirty-three, and {employer} gives you the next big model: the launch everyone will remember you for. The compute budget is real, the deadline is not. How much AI, and at what cost?"
+      },
+      {
+        "conditions": "path == research_ml",
+        "text": "Thirty-three, and your lab at {employer} gets the grant for its flagship model. The compute is shared, the deadline is a conference. How big do you go, and what do you point it at?"
+      },
+      {
+        "conditions": "path == research_econ",
+        "text": "Thirty-three, and {employer} asks you to build the model that will steer hospital budgets for a decade. The stakes are real, the data is messy. How much AI do you put in it?"
+      },
+      {
+        "conditions": "path == diplomacy",
+        "text": "Thirty-three, and {employer} asks you to draft the technical annex of an international AI treaty. Every delegation has a lobbyist. What do you write into it?"
+      },
+      {
+        "conditions": "path == energy",
+        "text": "Thirty-three, and {employer} gives you the AI programme for its grid and its sites. The budget is real, the emissions are too. How much AI, and pointed at what?"
+      },
+      {
+        "conditions": "path == strategy",
+        "text": "Thirty-three, and {employer} names you lead of its group-wide AI strategy. Every division wants a chatbot. What do you actually build?"
+      },
+      {
+        "conditions": "path == ngo",
+        "text": "Thirty-three, and {employer} finally gets a grant for a digital tool for its field teams. The budget is small, the need is huge. How much AI do you put in it?"
+      },
+      {
+        "conditions": "path == startup",
+        "text": "Thirty-three, and your startup's next funding round depends on its core product. The investors want 'more AI'. The runway wants less spending. What do you build?"
+      },
+      {
+        "conditions": "path == isolation",
+        "text": "Thirty-three, and the farm co-op wants to 'do something with AI' after a neighbour's drone demo. The budget is a jar of coins and a grant form. What do you build, if anything?"
+      }
+    ],
+    "ai": {
+      "tone": "pivotal, concrete about the project",
+      "hints": [
+        "Make the project concrete for the player's path and employer.",
+        "Facts available: frontier training around 42 GWh; frugal AI (AFNOR Spec 2314); AI could cut around 5% of energy emissions.",
+        "Never preach: scaling is genuinely exciting."
+      ]
+    },
+    "choices": [
+      {
+        "id": "c14_scale",
+        "label": "Scale it at all costs",
+        "hint": "Biggest model, biggest headline",
+        "effects": {
+          "stats": { "money": 8, "fame": 6, "contribution": -4, "tech": 8, "ai": 10, "energy": -12, "ethics": -5, "aiLever": 0.005 },
+          "flags": ["project_scale"],
+          "footprint": [{ "label": "Training a frontier-scale model (work footprint)", "category": "career", "workT": 20000, "factId": "f_frontier_training" }],
+          "factId": "f_frontier_training",
+          "text": "The launch trends for two days. The data centre's electricity bill trends for two years."
+        }
+      },
+      {
+        "id": "c14_frugal",
+        "label": "Frugal AI: small, measured",
+        "hint": "Question the need first",
+        "effects": {
+          "stats": { "money": 4, "fame": 3, "contribution": 3, "tech": 4, "ai": 3, "energy": -3, "aiLever": -0.01 },
+          "flags": ["project_frugal"],
+          "badges": ["frugal_ai"],
+          "footprint": [{ "label": "Frugal model, measured and disclosed (work footprint)", "category": "career", "workT": 6000 }],
+          "factId": "f_afnor",
+          "text": "You cut the model size by ten and the accuracy by two percent. The CFO cries tears of joy."
+        }
+      },
+      {
+        "id": "c14_climate",
+        "label": "AI for climate or health",
+        "hint": "Point the tool at a real problem",
+        "conditions": {
+          "any": ["flag:GREEN", "flag:IMPACT", "path == research_ml", "path == research_econ", "path == ngo", "path == diplomacy", "path == strategy", "path == energy"]
+        },
+        "lockedReason": "Requires the Impact asso, or a research, NGO, policy, energy or strategy role",
+        "effects": {
+          "stats": { "contribution": 8, "fame": 4, "tech": 3, "ai": 4, "money": -2, "energy": -3, "aiLever": -0.05 },
+          "flags": ["project_climate"],
+          "footprint": [{ "label": "Applied AI for climate or health (work footprint)", "category": "career", "workT": 3000 }],
+          "factId": "f_ai_climate",
+          "text": "Your model helps a grid run on more wind and a hospital plan its heatwave beds. Not glamorous. Measurable."
+        }
+      },
+      {
+        "id": "c14_no_ai",
+        "label": "No AI. Simple statistics.",
+        "hint": "Sometimes a regression is enough",
+        "effects": {
+          "stats": { "contribution": 1, "tech": 1, "skillSoft": 3, "money": -2, "fame": -2 },
+          "flags": ["project_no_ai"],
+          "text": "A linear regression and one good chart do the job. Two people in the meeting look betrayed."
+        }
+      }
+    ]
+  },
+  {
+    "id": "c15_online",
+    "kind": "major",
+    "phase": "career",
+    "order": 15,
+    "age": 36,
+    "mandatory": true,
+    "title": "Your Online Presence",
+    "text": "Thirty-six. Work chats, family chats and an algorithm that knows you better than your parents do. A colleague with a big following says you 'should really build your brand'. Time to decide your online life for good.",
+    "art": "home",
+    "variants": [
+      {
+        "conditions": "flag:CREATOR",
+        "text": "Thirty-six. You've been posting daily since Year 1 and your follower count has its own personality. A brand agency wants you full-time. Your partner wants you at dinner. Time to decide your online life for good."
+      },
+      {
+        "conditions": "flag:phone_intentional",
+        "text": "Thirty-six. You've kept your phone on a short leash since Year 1, but work now lives in chats and your colleague says you 'should really build your brand'. Time to decide your online life for good."
+      }
+    ],
+    "ai": {
+      "tone": "wry, honest about attention economics",
+      "hints": [
+        "This replaces the Year 1 phone habit for the rest of the life.",
+        "A big audience means a big influence footprint (watch time you generate)."
+      ]
+    },
+    "choices": [
+      {
+        "id": "c15_brand",
+        "label": "Build a personal brand",
+        "hint": "Hours a day, a big audience",
+        "effects": {
+          "set": { "screenHours": 3.2 },
+          "stats": { "fame": 10, "money": 3, "happiness": -5, "energy": -6, "addiction": 10 },
+          "flags": ["personal_brand"],
+          "footprint": [{ "label": "Your audience's watch time (influence)", "category": "digital", "influenceTPerYear": 1900, "factId": "f_influence" }],
+          "factId": "f_influence",
+          "text": "Your post about 'five lessons from failure' gets two million views. You failed at nothing that week."
+        }
+      },
+      {
+        "id": "c15_as_needed",
+        "label": "Online as needed",
+        "hint": "A couple of hours, mostly useful",
+        "effects": {
+          "set": { "screenHours": 2 },
+          "stats": { "happiness": 1, "fame": -1 },
+          "flags": ["online_as_needed"],
+          "factId": "f_video_streaming",
+          "text": "You post twice a year: one job update, one sunset. Perfectly balanced."
+        }
+      },
+      {
+        "id": "c15_delete",
+        "label": "Delete the social apps",
+        "hint": "Silence, and a little FOMO",
+        "effects": {
+          "set": { "screenHours": 0.6 },
+          "stats": { "happiness": 6, "social": 4, "fame": -8, "contribution": -1 },
+          "flags": ["deleted_socials"],
+          "badges": ["logged_off"],
+          "factId": "f_allcott",
+          "text": "Week one, your thumb twitches. Week two, you read a novel. Week three, you call your grandmother."
+        }
+      }
+    ]
+  },
+  {
+    "id": "c16_midcareer",
+    "kind": "major",
+    "phase": "career",
+    "order": 16,
+    "age": 40,
+    "mandatory": true,
+    "title": "Mid-Career Crossroads",
+    "text": "Forty. Your company offers you a long-term track, your partner floats a sabbatical, a friend pitches a startup over dinner. Your eighteen-year-old self would have opinions. What's the plan for the next twenty years?",
+    "art": "garage",
+    "variants": [
+      {
+        "conditions": "flag:ai_job_loss",
+        "text": "Forty, and your old job now runs on a server somewhere. The severance was decent, the silence is loud, and nobody in your old field hires humans for it any more. What's the plan for the next twenty years?"
+      },
+      {
+        "conditions": "path == none",
+        "text": "Forty, between two chapters. A friend pitches a startup over dinner, a cooperative needs hands, an NGO needs a director. Your eighteen-year-old self would have opinions. What's the plan for the next twenty years?"
+      }
+    ],
+    "ai": {
+      "tone": "midlife clarity, humorous",
+      "hints": [
+        "If flag ai_job_loss, the 'stay' options are greyed: the player cannot go back to that field.",
+        "If flag founder later, the AI names the startup."
+      ]
+    },
+    "choices": [
+      {
+        "id": "c16_stay20",
+        "label": "Stay for twenty years",
+        "hint": "Security, seniority, golden handcuffs",
+        "conditions": { "all": ["!flag:ai_job_loss", "path != none"] },
+        "lockedReason": "Locked: that job went to an AI in the shock",
+        "effects": {
+          "stats": { "money": 10, "fame": 2, "happiness": -2 },
+          "promotionChance": 0.7,
+          "skipScenes": ["c18_late"],
+          "flags": ["lifer"],
+          "text": "You get a bigger office and a smaller window. Your badge photo will not be updated until retirement."
+        }
+      },
+      {
+        "id": "c16_stay10",
+        "label": "Stay ten more years",
+        "hint": "Then see",
+        "conditions": { "all": ["!flag:ai_job_loss", "path != none"] },
+        "lockedReason": "Locked: that job went to an AI in the shock",
+        "effects": {
+          "stats": { "money": 5, "happiness": -1 },
+          "flags": ["stay_10"],
+          "text": "You sign up for ten more years and a standing desk you will never stand at."
+        }
+      },
+      {
+        "id": "c16_pivot",
+        "label": "Pivot to impact",
+        "hint": "Less money, more meaning",
+        "effects": {
+          "set": { "workHours": 40 },
+          "stats": { "contribution": 10, "happiness": 4, "money": -5, "fame": -1 },
+          "path": { "pathId": "ngo", "employerId": "common_ground" },
+          "flags": ["pivot_impact"],
+          "text": "Your salary halves. Your Sunday-evening dread disappears entirely."
+        }
+      },
+      {
+        "id": "c16_startup",
+        "label": "Found a startup",
+        "hint": "Long odds, great story",
+        "effects": {
+          "set": { "workHours": 55 },
+          "stats": { "fame": 3, "money": -4, "energy": -6 },
+          "path": { "pathId": "startup" },
+          "flags": ["founder", "flew"],
+          "badges": ["founder"],
+          "text": "You buy a domain name at 1AM. Then a second one, just in case."
+        },
+        "next": "c16_startup_sector"
+      },
+      {
+        "id": "c16_lowtech",
+        "label": "Step back: a low-tech life",
+        "hint": "Fewer things, more time",
+        "effects": {
+          "set": { "screenHours": 1, "workHours": 30 },
+          "stats": { "happiness": 4, "social": 2, "money": -8, "fame": -6 },
+          "path": { "pathId": "isolation" },
+          "flags": ["low_tech_life"],
+          "factId": "f_carbone4",
+          "text": "You trade the commute for a vegetable garden and the notifications for birdsong. Your old colleagues call it a phase."
+        }
+      },
+      {
+        "id": "c16_restart",
+        "label": "Start over in a new field",
+        "hint": "New industry, same stubborn you",
+        "visibleIf": "flag:ai_job_loss",
+        "effects": {
+          "stats": { "skillSoft": 3, "money": -2 },
+          "flags": ["restarted"],
+          "badges": ["reinvented"],
+          "text": "You rewrite your CV from scratch. The first line is the hardest."
+        },
+        "next": "c16_new_field"
+      }
+    ]
+  },
+  {
+    "id": "c16_startup_sector",
+    "kind": "major",
+    "phase": "career",
+    "order": 16,
+    "followUpOnly": true,
+    "title": "Your Startup",
+    "text": "You've got a co-founder, a domain name and a whiteboard covered in arrows. All that's missing is a sector, a product and roughly two million euros. Where do you place your bet?",
+    "art": "garage",
+    "dynamic": { "type": "startupSectors" },
+    "ai": {
+      "tone": "founder energy, self-aware",
+      "hints": ["The AI will name the startup, its product, investor and rival after this choice."]
+    },
+    "choices": []
+  },
+  {
+    "id": "c16_new_field",
+    "kind": "major",
+    "phase": "career",
+    "order": 16,
+    "followUpOnly": true,
+    "title": "A Second First Job",
+    "text": "Forty, with a fresh CV and old instincts. Recruiters in other fields are surprisingly curious about someone who has already lived through one revolution. Who gets your second career?",
+    "art": "bigtech",
+    "dynamic": { "type": "jobOffers", "count": 3, "lockedCount": 2, "aiSurprise": false },
+    "ai": { "tone": "resilient, hopeful", "hints": ["The old field is banned: greyed offers say no one there hires after the AI shock."] },
+    "choices": []
+  }
+]

@@ -1,0 +1,154 @@
+[
+  {
+    "id": "c19_retirement",
+    "kind": "major",
+    "phase": "oldage",
+    "order": 19,
+    "age": 65,
+    "mandatory": true,
+    "title": "Retirement",
+    "text": "Sixty-five. The farewell drinks had a slideshow, a speech and a cake shaped like your first laptop. Now every day of the week is a Saturday. What does a free week look like?",
+    "art": "retirement",
+    "variants": [
+      {
+        "conditions": "path == none",
+        "text": "Sixty-five. You stopped working a while ago, but now it's official: a pension letter, a cake from the neighbours and every day of the week a Saturday. What does a free week look like?"
+      }
+    ],
+    "ai": {
+      "tone": "gentle, funny, a little nostalgic",
+      "hints": ["Callback to the Year 1 phone habit and the asso if relevant."]
+    },
+    "choices": [
+      {
+        "id": "c19_connected",
+        "label": "Always connected",
+        "hint": "Smart home, AI companion, lots of screens",
+        "effects": {
+          "leavePath": true,
+          "set": { "workHours": 0, "screenHours": 5 },
+          "stats": { "happiness": 1, "tech": 2, "ai": 2, "social": -3 },
+          "flags": ["connected_retirement"],
+          "footprint": [
+            { "label": "Smart home and AI companion", "category": "digital", "genAiTPerYear": 0.05, "deviceMultiplier": 1.6, "factId": "f_device_manufacturing" }
+          ],
+          "text": "Your fridge orders the milk. Your AI companion laughs at all your jokes. Your grandchildren call a little less."
+        }
+      },
+      {
+        "id": "c19_local",
+        "label": "Connected but local",
+        "hint": "Video calls, volunteering, the market",
+        "effects": {
+          "leavePath": true,
+          "set": { "workHours": 0, "screenHours": 2 },
+          "stats": { "social": 6, "contribution": 3, "happiness": 3, "fame": -2 },
+          "flags": ["local_retirement"],
+          "factId": "f_holt_lunstad",
+          "text": "Tuesday is the food bank, Thursday the chess club, Sunday a video call with everyone you love."
+        }
+      },
+      {
+        "id": "c19_travel",
+        "label": "Travel the world",
+        "hint": "Several long-haul trips a year",
+        "conditions": "money >= 50",
+        "lockedReason": "Requires Wealth ≥ 50",
+        "effects": {
+          "leavePath": true,
+          "set": { "workHours": 0 },
+          "stats": { "happiness": 6, "social": 2, "fame": 2, "money": -8 },
+          "flags": ["world_traveller", "flew"],
+          "footprint": [
+            {
+              "label": "Three long-haul trips a year in retirement (10 years)",
+              "category": "flights",
+              "annual": { "id": "retirement_travel", "tPerYear": 5.4, "years": 10 },
+              "factId": "f_one_percent_flyers"
+            }
+          ],
+          "text": "Kyoto, Lima, Cape Town, repeat. Your suitcase has more stamps than your passport."
+        }
+      },
+      {
+        "id": "c19_keep_working",
+        "label": "Keep working, part-time",
+        "hint": "You'd get bored anyway",
+        "conditions": "path != none",
+        "lockedReason": "Requires a job to keep",
+        "effects": {
+          "set": { "workHours": 20 },
+          "stats": { "money": 4, "social": 1, "fame": 1, "happiness": -1 },
+          "flags": ["kept_working"],
+          "text": "Two days a week you're the wise elder of the office. The coffee is still bad."
+        }
+      }
+    ]
+  },
+  {
+    "id": "c20_legacy",
+    "kind": "major",
+    "phase": "oldage",
+    "order": 20,
+    "age": 75,
+    "mandatory": true,
+    "title": "Your Legacy",
+    "text": "Seventy-five. The notary has very soft chairs and very hard questions. What's left of your money, your name and your stubbornness has to go somewhere. Where?",
+    "art": "retirement",
+    "ai": {
+      "tone": "warm, reflective, the last big choice",
+      "hints": [
+        "Mention two or three of the life's biggest choices before asking.",
+        "If flag family_kids, the grandchildren are in the waiting room."
+      ]
+    },
+    "choices": [
+      {
+        "id": "c20_family",
+        "label": "Leave everything to family",
+        "hint": "Keep it close",
+        "effects": {
+          "stats": { "social": 6, "happiness": 3, "contribution": -1 },
+          "flags": ["legacy_family"],
+          "text": "Your family will inherit your flat, your savings and your terrible puns, in that order of value."
+        }
+      },
+      {
+        "id": "c20_research",
+        "label": "Fund climate & health research",
+        "hint": "A foundation with your name on it",
+        "conditions": "money >= 40",
+        "lockedReason": "Requires Wealth ≥ 40",
+        "effects": {
+          "stats": { "contribution": 10, "fame": 3, "money": -10, "social": -1, "aiLever": -0.01 },
+          "flags": ["legacy_climate"],
+          "factId": "f_ai_climate",
+          "text": "The {name} Fund for Frugal AI and Climate Health opens its first call for projects. Forty teams apply."
+        }
+      },
+      {
+        "id": "c20_ai_lab",
+        "label": "Fund an AI lab",
+        "hint": "Bet on the machines",
+        "conditions": "money >= 50",
+        "lockedReason": "Requires Wealth ≥ 50",
+        "effects": {
+          "stats": { "fame": 4, "tech": 6, "ai": 6, "contribution": 1, "money": -10 },
+          "flags": ["legacy_ai_lab"],
+          "factId": "f_datacentres",
+          "text": "A new lab bears your name. Its first model writes you a lovely thank-you note, then asks for more compute."
+        }
+      },
+      {
+        "id": "c20_time",
+        "label": "Give your time, not money",
+        "hint": "Tutor kids, plant trees",
+        "effects": {
+          "stats": { "contribution": 5, "social": 4, "happiness": 2, "energy": -6, "money": -1 },
+          "flags": ["legacy_time"],
+          "text": "Every Wednesday you tutor kids in maths. One of them says you're 'lowkey cool'. You frame it."
+        }
+      }
+    ]
+  }
+]

@@ -1,0 +1,202 @@
+[
+  {
+    "id": "f_french_footprint",
+    "text": "The average carbon footprint in France was about 9.2 t CO2e per person in 2022, while a 1.5–2 °C world needs about 2 t by 2050.",
+    "source": "SDES, Ministry for the Ecological Transition (2023); Selectra"
+  },
+  {
+    "id": "f_carbone4",
+    "text": "Realistic everyday changes (less meat, fewer flights, better insulation) can cut a French footprint by about a quarter; the rest depends on companies and public policy.",
+    "source": "Carbone 4, 'Faire sa part ?' (2019)"
+  },
+  {
+    "id": "f_digital_share",
+    "text": "Digital technology accounts for about 4.4% of France's carbon footprint once data centres abroad are counted.",
+    "source": "ADEME–Arcep, digital footprint study (2025 update)"
+  },
+  {
+    "id": "f_device_manufacturing",
+    "text": "Around 80% of a device's carbon footprint comes from making it, not from using it, so keeping a phone longer is the biggest digital lever.",
+    "source": "ADEME–Arcep, digital footprint study (2022)"
+  },
+  {
+    "id": "f_refurb",
+    "text": "Choosing a refurbished smartphone instead of a new one avoids most of its manufacturing emissions and raw materials.",
+    "source": "ADEME, refurbished electronics study (2022)"
+  },
+  {
+    "id": "f_smartphone_materials",
+    "text": "Making a single smartphone moves roughly 200 kg of raw materials; a laptop, several hundred kilos.",
+    "source": "ADEME (2022), design value"
+  },
+  {
+    "id": "f_video_streaming",
+    "text": "In France, an hour of video streaming emits on the order of 64 g CO2e, small per hour but large across billions of hours.",
+    "source": "Impact CO2 (ADEME), design value"
+  },
+  {
+    "id": "f_influence",
+    "text": "A video watched 1 million times a day for five minutes adds up to roughly 1,900 t CO2e of streaming a year.",
+    "source": "Design estimate from the Impact CO2 (ADEME) video factor"
+  },
+  {
+    "id": "f_cloud_myth",
+    "text": "Deleting old emails and cloud photos saves almost nothing compared with keeping your devices longer or skipping one flight.",
+    "source": "ADEME–Arcep, digital footprint study (2022)"
+  },
+  {
+    "id": "f_datacentres",
+    "text": "Data centres used about 415 TWh of electricity in 2024, around 1.5% of the world's total, and could more than double by 2030.",
+    "source": "IEA, Energy and AI (2025)"
+  },
+  {
+    "id": "f_ai_text_video",
+    "text": "A typical AI text answer uses a few watt-hours at most, while generating a six-second AI video can take around 115 Wh.",
+    "source": "IEA, Energy and AI (2025)"
+  },
+  {
+    "id": "f_median_prompt",
+    "text": "One major AI provider measured its median text prompt at 0.24 Wh, about the energy of nine seconds of television.",
+    "source": "Google technical paper on AI inference footprint (August 2025)"
+  },
+  {
+    "id": "f_frontier_training",
+    "text": "Training one frontier language model of the 2023 generation was estimated at around 42 GWh of electricity.",
+    "source": "IEA, Energy and AI (2025)"
+  },
+  {
+    "id": "f_ai_climate",
+    "text": "Widespread use of existing AI applications could cut around 5% of energy-related emissions by 2035, more than data centres add.",
+    "source": "IEA, Energy and AI (2025)"
+  },
+  {
+    "id": "f_afnor",
+    "text": "France's AFNOR Spec 2314 defines frugal AI: first question the need, then prefer smaller models, then measure and disclose the impact.",
+    "source": "AFNOR Spec 2314, Frugal AI (2024)"
+  },
+  {
+    "id": "f_flight_ny",
+    "text": "A return flight Paris–New York emits about 1.8 t CO2e per passenger, close to a whole year of a 2-tonne lifestyle.",
+    "source": "DGAC / Base Carbone (ADEME) flight factors"
+  },
+  {
+    "id": "f_flight_singapore",
+    "text": "Paris–Singapore and back emits about 3.2 t CO2e per passenger, more than a year and a half of a 2-tonne lifestyle.",
+    "source": "DGAC / Base Carbone (ADEME) flight factors"
+  },
+  {
+    "id": "f_long_haul",
+    "text": "One long-haul return flight often weighs more than a whole year of a sustainable 2-tonne footprint.",
+    "source": "DGAC / Base Carbone (ADEME); SDES"
+  },
+  {
+    "id": "f_train_europe",
+    "text": "Taking the train from Paris to London, Milan or Rotterdam emits a small fraction of the same trip by plane, often less than a tenth.",
+    "source": "Impact CO2 (ADEME)"
+  },
+  {
+    "id": "f_one_percent_flyers",
+    "text": "About 1% of the world's population causes more than half of the emissions from passenger air travel.",
+    "source": "Gössling & Humpe, Global Environmental Change (2020)"
+  },
+  {
+    "id": "f_tcre",
+    "text": "Warming rises almost linearly with cumulative CO2: every 1,000 Gt of CO2 emitted adds about 0.45 °C.",
+    "source": "IPCC AR6 WG1, Summary for Policymakers (2021)"
+  },
+  {
+    "id": "f_current_policies",
+    "text": "Current climate policies put the world on track for roughly 2.7 °C of warming by 2100.",
+    "source": "Climate Action Tracker; IPCC AR6 scenario range"
+  },
+  {
+    "id": "f_wmo_2024",
+    "text": "2024 was the first calendar year about 1.55 °C warmer than pre-industrial times.",
+    "source": "WMO, State of the Global Climate 2024 (2025)"
+  },
+  {
+    "id": "f_sea_level",
+    "text": "By 2100, median sea-level rise is about 0.38 m in the lowest-emission scenario and about 0.77 m in the highest.",
+    "source": "IPCC AR6 WG1, Table 9.9"
+  },
+  {
+    "id": "f_insects",
+    "text": "At 1.5 °C about 6% of insect species lose more than half their range; at 2 °C it is 18%, and at 3.2 °C almost half.",
+    "source": "Warren et al., Science (2018)"
+  },
+  {
+    "id": "f_heat_niche",
+    "text": "At 2.7 °C of warming, about 2 billion people would live outside the climate niche humans have thrived in for millennia.",
+    "source": "Lenton et al., Nature Sustainability (2023)"
+  },
+  {
+    "id": "f_heat_2003",
+    "text": "The August 2003 heatwave caused around 15,000 excess deaths in France, most of them people over 75.",
+    "source": "Inserm (2004); Santé publique France"
+  },
+  {
+    "id": "f_surgeon_general",
+    "text": "Teens who spend more than three hours a day on social media face double the risk of depression and anxiety symptoms.",
+    "source": "US Surgeon General, Advisory on Social Media and Youth Mental Health (2023)"
+  },
+  {
+    "id": "f_allcott",
+    "text": "In a large experiment, people who deactivated a major social network for four weeks felt happier and gained about an hour a day.",
+    "source": "Allcott et al., American Economic Review (2020)"
+  },
+  {
+    "id": "f_datareportal",
+    "text": "The average internet user spends about 2 h 21 min a day on social media.",
+    "source": "DataReportal, Digital 2025 Global Overview"
+  },
+  {
+    "id": "f_who_ilo",
+    "text": "Working 55 hours or more a week is linked to a 35% higher risk of stroke and a 17% higher risk of dying from heart disease.",
+    "source": "WHO / ILO, Environment International (2021)"
+  },
+  {
+    "id": "f_burnout_who",
+    "text": "The WHO classifies burnout as an occupational phenomenon caused by chronic workplace stress that has not been successfully managed.",
+    "source": "WHO, ICD-11 (2019)"
+  },
+  {
+    "id": "f_four_day_week",
+    "text": "In a 2022 UK trial of the four-day week, 56 of 61 companies kept it afterwards and most staff reported less burnout.",
+    "source": "Autonomy / Schor et al., UK four-day week pilot results (2023)"
+  },
+  {
+    "id": "f_holt_lunstad",
+    "text": "Strong social relationships raise the odds of survival by about 50%, an effect comparable to quitting smoking.",
+    "source": "Holt-Lunstad et al., PLOS Medicine (2010)"
+  },
+  {
+    "id": "f_imf_ai_jobs",
+    "text": "About 60% of jobs in advanced economies are exposed to AI; roughly half could benefit, the other half could see lower demand.",
+    "source": "IMF, Gen-AI: Artificial Intelligence and the Future of Work (2024)"
+  },
+  {
+    "id": "f_lifespan_insee",
+    "text": "Life expectancy at birth in France is about 85.9 years for women and 80.3 years for men.",
+    "source": "INSEE, Bilan démographique (2025)"
+  },
+  {
+    "id": "f_pet_dog",
+    "text": "Over a 13-year life, a 15 kg dog's footprint was estimated at about 8.2 t CO2e, mostly from its food; a cat's is smaller.",
+    "source": "Yavor, Lehmann & Finkbeiner, Sustainability (2020)"
+  },
+  {
+    "id": "f_yacht",
+    "text": "A large superyacht can burn enough fuel to emit thousands of tonnes of CO2 a year, more than hundreds of French households combined.",
+    "source": "Barros & Wilk, Sustainability: Science, Practice and Policy (2021)"
+  },
+  {
+    "id": "f_space",
+    "text": "Rocket soot released high in the atmosphere warms about 500 times more than the same soot from planes or cars.",
+    "source": "Ryan et al., Earth's Future (2022)"
+  },
+  {
+    "id": "f_crypto_energy",
+    "text": "The largest cryptocurrency network uses roughly as much electricity per year as a mid-sized European country.",
+    "source": "Cambridge Bitcoin Electricity Consumption Index (2024)"
+  }
+]

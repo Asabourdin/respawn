@@ -28,3 +28,6 @@ dist-ssr
 .env.*
 !.env.example
 .vercel
+
+# raw generated images (processed versions live in public/assets)
+assets-src/raw/

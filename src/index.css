@@ -1,1 +1,452 @@
 @import 'tailwindcss';
+
+/*
+ * RESPAWN design tokens.
+ * Palette: RESPAWN brand only (docs/BRAND.md, src/ui/theme/palette.ts). Tailwind's default palette, radii and
+ * soft shadows are switched off so nothing outside the palette can sneak in.
+ * Type: Pixelify Sans (titles, UI, narration) + VT323 (numbers, HUD, receipt). Silkscreen for tags.
+ * Pixel unit: --p = 3px. Every border, notch and offset is a multiple of it.
+ */
+@theme {
+  --color-*: initial;
+  --color-night: #0b1f15;
+  --color-forest: #113020;
+  --color-pine: #1e4a30;
+  --color-moss: #2f6b3f;
+  --color-lime: #8fe060;
+  --color-mint: #c9f2a8;
+  --color-paper: #f2f4ef;
+  --color-stone: #b8c2b4;
+  --color-slate: #5e6e64;
+  --color-charcoal: #2a3b33;
+  --color-sky: #6fb7d9;
+  --color-sea: #2d6a8c;
+  --color-gold: #f2c14e;
+  --color-ember: #e8833a;
+  --color-heat: #d9473b;
+  --color-wine: #7a3b4e;
+  --color-skin1: #f0c29a;
+  --color-skin2: #b9785a;
+  --color-skin3: #6e4632;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+
+  --font-*: initial;
+  --font-pixel: 'Pixelify Sans', ui-monospace, monospace;
+  --font-mono: 'VT323', ui-monospace, monospace;
+  --font-tag: 'Silkscreen', ui-monospace, monospace;
+
+  --radius-*: initial;
+  --shadow-*: initial;
+  --inset-shadow-*: initial;
+  --drop-shadow-*: initial;
+  --blur-*: initial;
+}
+
+
+:root {
+  --p: 3px;
+  color-scheme: dark;
+  /* Pixel cross pattern behind the console (desktop). Solid brand colours only. */
+  --pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' shape-rendering='crispEdges'%3E%3Crect x='9' y='12' width='9' height='3' fill='%23113020'/%3E%3Crect x='12' y='9' width='3' height='9' fill='%23113020'/%3E%3C/svg%3E");
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-night);
+  color: var(--color-paper);
+  font-family: var(--font-pixel);
+  font-size: 18px;
+  line-height: 1.35;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeSpeed;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior: none;
+  -webkit-text-size-adjust: 100%;
+}
+
+canvas,
+img.pixel,
+svg.pixel {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+::selection {
+  background: var(--color-lime);
+  color: var(--color-night);
+}
+
+:focus-visible {
+  outline: var(--p) solid var(--color-lime);
+  outline-offset: var(--p);
+}
+
+/* ---------------------------------------------------------------------------
+ * Pixel boxes. Notched corners come from four offset hard shadows (no radius).
+ * Set --face / --edge / --hi / --lo / --drop per variant.
+ * ------------------------------------------------------------------------- */
+.pbox {
+  --edge: var(--color-night);
+  --face: var(--color-forest);
+  --hi: var(--color-pine);
+  --lo: var(--color-night);
+  background: var(--face);
+  box-shadow:
+    inset var(--p) var(--p) 0 0 var(--hi),
+    inset calc(var(--p) * -1) calc(var(--p) * -1) 0 0 var(--lo),
+    0 calc(var(--p) * -1) 0 0 var(--edge),
+    0 var(--p) 0 0 var(--edge),
+    calc(var(--p) * -1) 0 0 0 var(--edge),
+    var(--p) 0 0 0 var(--edge);
+}
+
+/* Paper card: the narrator's page. Notched night edge, stone inner shade, hard drop. */
+.pwin {
+  --edge: var(--color-night);
+  --face: var(--color-paper);
+  background: var(--face);
+  color: var(--color-forest);
+  box-shadow:
+    inset calc(var(--p) * -1) calc(var(--p) * -1) 0 0 var(--color-stone),
+    0 calc(var(--p) * -1) 0 0 var(--edge),
+    0 var(--p) 0 0 var(--edge),
+    calc(var(--p) * -1) 0 0 0 var(--edge),
+    var(--p) 0 0 0 var(--edge),
+    0 calc(var(--p) * 3) 0 0 var(--color-night);
+}
+
+/* Dark window: forest face, moss rim. */
+.pwin-dark {
+  --edge: var(--color-moss);
+  --face: var(--color-forest);
+  background: var(--face);
+  color: var(--color-paper);
+  box-shadow:
+    inset 0 0 0 var(--p) var(--color-night),
+    0 calc(var(--p) * -1) 0 0 var(--edge),
+    0 var(--p) 0 0 var(--edge),
+    calc(var(--p) * -1) 0 0 0 var(--edge),
+    var(--p) 0 0 0 var(--edge),
+    0 calc(var(--p) * 3) 0 0 var(--color-night);
+}
+
+/* Tactile key. Pressing sinks it by one pixel unit and eats the drop. */
+.pkey {
+  --edge: var(--color-night);
+  --face: var(--color-pine);
+  --hi: var(--color-moss);
+  --lo: var(--color-forest);
+  --drop: var(--color-night);
+  position: relative;
+  background: var(--face);
+  color: var(--color-paper);
+  border: 0;
+  box-shadow:
+    inset var(--p) var(--p) 0 0 var(--hi),
+    inset calc(var(--p) * -1) calc(var(--p) * -1) 0 0 var(--lo),
+    0 calc(var(--p) * -1) 0 0 var(--edge),
+    0 var(--p) 0 0 var(--edge),
+    calc(var(--p) * -1) 0 0 0 var(--edge),
+    var(--p) 0 0 0 var(--edge),
+    0 calc(var(--p) * 2) 0 0 var(--drop),
+    var(--p) var(--p) 0 0 var(--drop),
+    calc(var(--p) * -1) var(--p) 0 0 var(--drop);
+  transform: translateY(0);
+}
+.pkey:active:not([aria-disabled='true']),
+.pkey[data-pressed='true'] {
+  transform: translateY(var(--p));
+  box-shadow:
+    inset var(--p) var(--p) 0 0 var(--lo),
+    inset calc(var(--p) * -1) calc(var(--p) * -1) 0 0 var(--hi),
+    0 calc(var(--p) * -1) 0 0 var(--edge),
+    0 var(--p) 0 0 var(--edge),
+    calc(var(--p) * -1) 0 0 0 var(--edge),
+    var(--p) 0 0 0 var(--edge);
+}
+/* The option you are about to pick turns lime. */
+@media (hover: hover) {
+  .pkey:hover:not([aria-disabled='true']) {
+    --face: var(--color-lime);
+    --hi: var(--color-mint);
+    --lo: var(--color-moss);
+    color: var(--color-night);
+  }
+}
+.pkey:focus-visible:not([aria-disabled='true']),
+.pkey[data-pressed='true'] {
+  --face: var(--color-lime);
+  --hi: var(--color-mint);
+  --lo: var(--color-moss);
+  color: var(--color-night);
+  outline: none;
+}
+.pkey:focus-visible {
+  outline: none;
+}
+.pkey.is-primary {
+  --face: var(--color-lime);
+  --hi: var(--color-mint);
+  --lo: var(--color-moss);
+  color: var(--color-night);
+}
+@media (hover: hover) {
+  .pkey.is-primary:hover:not([aria-disabled='true']) {
+    --face: var(--color-mint);
+    --hi: var(--color-paper);
+    --lo: var(--color-lime);
+  }
+}
+.pkey.is-primary:focus-visible {
+  --face: var(--color-mint);
+  --hi: var(--color-paper);
+  --lo: var(--color-lime);
+}
+.pkey.is-light {
+  --face: var(--color-paper);
+  --hi: var(--color-paper);
+  --lo: var(--color-stone);
+  color: var(--color-forest);
+}
+.pkey.is-dark {
+  --face: var(--color-charcoal);
+  --hi: var(--color-slate);
+  --lo: var(--color-night);
+  color: var(--color-paper);
+}
+.pkey.is-danger {
+  --face: var(--color-heat);
+  --hi: var(--color-ember);
+  --lo: var(--color-wine);
+  color: var(--color-paper);
+}
+.pkey[aria-disabled='true'] {
+  --face: var(--color-night);
+  --hi: var(--color-charcoal);
+  --lo: var(--color-night);
+  --edge: var(--color-charcoal);
+  --drop: var(--color-night);
+  color: var(--color-stone);
+  cursor: not-allowed;
+}
+
+/* Hazard stripes for BREAKING alerts: hard 45 degree stripes, two brand colours. */
+.hazard {
+  background-color: var(--color-gold);
+  background-image: repeating-linear-gradient(-45deg, var(--color-night) 0 6px, var(--color-gold) 6px 12px);
+}
+
+/* Thermal receipt: stepped tear on top and bottom. */
+.receipt {
+  --tear: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='6' shape-rendering='crispEdges'%3E%3Cpath d='M0 6h12V3H9V0H3v3H0z' fill='%23f2f4ef'/%3E%3C/svg%3E");
+  background: var(--color-paper);
+  color: var(--color-night);
+  position: relative;
+}
+.receipt::before,
+.receipt::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: var(--tear) repeat-x;
+}
+.receipt::before {
+  top: -6px;
+}
+.receipt::after {
+  bottom: -6px;
+  transform: scaleY(-1);
+}
+
+/* Pixel dim: a checkerboard of night pixels over the screen (no alpha blending). */
+.beat-dim {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6' shape-rendering='crispEdges'%3E%3Crect width='3' height='3' fill='%230b1f15'/%3E%3Crect x='3' y='3' width='3' height='3' fill='%230b1f15'/%3E%3C/svg%3E");
+}
+
+@keyframes blink {
+  0%,
+  49% {
+    visibility: visible;
+  }
+  50%,
+  100% {
+    visibility: hidden;
+  }
+}
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(calc(var(--p) * -1));
+  }
+}
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(calc(var(--p) * -2));
+  }
+  50% {
+    transform: translateX(calc(var(--p) * 2));
+  }
+  75% {
+    transform: translateX(calc(var(--p) * -1));
+  }
+}
+@keyframes flash {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(calc(var(--p) * -1));
+  }
+}
+@keyframes pop {
+  0% {
+    transform: scale(0.6);
+  }
+  40% {
+    transform: scale(1.06);
+  }
+  70% {
+    transform: scale(0.98);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes unfold {
+  0% {
+    transform: scaleY(0);
+  }
+  50% {
+    transform: scaleY(0.5);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+@keyframes rise-in {
+  0% {
+    transform: translateY(calc(var(--p) * 4));
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.anim-blink {
+  animation: blink 1s steps(1) infinite;
+}
+.anim-bob {
+  animation: bob 0.8s steps(2) infinite;
+}
+.anim-shake {
+  animation: shake 0.28s steps(4) 1;
+}
+.anim-flash {
+  animation: flash 0.3s steps(2) 3;
+}
+.beat-pop {
+  animation: pop 0.26s steps(4) both;
+}
+.surprise-in {
+  animation: unfold 0.3s steps(3) both;
+  transform-origin: top;
+}
+.rise-in {
+  animation: rise-in 0.2s steps(4) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .anim-blink {
+    animation: none !important;
+  }
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.choice-hint {
+  color: var(--color-stone);
+}
+@media (hover: hover) {
+  .pkey:hover:not([aria-disabled='true']) .choice-hint {
+    color: var(--color-pine);
+  }
+}
+.pkey:focus-visible .choice-hint,
+.pkey[data-pressed='true'] .choice-hint {
+  color: var(--color-pine);
+}
+
+/* Respawn invulnerability frames: blink a few times, then stay. */
+@keyframes iframes {
+  0%,
+  12%,
+  24%,
+  36%,
+  48%,
+  60% {
+    visibility: hidden;
+  }
+  6%,
+  18%,
+  30%,
+  42%,
+  54%,
+  66%,
+  100% {
+    visibility: visible;
+  }
+}
+.anim-iframes {
+  animation: iframes 1.1s steps(1) 1;
+}

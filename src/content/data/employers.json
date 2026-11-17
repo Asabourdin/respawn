@@ -1,0 +1,365 @@
+[
+  {
+    "id": "panoptis",
+    "pathId": "bigtech",
+    "name": "Panoptis",
+    "label": "Panoptis (defense analytics)",
+    "hint": "Top pay, very private clients",
+    "tagline": "Your code will help 'keep people safe'. Which people is a later question.",
+    "prestige": 9,
+    "conditions": { "any": ["flag:aced_coding", "flag:OFFER_bigtech", { "all": ["flag:TECH", "skillAi >= 40"] }, "skillAi >= 55"] },
+    "lockedReason": "Requires a passed coding interview, a tech internship or Math & AI ≥ 55",
+    "perDecade": { "money": 4, "contribution": -4, "ethics": -8 },
+    "effects": {
+      "stats": { "money": 12, "tech": 6, "ai": 6, "fame": 2, "contribution": -6, "ethics": -12 },
+      "flags": ["worked_panoptis"],
+      "footprint": [
+        { "label": "Panoptis data centres (work footprint, design estimate)", "category": "career", "workT": 8000 }
+      ],
+      "text": "Your badge opens doors you didn't know existed. Some of them should probably stay closed."
+    }
+  },
+  {
+    "id": "infiniscroll",
+    "pathId": "bigtech",
+    "name": "InfiniScroll",
+    "label": "InfiniScroll (social media)",
+    "hint": "Build the feed everyone hates to love",
+    "tagline": "Connecting people, one more scroll at a time.",
+    "prestige": 8,
+    "conditions": { "any": ["flag:aced_coding", "flag:OFFER_bigtech", "flag:CREATOR", "flag:TECH", "skillAi >= 45"] },
+    "lockedReason": "Requires the AI club, a tech internship, a following or Math & AI ≥ 45",
+    "perDecade": { "money": 3, "contribution": -3, "ethics": -3 },
+    "effects": {
+      "stats": { "money": 10, "tech": 6, "fame": 3, "contribution": -5, "ethics": -6, "aiLever": 0.005 },
+      "flags": ["worked_infiniscroll"],
+      "footprint": [
+        { "label": "InfiniScroll recommendation engine (work footprint, design estimate)", "category": "career", "workT": 5000 }
+      ],
+      "factId": "f_surgeon_general",
+      "text": "Your first project: make people scroll four seconds longer. You succeed. Somewhere, a teenager misses their bus stop."
+    }
+  },
+  {
+    "id": "nebulary",
+    "pathId": "bigtech",
+    "name": "Nebulary",
+    "label": "Nebulary (cloud & AI platform)",
+    "hint": "Servers as far as the eye can see",
+    "tagline": "Your data, our cloud, everyone's electricity bill.",
+    "prestige": 7,
+    "conditions": { "any": ["flag:aced_coding", "flag:OFFER_bigtech", "skillAi >= 40"] },
+    "lockedReason": "Requires a tech internship, a coding interview or Math & AI ≥ 40",
+    "perDecade": { "money": 3, "tech": 4 },
+    "effects": {
+      "stats": { "money": 9, "tech": 8, "ai": 6, "skillAi": 4, "energy": -3, "aiLever": 0.005 },
+      "flags": ["worked_nebulary"],
+      "footprint": [
+        { "label": "Nebulary data centre expansion (work footprint, design estimate)", "category": "career", "workT": 10000 }
+      ],
+      "factId": "f_datacentres",
+      "text": "You get a hoodie, a badge and access to a data centre the size of a small town. It hums like it knows something."
+    }
+  },
+  {
+    "id": "tramontane",
+    "pathId": "bigtech",
+    "name": "Tramontane AI",
+    "label": "Tramontane AI (frontier lab)",
+    "hint": "France's frontier-AI rocket",
+    "tagline": "Building Europe's smartest model. Also its largest electricity contract.",
+    "prestige": 10,
+    "conditions": { "any": ["flag:phd", "skillAi >= 65", { "all": ["flag:aced_coding", "skillAi >= 55", "intellect >= 45"] }] },
+    "lockedReason": "Requires a PhD, or Math & AI ≥ 55 and Intelligence ≥ 45 with a passed coding interview",
+    "perDecade": { "fame": 2, "ai": 4 },
+    "effects": {
+      "stats": { "money": 7, "tech": 10, "ai": 12, "fame": 6, "skillAi": 6, "energy": -6, "aiLever": 0.01 },
+      "flags": ["worked_tramontane"],
+      "footprint": [
+        { "label": "Tramontane training runs (work footprint, design estimate)", "category": "career", "workT": 12000, "factId": "f_frontier_training" }
+      ],
+      "text": "Forty researchers, a whiteboard full of scaling laws and a coffee machine that costs more than your car. The press calls you 'the European answer'."
+    }
+  },
+  {
+    "id": "hexagone_lab",
+    "pathId": "research_ml",
+    "name": "Hexagone AI Lab",
+    "label": "Hexagone AI Lab (public research)",
+    "hint": "Public money, open science",
+    "tagline": "Open science, open questions, closed coffee machine (broken since forever).",
+    "prestige": 8,
+    "conditions": "flag:phd",
+    "lockedReason": "Requires a PhD",
+    "effects": {
+      "stats": { "money": -3, "tech": 8, "ai": 6, "happiness": 4, "contribution": 3 },
+      "flags": ["worked_public_lab", "flew"],
+      "text": "Your salary is modest, your office has a plant, and your code is open for the whole world to criticise."
+    }
+  },
+  {
+    "id": "cassiopee",
+    "pathId": "research_econ",
+    "name": "Cassiopée Health Lab",
+    "label": "Cassiopée Health Lab (health economics)",
+    "hint": "Models that steer hospital budgets",
+    "tagline": "We put numbers on health so nobody has to guess.",
+    "prestige": 6,
+    "conditions": { "any": ["flag:masters_dsba", "flag:phd", "flag:OFFER_research"] },
+    "lockedReason": "Requires a Master's, a PhD or a lab internship",
+    "effects": {
+      "stats": { "money": -1, "contribution": 6, "skillAi": 3, "happiness": 3 },
+      "flags": ["worked_health_lab", "flew"],
+      "text": "Your first model decides where three new MRI machines go. You check the code nine times."
+    }
+  },
+  {
+    "id": "goldbridge",
+    "pathId": "finance",
+    "name": "Goldbridge",
+    "label": "Goldbridge (investment bank)",
+    "hint": "M&A, bonuses, decks at dawn",
+    "tagline": "Money never sleeps. Neither will you.",
+    "prestige": 9,
+    "conditions": { "any": ["flag:OFFER_finance", "flag:BANK", { "all": ["flag:aced_quant", "skillBusiness >= 35"] }] },
+    "lockedReason": "Requires a bank internship, or a passed quant test and Economics ≥ 35",
+    "perDecade": { "money": 6, "happiness": -3 },
+    "effects": {
+      "set": { "workHours": 62 },
+      "stats": { "money": 15, "happiness": -6, "energy": -16, "skillBusiness": 6, "fame": 2, "addiction": 10 },
+      "flags": ["worked_goldbridge", "worked_finance", "flew"],
+      "factId": "f_who_ilo",
+      "text": "Your first bonus could buy a small car. Your first month could break a small horse."
+    }
+  },
+  {
+    "id": "hedgehog",
+    "pathId": "finance",
+    "name": "Hedgehog Partners",
+    "label": "Hedgehog Partners (quant fund)",
+    "hint": "Your models versus the market",
+    "tagline": "We beat the market. The market has not been informed.",
+    "prestige": 8,
+    "conditions": { "any": ["flag:aced_quant", { "all": [{ "any": ["flag:FIN", "flag:BANK", "flag:OFFER_finance"] }, "skillAi >= 50"] }] },
+    "lockedReason": "Requires a passed quant test, or a finance background and Math & AI ≥ 50",
+    "perDecade": { "money": 6, "social": -2 },
+    "effects": {
+      "set": { "workHours": 55 },
+      "stats": { "money": 14, "skillAi": 4, "social": -4, "energy": -8, "ethics": -3 },
+      "flags": ["worked_hedgehog", "worked_finance", "flew"],
+      "text": "Your model trades in microseconds. Your lunch break is still forty-five minutes and you resent it."
+    }
+  },
+  {
+    "id": "leafline",
+    "pathId": "finance",
+    "name": "Leafline Capital",
+    "label": "Leafline Capital (ESG funds)",
+    "hint": "Green funds, mostly green",
+    "tagline": "Sustainable finance, sustainably profitable.",
+    "prestige": 6,
+    "conditions": { "any": ["flag:FIN", "flag:OFFER_finance", "flag:GREEN", "skillBusiness >= 40"] },
+    "lockedReason": "Requires a finance club, the Impact asso or Economics ≥ 40",
+    "effects": {
+      "stats": { "money": 9, "contribution": 1, "skillBusiness": 4, "ethics": -1, "energy": -3 },
+      "flags": ["worked_leafline", "worked_finance", "flew"],
+      "text": "Your fund is 'Article 9, dark green'. One of its holdings drills in the Arctic. Very sustainably."
+    }
+  },
+  {
+    "id": "sterling_pike",
+    "pathId": "consulting",
+    "name": "Sterling & Pike",
+    "label": "Sterling & Pike (strategy consulting)",
+    "hint": "Eighty slides, three countries a week",
+    "tagline": "We'll tell you what you already know, in 80 slides.",
+    "prestige": 8,
+    "conditions": { "any": ["flag:aced_case", { "all": ["flag:OFFER_consulting", "skillBusiness >= 30"] }, { "all": ["skillBusiness >= 45", "skillSoft >= 40"] }] },
+    "lockedReason": "Requires a passed case interview, or Economics ≥ 45 and Charisma ≥ 40",
+    "perDecade": { "money": 4, "network": 4, "energy": -4 },
+    "effects": {
+      "set": { "workHours": 58 },
+      "stats": { "money": 11, "network": 10, "energy": -14, "skillBusiness": 6, "happiness": -4 },
+      "flags": ["worked_sterling", "worked_consulting", "flew"],
+      "text": "Monday in Frankfurt, Wednesday in Madrid, Friday in a hotel lobby that looks exactly like Monday's."
+    }
+  },
+  {
+    "id": "synergeia",
+    "pathId": "consulting",
+    "name": "Synergeia Advisory",
+    "label": "Synergeia Advisory (audit & consulting)",
+    "hint": "Process, excellence, process",
+    "tagline": "Synergies identified. Headcount optimised. Invoice attached.",
+    "prestige": 5,
+    "effects": {
+      "stats": { "money": 8, "skillBusiness": 5, "happiness": -3, "energy": -5 },
+      "flags": ["worked_synergeia", "worked_consulting", "flew"],
+      "text": "You are given a laptop, a methodology and a client who hates you on principle. It's a start."
+    }
+  },
+  {
+    "id": "gcai",
+    "pathId": "diplomacy",
+    "name": "Geneva Council on AI",
+    "label": "Geneva Council on AI (intl agency)",
+    "hint": "Treaties, translators, trains to Geneva",
+    "tagline": "Making sure the robots sign the treaty too.",
+    "prestige": 8,
+    "conditions": { "any": ["flag:aced_policy", "flag:OFFER_diplomacy", { "all": ["flag:TECH", "skillSoft >= 40", "intellect >= 45"] }] },
+    "lockedReason": "Requires a policy internship or a passed policy panel",
+    "effects": {
+      "stats": { "money": 5, "contribution": 6, "fame": 4, "network": 6, "skillSoft": 4, "energy": -4 },
+      "flags": ["worked_gcai", "flew"],
+      "text": "Your first job is a footnote in an annex of a draft. It is the most argued-over footnote in Geneva."
+    }
+  },
+  {
+    "id": "terra_accord",
+    "pathId": "diplomacy",
+    "name": "Terra Accord Secretariat",
+    "label": "Terra Accord (climate agency)",
+    "hint": "Climate summits, endless drafts",
+    "tagline": "Saving the planet, one bracketed paragraph at a time.",
+    "prestige": 7,
+    "conditions": { "any": ["flag:OFFER_diplomacy", "flag:aced_policy", { "all": ["flag:GREEN", "skillSoft >= 35"] }] },
+    "lockedReason": "Requires a policy internship, or the Impact asso and Charisma ≥ 35",
+    "effects": {
+      "stats": { "money": 3, "contribution": 8, "fame": 3, "network": 4, "energy": -4, "aiLever": -0.005 },
+      "flags": ["worked_terra", "flew"],
+      "factId": "f_current_policies",
+      "text": "Your first summit lasts two extra nights. The final text removes one bracket. Everyone applauds, exhausted."
+    }
+  },
+  {
+    "id": "maison_lumiere",
+    "pathId": "strategy",
+    "name": "Maison Lumière",
+    "label": "Maison Lumière (luxury group)",
+    "hint": "Strategy for handbags and heritage",
+    "tagline": "Selling timelessness, refreshed every season.",
+    "prestige": 7,
+    "conditions": { "any": ["flag:OFFER_strategy", "flag:OFFER_consulting", "flag:aced_case", "skillBusiness >= 35"] },
+    "lockedReason": "Requires a strategy internship or Economics ≥ 35",
+    "effects": {
+      "stats": { "money": 9, "fame": 4, "skillBusiness": 4, "contribution": -2 },
+      "flags": ["worked_lumiere", "flew"],
+      "text": "You build a pricing model for a handbag that costs as much as your first car. It sells out."
+    }
+  },
+  {
+    "id": "hyperbox",
+    "pathId": "strategy",
+    "name": "Hyperbox",
+    "label": "Hyperbox (e-commerce giant)",
+    "hint": "Logistics, algorithms, next-day everything",
+    "tagline": "Next-day delivery. Next-day regret.",
+    "prestige": 6,
+    "effects": {
+      "stats": { "money": 8, "tech": 4, "skillAi": 3, "contribution": -3, "ethics": -3, "aiLever": 0.003 },
+      "flags": ["worked_hyperbox", "flew"],
+      "text": "Your algorithm shaves eleven minutes off delivery times. Nobody asked the drivers how they feel about it."
+    }
+  },
+  {
+    "id": "petrolia",
+    "pathId": "energy",
+    "name": "Petrolia",
+    "label": "Petrolia (oil & gas major)",
+    "hint": "Huge salary, heavy conscience",
+    "tagline": "Powering progress since before you were born. And after.",
+    "prestige": 8,
+    "perDecade": { "money": 4, "ethics": -5, "contribution": -2 },
+    "effects": {
+      "stats": { "money": 13, "skillBusiness": 4, "ethics": -12, "contribution": -5 },
+      "flags": ["worked_petrolia", "flew"],
+      "footprint": [
+        { "label": "Your share of Petrolia's operations (work footprint, design estimate)", "category": "career", "workT": 40000 }
+      ],
+      "factId": "f_current_policies",
+      "text": "Your welcome pack includes a fleece, a fountain pen and a glossy report on 'the energy transition'. The pen is the most sincere part."
+    }
+  },
+  {
+    "id": "voltaire_grid",
+    "pathId": "energy",
+    "name": "Voltaire Grid",
+    "label": "Voltaire Grid (renewables & grid)",
+    "hint": "Wind farms, permits, patience",
+    "tagline": "Plugging France into the future, one permit at a time.",
+    "prestige": 6,
+    "conditions": { "any": ["flag:OFFER_energy", "flag:GREEN", "skillAi >= 35"] },
+    "lockedReason": "Requires an energy internship, the Impact asso or Math & AI ≥ 35",
+    "effects": {
+      "stats": { "money": 6, "contribution": 5, "ethics": 3, "tech": 3, "happiness": 2, "energy": -2, "aiLever": -0.005 },
+      "flags": ["worked_voltaire", "flew"],
+      "text": "Your first wind farm takes four years of permits and one afternoon to switch on. You cry a little. It's windy."
+    }
+  },
+  {
+    "id": "verdant",
+    "pathId": "ngo",
+    "name": "Verdant",
+    "label": "Verdant (impact NGO)",
+    "hint": "Save the world on a shoestring",
+    "tagline": "Saving the world on a shoestring budget.",
+    "prestige": 6,
+    "conditions": { "any": ["flag:OFFER_ngo", "flag:GREEN", "flag:IMPACT", "flag:gap_year"] },
+    "lockedReason": "Requires an NGO internship, the Impact asso or a gap year",
+    "effects": {
+      "stats": { "money": -6, "contribution": 12, "ethics": 8, "happiness": 3 },
+      "flags": ["worked_verdant"],
+      "text": "Your desk is a door on two trestles. Your work keeps a river clean. You would not trade."
+    }
+  },
+  {
+    "id": "common_ground",
+    "pathId": "ngo",
+    "name": "Common Ground",
+    "label": "Common Ground (social enterprise)",
+    "hint": "Profit with a purpose, mostly purpose",
+    "tagline": "Profit with a purpose. Mostly purpose.",
+    "prestige": 5,
+    "conditions": { "any": ["flag:OFFER_ngo", "flag:IMPACT", "flag:gap_year", "contribution >= 56"] },
+    "lockedReason": "Requires an NGO internship, a gap year or Impact ≥ 56",
+    "effects": {
+      "stats": { "money": -3, "contribution": 8, "skillBusiness": 3, "happiness": 2 },
+      "flags": ["worked_common_ground"],
+      "text": "You help long-term unemployed people repair laptops and sell them refurbished. Everyone wins, slowly."
+    }
+  },
+  {
+    "id": "sprout_labs",
+    "pathId": "startup",
+    "name": "Sprout Labs",
+    "label": "Sprout Labs (seed-stage startup)",
+    "hint": "Six people, one dog, short runway",
+    "tagline": "Six people, one dog, infinite runway (approx. nine months).",
+    "prestige": 5,
+    "conditions": { "any": ["flag:STARTUP", "flag:OFFER_bigtech"] },
+    "lockedReason": "Requires a startup internship or the entrepreneurship club",
+    "effects": {
+      "stats": { "money": -2, "skillAi": 6, "skillBusiness": 5, "fame": 3, "energy": -8, "network": 4 },
+      "flags": ["worked_sprout", "flew"],
+      "text": "You are employee number seven. Your title is 'founding engineer, growth, also the printer'."
+    }
+  },
+  {
+    "id": "la_ferme",
+    "pathId": "isolation",
+    "name": "La Ferme des Communs",
+    "label": "La Ferme des Communs (farm co-op)",
+    "hint": "No Wi-Fi, excellent tomatoes",
+    "tagline": "No Wi-Fi. Excellent tomatoes.",
+    "prestige": 3,
+    "conditions": "flag:gap_year",
+    "lockedReason": "Requires a gap year off-grid",
+    "effects": {
+      "set": { "screenHours": 1 },
+      "stats": { "money": -8, "happiness": 6, "fame": -6, "energy": 4 },
+      "flags": ["worked_farm", "low_tech_life"],
+      "factId": "f_carbone4",
+      "text": "Your classmates send salary screenshots. You send a photo of a tomato. Yours gets more likes."
+    }
+  }
+]

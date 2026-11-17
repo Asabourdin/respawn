@@ -1,0 +1,156 @@
+[
+  {
+    "id": "sector_climate",
+    "label": "Climate tech",
+    "hint": "Grids, batteries, carbon accounting",
+    "successP": 0.18,
+    "successModifiers": [
+      { "stat": "network", "per": 0.1 },
+      { "stat": "skillBusiness", "per": 0.08 },
+      { "stat": "skillSoft", "per": 0.06 }
+    ],
+    "effects": { "stats": { "energy": -6 }, "flags": ["sector_climate"] },
+    "success": {
+      "years": 3,
+      "stats": { "money": 14, "fame": 10, "contribution": 10, "tech": 6, "aiLever": -0.02 },
+      "flags": ["startup_success"],
+      "factId": "f_ai_climate",
+      "text": "Investor pitch: your Charisma and Economics sold it. {startup} signs its first national grid operator. Your software keeps the lights on when the wind drops, and investors finally return your calls."
+    },
+    "failure": {
+      "years": 3,
+      "stats": { "money": -10, "happiness": -6, "fame": 2, "contribution": 3 },
+      "flags": ["startup_failed"],
+      "path": { "pathId": "strategy" },
+      "text": "Hardware is hard, and {startup} runs out of cash eight months before the pilot ends. You land a strategy role at a big group, scarred and much wiser."
+    }
+  },
+  {
+    "id": "sector_health",
+    "label": "Health AI",
+    "hint": "Diagnostics that never sleep",
+    "conditions": "skillAi >= 40",
+    "lockedReason": "Requires Math & AI ≥ 40",
+    "successP": 0.2,
+    "successModifiers": [
+      { "stat": "skillAi", "per": 0.1 },
+      { "stat": "network", "per": 0.06 },
+      { "stat": "skillSoft", "per": 0.05 }
+    ],
+    "effects": { "stats": { "energy": -6 }, "flags": ["sector_health"] },
+    "success": {
+      "years": 3,
+      "stats": { "money": 14, "fame": 8, "contribution": 9, "tech": 5, "ai": 5 },
+      "flags": ["startup_success"],
+      "text": "Investor pitch: your Charisma and Economics sold it. {startup} gets regulatory approval on a Tuesday. By Friday, forty hospitals want a demo, and a radiologist sends you a thank-you card."
+    },
+    "failure": {
+      "years": 3,
+      "stats": { "money": -10, "happiness": -6, "fame": 1 },
+      "flags": ["startup_failed"],
+      "path": { "pathId": "strategy" },
+      "text": "Three years of clinical trials, one regulatory letter, zero runway. {startup} closes and you join a medtech group's strategy team."
+    }
+  },
+  {
+    "id": "sector_copilot",
+    "label": "Yet another AI copilot",
+    "hint": "A wrapper with a waitlist",
+    "successP": 0.28,
+    "successModifiers": [
+      { "stat": "skillAi", "per": 0.08 },
+      { "stat": "skillSoft", "per": 0.08 }
+    ],
+    "effects": { "stats": { "energy": -6 }, "flags": ["sector_copilot"] },
+    "success": {
+      "years": 3,
+      "stats": { "money": 18, "fame": 6, "tech": 4, "ai": 6, "aiLever": 0.005 },
+      "flags": ["startup_success"],
+      "text": "Investor pitch: your Charisma and Economics sold it. {startup} gets acquired eighteen months in, mostly for the team and the logo. You are rich, and slightly unsure what you built."
+    },
+    "failure": {
+      "years": 3,
+      "stats": { "money": -8, "happiness": -5, "fame": -2 },
+      "flags": ["startup_failed"],
+      "path": { "pathId": "strategy" },
+      "text": "The big model you were wrapping ships your entire product as a free feature. {startup} becomes a slide in someone else's keynote."
+    }
+  },
+  {
+    "id": "sector_social",
+    "label": "Consumer social app",
+    "hint": "The next feed, but 'healthy'",
+    "successP": 0.12,
+    "successModifiers": [
+      { "stat": "fame", "per": 0.1 },
+      { "stat": "skillSoft", "per": 0.08 }
+    ],
+    "effects": { "stats": { "energy": -6 }, "flags": ["sector_social"] },
+    "success": {
+      "years": 3,
+      "stats": { "money": 20, "fame": 14, "contribution": -4, "ethics": -5 },
+      "flags": ["startup_success"],
+      "footprint": [
+        { "label": "Your app's users' watch time (influence)", "category": "digital", "influenceTPerYear": 3000, "factId": "f_influence" }
+      ],
+      "text": "Investor pitch: your Charisma and Economics sold it. {startup} hits ten million users. Your 'healthy feed' has an average session of 52 minutes. The irony is not lost on you, or on the press."
+    },
+    "failure": {
+      "years": 3,
+      "stats": { "money": -10, "happiness": -6, "fame": 3 },
+      "flags": ["startup_failed"],
+      "path": { "pathId": "strategy" },
+      "text": "{startup} is beloved by four thousand users and ignored by everyone else. You shut it down with a heartfelt post that gets more likes than the app ever did."
+    }
+  },
+  {
+    "id": "sector_fintech",
+    "label": "Fintech and DeFi",
+    "hint": "Banking for the unbanked, or the bored",
+    "successP": 0.2,
+    "successModifiers": [
+      { "stat": "skillBusiness", "per": 0.1 },
+      { "stat": "skillSoft", "per": 0.06 },
+      { "stat": "network", "per": 0.06 }
+    ],
+    "effects": { "stats": { "energy": -6 }, "flags": ["sector_fintech"] },
+    "success": {
+      "years": 3,
+      "stats": { "money": 22, "fame": 6, "ethics": -3 },
+      "flags": ["startup_success"],
+      "text": "Investor pitch: your Charisma and Economics sold it. {startup} gets its banking licence and a valuation with too many zeros. Your old finance club now invites you as a speaker."
+    },
+    "failure": {
+      "years": 3,
+      "stats": { "money": -12, "happiness": -6, "ethics": -2 },
+      "flags": ["startup_failed"],
+      "path": { "pathId": "strategy" },
+      "text": "A market crash, a regulator and a very awkward board meeting later, {startup} is wound down. You learn the word 'liquidation' in three languages."
+    }
+  },
+  {
+    "id": "sector_defense",
+    "label": "Defense and security AI",
+    "hint": "Drones, contracts, NDAs",
+    "successP": 0.32,
+    "successModifiers": [
+      { "stat": "network", "per": 0.1 },
+      { "stat": "skillAi", "per": 0.06 },
+      { "stat": "skillBusiness", "per": 0.04 }
+    ],
+    "effects": { "stats": { "energy": -6, "ethics": -6 }, "flags": ["sector_defense"] },
+    "success": {
+      "years": 3,
+      "stats": { "money": 22, "fame": 4, "tech": 6, "ai": 6, "ethics": -8, "contribution": -4 },
+      "flags": ["startup_success"],
+      "text": "Investor pitch: your Charisma and Economics sold it. {startup} wins a ministry contract. You can't tell your family what it does, and some nights you can't tell yourself."
+    },
+    "failure": {
+      "years": 3,
+      "stats": { "money": -8, "happiness": -5 },
+      "flags": ["startup_failed"],
+      "path": { "pathId": "strategy" },
+      "text": "The procurement process takes longer than your runway. {startup} dies in a waiting room, and a defense group hires you as head of strategy."
+    }
+  }
+]
